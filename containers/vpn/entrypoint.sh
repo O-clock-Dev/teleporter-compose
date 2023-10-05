@@ -15,5 +15,9 @@ wg set wg0 peer ${KEY_VPN_SERVER} allowed-ips 0.0.0.0/0 endpoint ${VPN_SERVER}:4
 echo "On active l'interface"
 ip link set up dev wg0
 
+iptables -t nat -I PREROUTING -d 10.0.0.2 -p tcp --dport 80 -j DNAT --to-destination 10.200.0.10
+# En attendant de faire du routage plus propre
+iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+
 #wg-quick up
 sleep infinity

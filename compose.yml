@@ -1,0 +1,36 @@
+services:
+  vpn:
+    env_file: vpn.env
+    image: monwg
+    hostname: vpn
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.254
+  web1:
+    image: caddy:alpine
+    hostname: web1
+    ports:
+      - "80:80"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.10
+#  docker:
+#    image: mondocker
+#    command: sleep infinity
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  oclock:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.200.0.0/16
+          ip_range: 10.200.0.0/16
+          gateway: 10.200.0.1
