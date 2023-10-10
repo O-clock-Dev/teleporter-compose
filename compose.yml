@@ -3,7 +3,7 @@ services:
   vpn:
     env_file: vpn.env
     image: monwg
-    hostname: "${GITHUB_PSEUDO:-johndoe}-dock"
+    hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
     cap_add:
       - NET_ADMIN
     ports:
@@ -26,6 +26,21 @@ services:
       oclock:
         ipv4_address: 10.200.0.220
     
+  dock:
+    image: mondock
+    restart: always
+    hostname: "${GITHUB_PSEUDO:-johndoe}-dock"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 22:22
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.222
+    command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec /usr/sbin/sshd -D -f /etc/ssh/sshd_config -o PermitRootLogin=yes"]
+
   web1:
     image: caddy:alpine
     hostname: web1

@@ -2,6 +2,18 @@
 
 L'idée de ce projet est de fournir un téléporteur iso fonctionnel avec l'actuel qui repose sur une base de virtualisation Docker et donc qui s'appuierai sur Docker Desktop pour s'executer sur les 3 OS : Windows, MacOS, et bien sûr Linux.
 
+## Pourquoi ?
+
+Nous utilisions avant deux systèmes :
+- le Teleporteur, une VM virtualbox qui reproduit un environnement de développement complet.
+- la VM Cloud, une instace EC2 hébergé chez AWS avec une itnerface graphique quand le téléporteur ne pouvait pas fonctionner localement sur le poste apprenant.
+
+De nombreux problèmes avec cet état de fait :
+- des différences entre les deux solutions qui obligent les supports péda et/ou les étudiants à s'adapter.
+- le téléporteur nécessite d'importantes ressources
+- la vm cloud coute cher
+
+
 ## Utilisation
 
 Créer un alias pour se connecter sur les vm étudiantes
