@@ -14,6 +14,23 @@ services:
     networks:
       oclock:
         ipv4_address: ${VPN_LOCAL_IP}
+  reverse_proxy:
+    image: monhaproxy
+    hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
+    ports:
+      - "80:80"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.200
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    volumes:
+      - "${CODE_DIR}:/srv/"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.201
+    
   proxy:
     image: lthn/dante
     restart: always
@@ -44,8 +61,8 @@ services:
   web1:
     image: caddy:alpine
     hostname: web1
-    ports:
-      - "80:80"
+#    ports:
+#      - "80:80"
     networks:
       oclock:
         ipv4_address: 10.200.0.10
