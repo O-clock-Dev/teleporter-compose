@@ -2,6 +2,15 @@
 
 L'idée de ce projet est de fournir un téléporteur iso fonctionnel avec l'actuel qui repose sur une base de virtualisation Docker et donc qui s'appuierai sur Docker Desktop pour s'executer sur les 3 OS : Windows, MacOS, et bien sûr Linux.
 
+## Utilisation
+
+Créer un alias pour se connecter sur les vm étudiantes
+
+```
+alias ossh="docker exec -it teleporter-compose-vpn-1 /usr/bin/ssh"
+```
+
+
 ## Architecture du projet
 
 Le projet s'appuerait sur un ensemble de containers orchestré par un Docker Compose. Il nous faut distinguer deux types de containers :

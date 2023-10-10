@@ -1,17 +1,31 @@
+
 services:
   vpn:
     env_file: vpn.env
     image: monwg
-    hostname: vpn
+    hostname: "${GITHUB_PSEUDO:-johndoe}-dock"
     cap_add:
       - NET_ADMIN
     ports:
       - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.ssh:/root/.ssh
     networks:
       oclock:
-        ipv4_address: 10.200.0.254
+        ipv4_address: ${VPN_LOCAL_IP}
+  proxy:
+    image: lthn/dante
+    restart: always
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 2020:2020
+    command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec sockd -N 2"]
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.220
+    
   web1:
     image: caddy:alpine
     hostname: web1
@@ -20,6 +34,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.10
+    volumes:
+      - "${WEB_PUBLIC_DIR}:/usr/share/caddy/"
 #  docker:
 #    image: mondocker
 #    command: sleep infinity
