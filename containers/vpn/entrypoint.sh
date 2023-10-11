@@ -19,6 +19,7 @@ sleep 2s
 ip link set up dev wg0
 
 iptables -t nat -I PREROUTING -d ${IP_PRIV} -p tcp --dport 80 -j DNAT --to-destination 10.200.0.200
+iptables -t nat -I PREROUTING -d ${IP_PRIV} -p tcp --dport 22 -j DNAT --to-destination 10.200.0.222
 # En attendant de faire du routage plus propre
 iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
 

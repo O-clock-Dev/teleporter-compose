@@ -1,7 +1,9 @@
 
 services:
   vpn:
-    env_file: vpn.env
+    env_file: 
+      - vpn.env
+      - .env
     image: monwg
     hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
     cap_add:
