@@ -40,10 +40,24 @@ services:
     ports:
       - 2020:2020
     command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec sockd -N 2"]
+    dns:
+      - "10.0.0.1"
     networks:
       oclock:
         ipv4_address: 10.200.0.220
-    
+
+  squid:
+    image: monsquid
+    dns:
+      - "10.0.0.1"
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 3128:3128
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.221
+
   dock:
     image: mondock
     restart: always
