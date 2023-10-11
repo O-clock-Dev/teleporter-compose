@@ -57,7 +57,7 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.222
-    command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec /usr/sbin/sshd -D -f /etc/ssh/sshd_config -o PermitRootLogin=yes"]
+    command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec /usr/sbin/sshd -D -f /etc/ssh/sshd_config -e -o PermitRootLogin=yes"]
 
   web1:
     image: caddy:alpine
