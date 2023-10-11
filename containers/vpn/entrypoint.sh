@@ -5,7 +5,7 @@ echo "Activation de l'interface wg0"
 ip link add dev wg0 type wireguard
 sleep 2s
 echo "Activation de l'IP ${IP_PRIV}"
-ip address add dev wg0 ${IP_PRIV}
+ip address add dev wg0 ${IP_PRIV}/${VPN_WILDCARD}
 echo "Activation du listen port"
 wg set wg0 listen-port 51820
 echo "Activation de la clé privée"
