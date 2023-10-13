@@ -5,7 +5,7 @@ services:
       - vpn.env
       - .env
     image: monwg
-    restart: unless-stopped
+    restart: always
     hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
     cap_add:
       - NET_ADMIN
@@ -18,9 +18,17 @@ services:
       interval: 5s
       retries: 5
       start_period: 10s
+    labels:
+      autoheal: True
     networks:
       oclock:
         ipv4_address: ${VPN_LOCAL_IP}
+  autoheal:
+    restart: always
+    image: willfarrell/autoheal
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   reverse_proxy:
     image: monhaproxy
     hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
@@ -58,6 +66,7 @@ services:
       - "10.0.0.1"
     cap_add:
       - NET_ADMIN
+    restart: always
     ports:
       - 3128:3128
     networks:
