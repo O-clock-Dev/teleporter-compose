@@ -5,6 +5,7 @@ services:
       - vpn.env
       - .env
     image: monwg
+    restart: unless-stopped
     hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
     cap_add:
       - NET_ADMIN
@@ -12,6 +13,11 @@ services:
       - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: ["CMD","ping","-c1","${VPN_PRIV_IP}","-w1"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
     networks:
       oclock:
         ipv4_address: ${VPN_LOCAL_IP}
