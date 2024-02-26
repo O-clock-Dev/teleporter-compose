@@ -48,6 +48,19 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.201
+  terminal:
+    environment:
+    - TZ=${TZ}
+    hostname: teleporteur-terminal
+    build:
+      context: ./containers/terminal
+    ports:
+      - 81:7681
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.202
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     
   proxy:
     image: lthn/dante
@@ -94,6 +107,9 @@ services:
     command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec /usr/sbin/sshd -D -f /etc/ssh/sshd_config -e -o PermitRootLogin=yes"]
 
   web1:
+    environment:
+    - LANG=${LANG}
+    - TZ=${TZ}
     image: caddy:alpine
     hostname: web1
 #    ports:
