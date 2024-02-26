@@ -20,7 +20,7 @@ RUN pip3 install --no-cache-dir pywal
 RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" \
     && sed -i '/OSH_THEME=/s/.*/OSH_THEME="cupcake"/' /root/.bashrc \
     && sed -i 's/\\W/\\w/' /root/.oh-my-bash/themes/cupcake/cupcake.theme.sh \
-    && wal --theme base16-dracula && echo 'cat ~/.cache/wal/sequences' >> /root/.bashrc
-
-CMD "/usr/bin/ttyd" "-t" "fontSize=20" "-t" "titleFixed='Terminal'" "-W" "bash" 
+    && wal --theme base16-dracula
+COPY config/default.bashrc /root/.bashrc
+CMD "/usr/bin/ttyd" "-t" "fontSize=16" "-t" "titleFixed='Terminal'" "-W" "bash" 
     
