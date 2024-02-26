@@ -4,7 +4,8 @@ services:
     env_file: 
       - vpn.env
       - .env
-    image: monwg
+    build:
+      context: ./containers/ssh
     restart: always
     hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
     cap_add:
@@ -30,7 +31,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   reverse_proxy:
-    image: monhaproxy
+    build:
+      context: ./containers/haproxy
     hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
     ports:
       - "80:80"
@@ -39,7 +41,8 @@ services:
         ipv4_address: 10.200.0.200
 
   filebrowser:
-    image: monexplorer
+    build:
+      context: ./containers/filebrowser
     volumes:
       - "${CODE_DIR}:/srv/"
     networks:
@@ -61,7 +64,8 @@ services:
         ipv4_address: 10.200.0.220
 
   squid:
-    image: monsquid
+    build:
+      context: ./containers/squid
     dns:
       - "10.0.0.1"
     cap_add:
@@ -74,7 +78,8 @@ services:
         ipv4_address: 10.200.0.221
 
   dock:
-    image: mondock
+    build:
+      context: ./containers/ssh
     restart: always
     hostname: "${GITHUB_PSEUDO:-johndoe}-dock"
     volumes:
