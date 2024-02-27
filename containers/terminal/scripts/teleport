@@ -1,0 +1,15 @@
+#!/bin/bash
+
+complete -W "test tast tust" teleport
+
+# On vérifie si un nom de conteneur a été donné
+if [ -z "$1" ]; then
+  echo "Usage: $0 <nom_conteneur>"
+  exit 1
+fi
+
+
+nom_conteneur="$1"
+
+# Run docker exec -it on the specified container
+docker exec -it "$nom_conteneur" /bin/bash
