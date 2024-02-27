@@ -1,6 +1,16 @@
+networks:
+  oclock:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.200.0.0/16
+          ip_range: 10.200.0.0/16
+          gateway: 10.200.0.1
 
 services:
+## Infrastructure
   vpn:
+    container_name: teleporter-vpn
     env_file: 
       - vpn.env
       - .env
@@ -25,12 +35,15 @@ services:
       oclock:
         ipv4_address: ${VPN_LOCAL_IP}
   autoheal:
+    container_name: teleporter-autoheal
+    hostname: teleporter-autoheal
     restart: always
     image: willfarrell/autoheal
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
   reverse_proxy:
+    container_name: teleporter-haproxy
     build:
       context: ./containers/haproxy
     hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
@@ -39,30 +52,9 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.200
-
-  filebrowser:
-    build:
-      context: ./containers/filebrowser
-    volumes:
-      - "${CODE_DIR}:/srv/"
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.201
-  terminal:
-    environment:
-    - TZ=${TZ}
-    hostname: teleporteur-terminal
-    build:
-      context: ./containers/terminal
-    ports:
-      - 81:7681
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.202
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    
   proxy:
+    container_name: teleporter-proxy
+    hostname: teleporter-proxy
     image: lthn/dante
     restart: always
     cap_add:
@@ -77,6 +69,8 @@ services:
         ipv4_address: 10.200.0.220
 
   squid:
+    hostname: teleporter-squid
+    container_name: teleporter-squid
     build:
       context: ./containers/squid
     dns:
@@ -91,6 +85,7 @@ services:
         ipv4_address: 10.200.0.221
 
   dock:
+    container_name: teleporter-dock
     build:
       context: ./containers/ssh
     restart: always
@@ -105,13 +100,39 @@ services:
       oclock:
         ipv4_address: 10.200.0.222
     command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec /usr/sbin/sshd -D -f /etc/ssh/sshd_config -e -o PermitRootLogin=yes"]
-
+## Utils
+  filebrowser:
+    container_name: teleporter-filebrowser
+    hostname: teleporter-filebrowser
+    build:
+      context: ./containers/filebrowser
+    volumes:
+      - "${CODE_DIR}:/srv/"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.201
+  terminal:
+    environment:
+    - TZ=${TZ}
+    hostname: teleporter-terminal
+    container_name: teleporter-terminal
+    build:
+      context: ./containers/terminal
+    ports:
+      - 81:7681
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.202
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+## Web server
   web1:
     environment:
     - LANG=${LANG}
     - TZ=${TZ}
     image: caddy:alpine
-    hostname: web1
+    hostname: teleporter-web1
+    container_name: teleporter-web1
 #    ports:
 #      - "80:80"
     networks:
@@ -124,12 +145,3 @@ services:
 #    command: sleep infinity
 #    volumes:
 #      - /var/run/docker.sock:/var/run/docker.sock
-
-networks:
-  oclock:
-    ipam:
-      driver: default
-      config:
-        - subnet: 10.200.0.0/16
-          ip_range: 10.200.0.0/16
-          gateway: 10.200.0.1
