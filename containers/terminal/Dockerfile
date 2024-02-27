@@ -11,10 +11,18 @@ RUN apt update \
         update-motd \
         htop \
         docker.io \
+        coreutils \
+        bash-completion \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --no-cache-dir pywal
+# Copy our scripts
+COPY ./scripts/teleport /bin/teleport
+RUN chmod +x /bin/teleport
+
+COPY ./scripts/teleport-autocomplete /etc/bash_completion.d/teleport_autocomplete
+RUN chmod +x /etc/bash_completion.d/teleport_autocomplete
 
 # Theming
 RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" \

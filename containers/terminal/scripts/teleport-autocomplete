@@ -1,0 +1,5 @@
+#/usr/bin/env bash
+
+source /usr/share/bash-completion/completions/docker
+
+complete -F __docker_complete_container_names teleport
