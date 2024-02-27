@@ -25,7 +25,7 @@ alias ossh="docker exec -it teleporter-compose-vpn-1 /usr/bin/ssh"
 
 ## Architecture du projet
 
-Le projet s'appuerait sur un ensemble de containers orchestré par un Docker Compose. Il nous faut distinguer deux types de containers :
+Le projet s'appuierait sur un ensemble de containers orchestré par un Docker Compose. Il nous faut distinguer deux types de containers :
 
 - les containers de service : VPN, Proxy, SSH, File explorer, monitoring pour permettre à chaque étudiant de partager son travail, accéder au lan via un proxy, aux formateurs d'accéder aux VM's etc.
 - les containers applicatifs : Appache/PHP, MySQL, MongoDB, PostgreSQL, Node, etc. Maintenus par la team système et la team péda
@@ -84,4 +84,14 @@ Une zone tp.lan va être créé, chaque client aura des crédentials pour modifi
 - [ ] build une image docker qui se connecte sur le serveur wireguard
 - [ ] rediriger le port entrant 80
 
+## Ip utilisées sur le réseau oclock
+
+10.200.0.10  : caddy
+10.200.0.11  : mariaDB
+10.200.0.200 : haproxy
+10.200.0.201 : filebrowser
+10.200.0.202 : terminal
+10.200.0.220 : dante proxy
+10.200.0.221 : squid
+10.200.0.222 : dock
 
