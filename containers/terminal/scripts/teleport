@@ -1,7 +1,5 @@
 #!/bin/bash
 
-complete -W "test tast tust" teleport
-
 # On vérifie si un nom de conteneur a été donné
 if [ -z "$1" ]; then
   echo "Usage: $0 <nom_conteneur>"
