@@ -140,8 +140,46 @@ services:
         ipv4_address: 10.200.0.10
     volumes:
       - "${WEB_PUBLIC_DIR}:/usr/share/caddy/"
-#  docker:
-#    image: mondocker
-#    command: sleep infinity
-#    volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock
+## MariaDB, Adminer and phpmyadmin
+  mariaDB:
+    image: mariadb:11.3.2
+    hostname: teleporter-mariaDB
+    container_name: teleporter-mariaDB
+    environment:
+    - LANG=${LANG}
+    - TZ=${TZ}
+    - MARIADB_ROOT_PASSWORD=root
+    #- MARIADB_USER=explorateur
+    #- MARIADB_PASSWORD=6q595XmCKm
+    healthcheck:
+      interval: 10s
+      retries: 5
+      test:
+        [
+          "CMD",
+          "healthcheck.sh",
+          "--su-mysql",
+          "--connect",
+          "--innodb_initialized"
+        ]
+      timeout: 30s
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.11
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./containers/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
+  adminer:
+    image: adminer:4.8.1
+    depends_on:
+      mariaDB:
+        condition: service_healthy
+    hostname: teleporter-adminer 
+    container_name: teleporter-adminer
+    environment:
+      - ADMINER_DEFAULT_SERVER=mariadb
+      - ADMINER_DESIGN=dracula
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.12
+
