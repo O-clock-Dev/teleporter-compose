@@ -182,4 +182,18 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.12
-
+  phpmyadmin:
+    hostname: teleporter-phpmyadmin
+    container_name: teleporter-phpmyadmin
+    build:
+      context: ./containers/phpmyadmin                                   
+    depends_on:
+      mariaDB:
+        condition: service_healthy
+    restart: always
+    environment:
+      # - PMA_ABSOLUTE_URI=http://localhost/pma/
+      - PMA_HOST=mariadb
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.13
