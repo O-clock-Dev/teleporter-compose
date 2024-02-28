@@ -10,4 +10,4 @@ fi
 nom_conteneur="$1"
 
 # Run docker exec -it on the specified container
-docker exec -it "$nom_conteneur" /bin/bash
+docker exec -it "$nom_conteneur" /bin/sh
