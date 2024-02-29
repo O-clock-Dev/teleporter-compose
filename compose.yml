@@ -192,7 +192,6 @@ services:
         condition: service_healthy
     restart: always
     environment:
-      # - PMA_ABSOLUTE_URI=http://localhost/pma/
       - PMA_HOST=mariadb
     networks:
       oclock:
