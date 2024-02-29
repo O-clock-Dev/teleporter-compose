@@ -167,7 +167,7 @@ services:
       oclock:
         ipv4_address: 10.200.0.11
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ${DATA_DIR}/mysql:/var/lib/mysql
       - ./containers/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
   adminer:
     image: adminer:4.8.1
@@ -196,3 +196,14 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.13
+## vscode
+  vscode-server:
+    hostname: teleporter-vscode
+    container_name: teleporter-vscode
+    image: linuxserver/code-server:4.21.2
+    environment:
+      - TZ=${TZ}
+#      - LANG=${LANG}
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.14

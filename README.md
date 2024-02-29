@@ -90,6 +90,7 @@ Une zone tp.lan va être créé, chaque client aura des crédentials pour modifi
 10.200.0.11  : mariaDB
 10.200.0.12  : adminer
 10.200.0.13  : phpmyadmin
+10.200.0.14  : vscode-server
 10.200.0.200 : haproxy
 10.200.0.201 : filebrowser
 10.200.0.202 : terminal
