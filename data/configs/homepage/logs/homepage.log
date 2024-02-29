@@ -1,0 +1,124 @@
+[2024-02-29T13:31:47.031Z] info: docker.yaml was copied to the config folder
+[2024-02-29T13:31:47.035Z] info: services.yaml was copied to the config folder
+[2024-02-29T13:31:47.036Z] info: bookmarks.yaml was copied to the config folder
+[2024-02-29T13:31:47.051Z] info: widgets.yaml was copied to the config folder
+[2024-02-29T13:31:47.055Z] info: custom.css was copied to the config folder
+[2024-02-29T13:31:47.057Z] info: custom.js was copied to the config folder
+[2024-02-29T13:31:47.201Z] info: kubernetes.yaml was copied to the config folder
+[2024-02-29T13:36:55.994Z] error: Failed to load services.yaml, please check for errors
+[2024-02-29T13:36:55.995Z] error: TypeError: Cannot convert undefined or null to object
+[2024-02-29T13:36:56.040Z] error: Failed to load services.yaml, please check for errors
+[2024-02-29T13:36:56.040Z] error: TypeError: Cannot convert undefined or null to object
+[2024-02-29T13:36:56.313Z] error: Failed to load services.yaml, please check for errors
+[2024-02-29T13:36:56.314Z] error: TypeError: Cannot convert undefined or null to object
+[2024-02-29T13:36:58.741Z] error: Failed to load services.yaml, please check for errors
+[2024-02-29T13:36:58.742Z] error: TypeError: Cannot convert undefined or null to object
+[2024-02-29T13:45:24.185Z] error: Failed to load services.yaml, please check for errors
+[2024-02-29T13:45:24.187Z] error: YAMLException: bad indentation of a mapping entry (16:40)
+
+ 13 |  ... con: mdi-console
+ 14 |  ... 
+ 15 |  ... iaDB:
+ 16 |  ... escription: 'Accessible via l'un des deux outils suivant' 
+-----------------------------------------^
+ 17 |  ... con: mdi-database
+[2024-02-29T13:45:24.197Z] error: Failed to load services.yaml, please check for errors
+[2024-02-29T13:45:24.198Z] error: YAMLException: bad indentation of a mapping entry (16:40)
+
+ 13 |  ... con: mdi-console
+ 14 |  ... 
+ 15 |  ... iaDB:
+ 16 |  ... escription: 'Accessible via l'un des deux outils suivant' 
+-----------------------------------------^
+ 17 |  ... con: mdi-database
+[2024-02-29T13:45:24.496Z] error: Failed to load services.yaml, please check for errors
+[2024-02-29T13:45:24.497Z] error: YAMLException: bad indentation of a mapping entry (16:40)
+
+ 13 |  ... con: mdi-console
+ 14 |  ... 
+ 15 |  ... iaDB:
+ 16 |  ... escription: 'Accessible via l'un des deux outils suivant' 
+-----------------------------------------^
+ 17 |  ... con: mdi-database
+[2024-02-29T14:27:18.297Z] error: <httpProxy> Error calling http://localhost/file-browser...
+[2024-02-29T14:27:18.302Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1601:5) {
+    code: 'ECONNREFUSED',
+    [errors]: [ [Error] ]
+  }
+]
+[2024-02-29T14:27:18.309Z] error: <httpProxy> Error calling http://localhost/file-browser...
+[2024-02-29T14:27:18.310Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1601:5) {
+    code: 'ECONNREFUSED',
+    [errors]: [ [Error] ]
+  }
+]
+[2024-02-29T14:27:21.978Z] error: <httpProxy> Error calling http://localhost/file-browser...
+[2024-02-29T14:27:21.979Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1601:5) {
+    code: 'ECONNREFUSED',
+    [errors]: [ [Error] ]
+  }
+]
+[2024-02-29T14:27:21.998Z] error: <httpProxy> Error calling http://localhost/file-browser...
+[2024-02-29T14:27:22.000Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1601:5) {
+    code: 'ECONNREFUSED',
+    [errors]: [ [Error] ]
+  }
+]
+[2024-02-29T14:27:32.758Z] error: <httpProxy> Error calling http://localhost/file-browser...
+[2024-02-29T14:27:32.760Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1601:5) {
+    code: 'ECONNREFUSED',
+    [errors]: [ [Error] ]
+  }
+]
+[2024-02-29T14:27:32.769Z] error: <httpProxy> Error calling http://localhost/file-browser...
+[2024-02-29T14:27:32.769Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1601:5) {
+    code: 'ECONNREFUSED',
+    [errors]: [ [Error] ]
+  }
+]
+[2024-02-29T14:27:38.690Z] error: <httpProxy> Error calling http://localhost/file-browser...
+[2024-02-29T14:27:38.692Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1601:5) {
+    code: 'ECONNREFUSED',
+    [errors]: [ [Error] ]
+  }
+]
+[2024-02-29T14:27:38.698Z] error: <httpProxy> Error calling http://localhost/file-browser...
+[2024-02-29T14:27:38.699Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1601:5) {
+    code: 'ECONNREFUSED',
+    [errors]: [ [Error] ]
+  }
+]
+[2024-02-29T14:28:50.760Z] error: <dockerStatusService> Error: connect ENOENT /var/run/docker.sock
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)

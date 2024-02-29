@@ -94,6 +94,7 @@ Une zone tp.lan va être créé, chaque client aura des crédentials pour modifi
 10.200.0.200 : haproxy
 10.200.0.201 : filebrowser
 10.200.0.202 : terminal
+10.200.0.203 : homepage
 10.200.0.220 : dante proxy
 10.200.0.221 : squid
 10.200.0.222 : dock

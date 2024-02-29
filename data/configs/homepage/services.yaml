@@ -1,0 +1,41 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Utilitaires:
+    - Connexion VPN:
+        description: Statut de la connexion au VPN O'clock
+        icon: si-openvpn
+        ping: http://vpn.lan
+        statusStyle: basic
+    - File Browser:
+        href: http://localhost/file-browser
+        container: teleporter-filebrowser
+        description: Explorateur de fichiers dans le navigateur
+        icon: mdi-folder-search-outline
+    - Terminal:
+        href: http://localhost/terminal
+        description: Un terminal qui permet de manipuler le Téléporteur
+        container: teleporter-terminal
+        icon: mdi-console
+    - Visual Studio Code:
+        description: Editeur de code développé par Microsoft.
+        icon: si-visualstudiocode
+        href: http://localhost/vscode
+        ping: http://localhost/vscode
+- Mysql:
+    - Base de donnée Mysql:
+        description: "Accessible via l'un des deux outils suivant :"
+        icon: mdi-database
+        container: teleporter-mariaDB
+        statusStyle: basic
+    - Adminer:
+        description: Interface graphique pour base de données
+        icon: si-adminer
+        href: http://localhost/adminer
+        ping: http://localhost/adminer
+    - PhpMyAdmin:
+        description: Interface graphique alternative pour base de données
+        icon: si-phpmyadmin
+        href: http://localhost/phpmyadmin/
+        ping: http://localhost/phpmyadmin/

@@ -8,6 +8,18 @@ networks:
           gateway: 10.200.0.1
 
 services:
+## Dashboard
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: teleporter-homepage
+    hostname: teleporter-homepage
+    volumes:
+      - ./data/configs/homepage:/app/config
+      - ./data/configs/homepage/images:/app/public/images
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.203
 ## Infrastructure
   vpn:
     container_name: teleporter-vpn

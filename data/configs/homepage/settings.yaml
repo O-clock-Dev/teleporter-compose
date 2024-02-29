@@ -1,0 +1,17 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+title: "Le Téléporteur - Docker"
+color: slate
+language: fr
+disableCollapse: true
+headerStyle: boxedWidgets
+hideVersion: true
+statusStyle: "dot"
+quicklaunch:
+  hideInternetSearch: true
