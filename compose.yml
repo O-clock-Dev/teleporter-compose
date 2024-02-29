@@ -139,7 +139,7 @@ services:
       oclock:
         ipv4_address: 10.200.0.10
     volumes:
-      - "${WEB_PUBLIC_DIR}:/usr/share/caddy/"
+      - "${CODE_DIR}/www/public:/usr/share/caddy/"
 ## MariaDB, Adminer and phpmyadmin
   mariaDB:
     image: mariadb:11.3.2
@@ -203,7 +203,13 @@ services:
     image: linuxserver/code-server:4.21.2
     environment:
       - TZ=${TZ}
-#      - LANG=${LANG}
+      - LANG=${LANG}
+      - DOCKER_MODS=linuxserver/mods:code-server-extension-arguments
+      - VSCODE_EXTENSION_IDS=${VSCODE_EXTENSIONS_LIST}
+      - DEFAULT_WORKSPACE=/code
+    volumes:
+      - ${DATA_DIR}/configs/vscode:/config
+      - ${CODE_DIR}:/code
     networks:
       oclock:
         ipv4_address: 10.200.0.14
