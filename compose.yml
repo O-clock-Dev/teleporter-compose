@@ -102,12 +102,16 @@ services:
     command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec /usr/sbin/sshd -D -f /etc/ssh/sshd_config -e -o PermitRootLogin=yes"]
 ## Utils
   filebrowser:
+    restart: always
     container_name: teleporter-filebrowser
     hostname: teleporter-filebrowser
     build:
       context: ./containers/filebrowser
     volumes:
-      - "${CODE_DIR}:/srv/"
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+    environment:
+      - FB_NOAUTH=true
     networks:
       oclock:
         ipv4_address: 10.200.0.201

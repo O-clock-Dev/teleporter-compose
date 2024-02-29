@@ -1,6 +1,6 @@
 {
   "port": 80,
-  "baseURL": "/explorer",
+  "baseURL": "/file-browser",
   "address": "",
   "log": "stdout",
   "database": "/database.db",
