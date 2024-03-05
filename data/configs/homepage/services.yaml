@@ -53,5 +53,5 @@
     - Caddy:
         description: Sert le code situé dans le dossier /code/www/public en utilisant Caddy
         icon: si-caddy
-        href: http://localhost/caddy-server
+        href: http://localhost/caddyserver
     
