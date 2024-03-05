@@ -86,7 +86,7 @@ Une zone tp.lan va être créé, chaque client aura des crédentials pour modifi
 
 ## Ip utilisées sur le réseau oclock
 
-10.200.0.10  : caddy
+10.200.0.10  : caddyserver
 10.200.0.11  : mariaDB
 10.200.0.12  : adminer
 10.200.0.13  : phpmyadmin
