@@ -27,7 +27,7 @@ services:
       - vpn.env
       - .env
     build:
-      context: ./containers/ssh
+      context: ./containers-config/ssh
     restart: always
     hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
     cap_add:
@@ -57,7 +57,7 @@ services:
   reverse_proxy:
     container_name: teleporter-haproxy
     build:
-      context: ./containers/haproxy
+      context: ./containers-config/haproxy
     hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
     ports:
       - "80:80"
@@ -84,7 +84,7 @@ services:
     hostname: teleporter-squid
     container_name: teleporter-squid
     build:
-      context: ./containers/squid
+      context: ./containers-config/squid
     dns:
       - "10.0.0.1"
     cap_add:
@@ -99,7 +99,7 @@ services:
   dock:
     container_name: teleporter-dock
     build:
-      context: ./containers/ssh
+      context: ./containers-config/ssh
     restart: always
     hostname: "${GITHUB_PSEUDO:-johndoe}-dock"
     volumes:
@@ -118,7 +118,7 @@ services:
     container_name: teleporter-filebrowser
     hostname: teleporter-filebrowser
     build:
-      context: ./containers/filebrowser
+      context: ./containers-config/filebrowser
     volumes:
       - "${CODE_DIR}:/srv/code"
       - "${DATA_DIR}:/srv/data"
@@ -133,7 +133,7 @@ services:
     hostname: teleporter-terminal
     container_name: teleporter-terminal
     build:
-      context: ./containers/terminal
+      context: ./containers-config/terminal
     ports:
       - 81:7681
     networks:
@@ -184,7 +184,7 @@ services:
         ipv4_address: 10.200.0.11
     volumes:
       - ${DATA_DIR}/mysql:/var/lib/mysql
-      - ./containers/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
+      - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
   adminer:
     image: adminer:4.8.1
     depends_on:
@@ -202,7 +202,7 @@ services:
     hostname: teleporter-phpmyadmin
     container_name: teleporter-phpmyadmin
     build:
-      context: ./containers/phpmyadmin                                   
+      context: ./containers-config/phpmyadmin                                   
     depends_on:
       mariaDB:
         condition: service_healthy
