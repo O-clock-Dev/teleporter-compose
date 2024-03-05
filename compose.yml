@@ -215,6 +215,40 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.13
+## mongoDB
+  mongodb:
+    image: mongo:7.0
+    hostname: teleporter-mongodb
+    container_name: teleporter-mongodb
+    environment:
+      - LANG=${LANG}
+      - TZ=${TZ}
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.15
+  mongo-express:
+  # Be careful, the documentation on Docker Hub is outdated, use this one instead :
+  # https://github.com/mongo-express/mongo-express?tab=readme-ov-file#usage-docker
+    image: mongo-express:1.0.2-20-alpine3.19
+    ports:
+    - "8081:8081"
+    hostname: teleporter-mongo-express
+    container_name: teleporter-mongo-express
+    environment:
+      - LANG=${LANG}
+      - TZ=${TZ}
+      - ME_CONFIG_MONGODB_URL=mongodb://root:root@mongodb:27017/
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_BASICAUTH=false
+      - ME_CONFIG_SITE_BASEURL=/mongo-express/
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.16
+    
+
+
 ## vscode
   vscode-server:
     hostname: teleporter-vscode
