@@ -158,6 +158,7 @@ services:
       - "${CODE_DIR}/www/public:/usr/share/caddy/"
       - "${DATA_DIR}/caddyserver/data:/data"
       - "${DATA_DIR}/caddyserver/config:/config"
+      - ./containers-config/caddyserver/Caddyfile:/etc/caddy/Caddyfile
 ## MariaDB, Adminer and phpmyadmin
   mariaDB:
     image: mariadb:11.3.2
