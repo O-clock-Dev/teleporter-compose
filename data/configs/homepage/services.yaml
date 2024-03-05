@@ -23,19 +23,35 @@
         icon: si-visualstudiocode
         href: http://localhost/vscode
         ping: http://localhost/vscode
-- Mysql:
-    - Base de donnée Mysql:
-        description: "Accessible via l'un des deux outils suivant :"
-        icon: mdi-database
+- Bases de données:
+    - Base de données Mysql:
+        description: "Etat de la base de données MYSQL"
+        icon: si-mysql
         container: teleporter-mariaDB
         statusStyle: basic
+    - Base de données MongoDB:
+        description: "Etat de la base de données mongoDB"
+        icon: si-mongodb
+        container: teleporter-mongodb
+        statusStyle: basic
     - Adminer:
-        description: Interface graphique pour base de données
+        description: Interface graphique pour base de données PHP
         icon: si-adminer
         href: http://localhost/adminer
         ping: http://localhost/adminer
     - PhpMyAdmin:
-        description: Interface graphique alternative pour base de données
+        description: Interface graphique alternative pour base de données PHP
         icon: si-phpmyadmin
         href: http://localhost/phpmyadmin/
         ping: http://localhost/phpmyadmin/
+    - Mongo Express:
+        description: Interface graphique pour base de données MongoDB
+        icon: mdi-database-search
+        href: http://localhost/mongo-express/
+        ping: http://localhost/mongo-express/
+- Serveurs web:
+    - Caddy:
+        description: Sert le code situé dans le dossier /code/www/public en utilisant Caddy
+        icon: si-caddy
+        href: http://localhost/caddy-server
+    
