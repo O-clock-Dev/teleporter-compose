@@ -239,8 +239,6 @@ services:
   # Be careful, the documentation on Docker Hub is outdated, use this one instead :
   # https://github.com/mongo-express/mongo-express?tab=readme-ov-file#usage-docker
     image: mongo-express:1.0.2-20-alpine3.19
-    ports:
-    - "8081:8081"
     hostname: teleporter-mongo-express
     container_name: teleporter-mongo-express
     environment:
@@ -253,9 +251,31 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.16
-    
-
-
+## postgresQL & pgadmin
+  postgresQL:
+    image: postgres:16.2
+    hostname: teleporter-postgres
+    container_name: teleporter-postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: js4life
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.17
+  pgadmin:
+    image: dpage/pgadmin4:8.3
+    hostname: teleporter-pgadmin4
+    container_name: teleporter-pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgres@oclock.io
+      - PGADMIN_DEFAULT_PASSWORD=js4life
+      - PGADMIN_CONFIG_SERVER_MODE=False
+    volumes:
+      - ${DATA_DIR}/configs/pgadmin4:/var/lib/pgadmin
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.18
 ## vscode
   vscode-server:
     hostname: teleporter-vscode

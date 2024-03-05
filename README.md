@@ -93,6 +93,8 @@ Une zone tp.lan va être créé, chaque client aura des crédentials pour modifi
 10.200.0.14  : vscode-server
 10.200.0.15  : mongoDB
 10.200.0.16  : mongo-express
+10.200.0.17  : postgreSQL
+10.200.0.18  : pgadmin4
 10.200.0.200 : haproxy
 10.200.0.201 : filebrowser
 10.200.0.202 : terminal
