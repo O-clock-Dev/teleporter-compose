@@ -142,15 +142,15 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 ## Web server
-  web1:
+  caddyserver:
     environment:
     - LANG=${LANG}
     - TZ=${TZ}
     image: caddy:alpine
-    hostname: teleporter-web1
-    container_name: teleporter-web1
-#    ports:
-#      - "80:80"
+    hostname: teleporter-caddyserver
+    container_name: teleporter-caddyserver
+    ports:
+      - "8080:80"
     networks:
       oclock:
         ipv4_address: 10.200.0.10
