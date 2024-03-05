@@ -141,7 +141,7 @@ services:
         ipv4_address: 10.200.0.202
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-## Web server
+## Web servers
   caddyserver:
     environment:
     - LANG=${LANG}
