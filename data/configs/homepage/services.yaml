@@ -34,6 +34,11 @@
         icon: si-mongodb
         container: teleporter-mongodb
         statusStyle: basic
+    - Base de données PostgresQL:
+        description: "Etat de la base de données PostgresQL"
+        icon: si-postgresql
+        container: teleporter-postgres
+        statusStyle: basic
     - Adminer:
         description: Interface graphique pour base de données PHP
         icon: si-adminer
@@ -49,6 +54,11 @@
         icon: mdi-database-search
         href: http://localhost/mongo-express/
         ping: http://localhost/mongo-express/
+    - PgAdmin4:
+        description: Interface graphique pour base de données PostgresQL
+        icon: si-postgresql
+        href: http://localhost/pgadmin
+        ping: http://localhost/pgadmin
 - Serveurs web:
     - Caddy:
         description: Sert le code situé dans le dossier /code/www/public en utilisant Caddy
