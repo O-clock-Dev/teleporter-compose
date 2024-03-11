@@ -1,3 +1,4 @@
 data/*
 !data/configs/vscode
 !data/configs/homepage
+node_modules
