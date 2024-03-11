@@ -251,6 +251,20 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.16
+## node
+  node:
+    image: node:20
+    hostname: teleporter-node
+    container_name: teleporter-node
+    command: sleep infinity
+    ports:
+      - "3000-3100:3000-3100"
+      - "3999:3999"
+    volumes:
+      - ./code/node:/code/node
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.19
 ## postgresQL & pgadmin
   postgresQL:
     image: postgres:16.2
