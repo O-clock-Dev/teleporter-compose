@@ -27,7 +27,7 @@ services:
       - vpn.env
       - .env
     build:
-      context: ./containers-config/ssh
+      context: ./containers-config/vpn
     restart: always
     hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
     cap_add:
@@ -38,7 +38,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     healthcheck:
       test: ["CMD","ping","-c1","${VPN_PRIV_IP}","-w1"]
-      interval: 5s
+      interval: 50s
       retries: 5
       start_period: 10s
     labels:
