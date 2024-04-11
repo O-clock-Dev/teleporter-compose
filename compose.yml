@@ -278,7 +278,7 @@ services:
       oclock:
         ipv4_address: 10.200.0.17
   pgadmin:
-    image: dpage/pgadmin4:8.3
+    image: dpage/pgadmin4:8.5
     hostname: teleporter-pgadmin4
     container_name: teleporter-pgadmin4
     environment:
@@ -286,7 +286,7 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=js4life
       - PGADMIN_CONFIG_SERVER_MODE=False
     volumes:
-      - ${DATA_DIR}/configs/pgadmin4:/var/lib/pgadmin
+      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
     networks:
       oclock:
         ipv4_address: 10.200.0.18
