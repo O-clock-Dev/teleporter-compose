@@ -266,7 +266,7 @@ services:
       oclock:
         ipv4_address: 10.200.0.19
 ## postgresQL & pgadmin
-  postgresQL:
+  postgreSQL:
     image: postgres:16.2
     hostname: teleporter-postgres
     container_name: teleporter-postgres
@@ -279,6 +279,9 @@ services:
         ipv4_address: 10.200.0.17
   pgadmin:
     image: dpage/pgadmin4:8.5
+    depends_on:
+      postgreSQL:
+        condition: service_healthy
     hostname: teleporter-pgadmin4
     container_name: teleporter-pgadmin4
     environment:

@@ -3,7 +3,7 @@
         "1": {
             "Name": "monpg",
             "Group": "Servers",
-            "Host": "10.200.0.17",
+            "Host": "teleporter-postgres",
             "Port": 5432,
             "MaintenanceDB": "postgres",
             "Username": "postgres",
