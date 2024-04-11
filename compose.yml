@@ -219,6 +219,8 @@ services:
     restart: always
     environment:
       - PMA_HOST=mariadb
+      - PMA_USER=root
+      - PMA_PASSWORD=root
     networks:
       oclock:
         ipv4_address: 10.200.0.13
@@ -280,8 +282,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4:8.5
     depends_on:
-      postgreSQL:
-        condition: service_healthy
+      - postgreSQL
     hostname: teleporter-pgadmin4
     container_name: teleporter-pgadmin4
     environment:
