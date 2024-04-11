@@ -122,6 +122,7 @@ services:
     volumes:
       - "${CODE_DIR}:/srv/code"
       - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
     environment:
       - FB_NOAUTH=true
     networks:
