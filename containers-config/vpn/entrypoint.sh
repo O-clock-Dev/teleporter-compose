@@ -13,7 +13,7 @@ echo ${KEY_PRIV} > privkey
 chmod 600 privkey
 wg set wg0 private-key ./privkey
 echo "Configuration du serveur ${VPN_SERVER}"
-wg set wg0 peer ${KEY_VPN_SERVER} allowed-ips 0.0.0.0/0 endpoint ${VPN_SERVER}:48332 persistent-keepalive 25
+wg set wg0 peer ${KEY_VPN_SERVER} allowed-ips 0.0.0.0/0 endpoint ${VPN_SERVER}:51820 persistent-keepalive 25
 echo "On active l'interface"
 sleep 2s
 ip link set up dev wg0
