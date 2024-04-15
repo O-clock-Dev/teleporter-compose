@@ -141,6 +141,9 @@ services:
       oclock:
         ipv4_address: 10.200.0.202
     volumes:
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
       - /var/run/docker.sock:/var/run/docker.sock
 ## Web servers
   caddyserver:
