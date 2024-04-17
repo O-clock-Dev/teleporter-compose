@@ -2,3 +2,4 @@ data/*
 !data/configs/vscode
 !data/configs/homepage
 node_modules
+vpn.env
