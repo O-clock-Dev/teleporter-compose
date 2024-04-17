@@ -61,57 +61,61 @@ services:
     hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
     ports:
       - "80:80"
+    #command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec sockd -N 2"]
+    cap_add:
+      - NET_ADMIN
+    command: ["sh","-c","/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && haproxy -W -db -f /usr/local/etc/haproxy/haproxy.cfg"]
     networks:
       oclock:
         ipv4_address: 10.200.0.200
-  proxy:
-    container_name: teleporter-proxy
-    hostname: teleporter-proxy
-    image: lthn/dante
-    restart: always
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - 2020:2020
-    command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec sockd -N 2"]
-    dns:
-      - "10.0.0.1"
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.220
+#  proxy:
+#    container_name: teleporter-proxy
+#    hostname: teleporter-proxy
+#    image: lthn/dante
+#    restart: always
+#    cap_add:
+#      - NET_ADMIN
+#    ports:
+#      - 2020:2020
+#    command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec sockd -N 2"]
+#    dns:
+#      - "10.0.0.1"
+#    networks:
+#      oclock:
+#        ipv4_address: 10.200.0.220
 
-  squid:
-    hostname: teleporter-squid
-    container_name: teleporter-squid
-    build:
-      context: ./containers-config/squid
-    dns:
-      - "10.0.0.1"
-    cap_add:
-      - NET_ADMIN
-    restart: always
-    ports:
-      - 3128:3128
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.221
+#  squid:
+#    hostname: teleporter-squid
+#    container_name: teleporter-squid
+#    build:
+#      context: ./containers-config/squid
+#    dns:
+#      - "10.0.0.1"
+#    cap_add:
+#      - NET_ADMIN
+#    restart: always
+#    ports:
+#      - 3128:3128
+#    networks:
+#      oclock:
+#        ipv4_address: 10.200.0.221
 
-  dock:
-    container_name: teleporter-dock
-    build:
-      context: ./containers-config/ssh
-    restart: always
-    hostname: "${GITHUB_PSEUDO:-johndoe}-dock"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - 22:22
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.222
-    command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec /usr/sbin/sshd -D -f /etc/ssh/sshd_config -e -o PermitRootLogin=yes"]
+#  dock:
+#    container_name: teleporter-dock
+#    build:
+#      context: ./containers-config/ssh
+#    restart: always
+#    hostname: "${GITHUB_PSEUDO:-johndoe}-dock"
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    cap_add:
+#      - NET_ADMIN
+#    ports:
+#      - 22:22
+#    networks:
+#      oclock:
+#        ipv4_address: 10.200.0.222
+#    command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec /usr/sbin/sshd -D -f /etc/ssh/sshd_config -e -o PermitRootLogin=yes"]
 ## Utils
   filebrowser:
     restart: always
