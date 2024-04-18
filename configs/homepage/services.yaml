@@ -6,22 +6,22 @@
     - Connexion VPN:
         description: Statut de la connexion au VPN O'clock
         icon: si-openvpn
-        ping: http://vpn.lan
+        ping: 10.0.0.1
         statusStyle: basic
     - File Browser:
-        href: http://localhost/file-browser
+        href: ./file-browser
         container: teleporter-filebrowser
         description: Explorateur de fichiers dans le navigateur
         icon: mdi-folder-search-outline
     - Terminal:
-        href: http://localhost/terminal
+        href: ./terminal
         description: Un terminal qui permet de manipuler le Téléporteur
         container: teleporter-terminal
         icon: mdi-console
     - Visual Studio Code:
         description: Editeur de code développé par Microsoft.
         icon: si-visualstudiocode
-        href: http://localhost/vscode
+        href: ./vscode
         ping: http://localhost/vscode
 - Bases de données:
     - Base de données Mysql:
@@ -42,27 +42,28 @@
     - Adminer:
         description: Interface graphique pour base de données PHP
         icon: si-adminer
-        href: http://localhost/adminer
+        href: ./adminer
         ping: http://localhost/adminer
     - PhpMyAdmin:
         description: Interface graphique alternative pour base de données PHP
         icon: si-phpmyadmin
-        href: http://localhost/phpmyadmin/
+        href: ./phpmyadmin/
         ping: http://localhost/phpmyadmin/
     - Mongo Express:
         description: Interface graphique pour base de données MongoDB
         icon: mdi-database-search
-        href: http://localhost/mongo-express/
+        href: ./mongo-express/
         ping: http://localhost/mongo-express/
     - PgAdmin4:
         description: Interface graphique pour base de données PostgresQL
         icon: si-postgresql
-        href: http://localhost/pgadmin
+        href: ./pgadmin
         ping: http://localhost/pgadmin
 - Serveurs web:
     - Caddy:
         description: Sert le code situé dans le dossier /code/www/public en utilisant Caddy
         icon: si-caddy
-        href: http://localhost/caddyserver
-        container: teleporter-caddyserver
+        href: ./caddyserver
+        ping: http://localhost/caddyserver
+        #container: teleporter-caddyserver
     

@@ -14,9 +14,12 @@ services:
     container_name: teleporter-homepage
     hostname: teleporter-homepage
     volumes:
-      - ./data/configs/homepage:/app/config
-      - ./data/configs/homepage/images:/app/public/images
+      - ./configs/homepage:/app/config
+      - ./configs/homepage/images:/app/public/images
       - /var/run/docker.sock:/var/run/docker.sock
+    cap_add:
+      - NET_ADMIN
+    command: ["sh","-c","/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
     networks:
       oclock:
         ipv4_address: 10.200.0.203
