@@ -18,10 +18,10 @@ echo "On active l'interface"
 sleep 2s
 ip link set up dev wg0
 
-iptables -t nat -I PREROUTING -d ${IP_PRIV} -p tcp --dport 80 -j DNAT --to-destination 10.200.0.200
-iptables -t nat -I PREROUTING -d ${IP_PRIV} -p tcp --dport 22 -j DNAT --to-destination 10.200.0.222
+iptables -t nat -I PREROUTING -i wg0 -d ${IP_PRIV} -p tcp --dport 80 -j DNAT --to-destination 10.200.0.200
+#iptables -t nat -I PREROUTING -d ${IP_PRIV} -p tcp --dport 22 -j DNAT --to-destination 10.200.0.222
 # En attendant de faire du routage plus propre
-iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+#iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
 
 
 # Pour que les containers puissent joindre les autres membre du VPN et tout particulièrement le proxy sock (pourrait être limité à l'ip source de celui ci).
