@@ -13,7 +13,6 @@ De nombreux problèmes avec cet état de fait :
 - le téléporteur nécessite d'importantes ressources
 - la vm cloud coute cher
 
-
 ## Utilisation
 
 Créer un alias pour se connecter sur les vm étudiantes
@@ -21,7 +20,6 @@ Créer un alias pour se connecter sur les vm étudiantes
 ```
 alias ossh="docker exec -it teleporter-compose-vpn-1 /usr/bin/ssh"
 ```
-
 
 ## Architecture du projet
 
@@ -72,35 +70,22 @@ La promotion serait donc un argument de lancement et permettrait après vérific
 
 Une zone tp.lan va être créé, chaque client aura des crédentials pour modifier/ajouter des infos dedans.
 
-## Planning
+## IPv4 utilisées sur le réseau oclock
 
-- Démo fonctionnelle pour le 12 octobre, avec :
-   * les containers de services principaux
-   * un container applicatif web
-
-## TODO
-
-- [ ] monter un petit serveur Wireguard ARN, chez AWS.
-- [ ] build une image docker qui se connecte sur le serveur wireguard
-- [ ] rediriger le port entrant 80
-
-## Ip utilisées sur le réseau oclock
-
-10.200.0.10  : caddyserver
-10.200.0.11  : mariaDB
-10.200.0.12  : adminer
-10.200.0.13  : phpmyadmin
-10.200.0.14  : vscode-server
-10.200.0.15  : mongoDB
-10.200.0.16  : mongo-express
-10.200.0.17  : postgreSQL
-10.200.0.18  : pgadmin4
-10.200.0.19  : node
-10.200.0.200 : haproxy
-10.200.0.201 : filebrowser
-10.200.0.202 : terminal
-10.200.0.203 : homepage
-10.200.0.220 : dante proxy
-10.200.0.221 : squid
-10.200.0.222 : dock
-
+* 10.200.0.10  : caddyserver
+* 10.200.0.11  : mariaDB
+* 10.200.0.12  : adminer
+* 10.200.0.13  : phpmyadmin
+* 10.200.0.14  : vscode-server
+* 10.200.0.15  : mongoDB
+* 10.200.0.16  : mongo-express
+* 10.200.0.17  : postgreSQL
+* 10.200.0.18  : pgadmin4
+* 10.200.0.19  : node
+* 10.200.0.200 : haproxy
+* 10.200.0.201 : filebrowser
+* 10.200.0.202 : terminal
+* 10.200.0.203 : homepage
+* 10.200.0.220 : dante proxy
+* 10.200.0.221 : squid
+* 10.200.0.222 : dock
