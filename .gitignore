@@ -3,3 +3,4 @@ data/*
 !data/configs/homepage
 node_modules
 vpn.env
+.swp
