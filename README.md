@@ -2,6 +2,23 @@
 
 L'idée de ce projet est de fournir un téléporteur iso fonctionnel avec l'actuel qui repose sur une base de virtualisation Docker et donc qui s'appuierai sur Docker Desktop pour s'executer sur les 3 OS : Windows, MacOS, et bien sûr Linux.
 
+## Quick start
+
+### Pré-requis
+
+Avoir un environnement Docker fonctionnel, Docker Desktop est conseillé.
+
+### Lancer le téléporteur
+
+Clone ce dépôt, puis lancez :
+
+```
+docker compose up --build
+```
+
+Connectez vous sur http://localhost
+
+
 ## Pourquoi ?
 
 Nous utilisions avant deux systèmes :
@@ -52,7 +69,6 @@ Les containers applicatifs :
 Le container de service VPN va devoir initialiser l'essentiel du setup. Il doit prendre en argument :
 
 - le nom de promo
-- le pseudo github de l'étudiant
 
 Il y aura une API basé sur un serveur Redis qui permettra de :
 - gérer les affectation d'IP au VPN
@@ -65,10 +81,6 @@ Il y aura une API basé sur un serveur Redis qui permettra de :
 L'interconnexion réseau doit permettre de prendre le contrôle et d'accéder aux containers de services étudiants, si possible en le limitant par promotion.
 
 La promotion serait donc un argument de lancement et permettrait après vérification, d'affecter une IP au VPN.
-
-### Le DNS
-
-Une zone tp.lan va être créé, chaque client aura des crédentials pour modifier/ajouter des infos dedans.
 
 ## IPv4 utilisées sur le réseau oclock
 
