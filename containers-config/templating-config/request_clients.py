@@ -14,7 +14,7 @@ IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 logger = configure_logs()
 
 # Chemin absolu du fichier de configuration HAProxy
-ha_proxy_config_file_relatif_path = "../haproxy/haproxy.cfg"
+ha_proxy_config_file_relatif_path = "../../configs/haproxy/haproxy.cfg"
 path = os.path.dirname(os.path.abspath(__file__))
 ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
 
