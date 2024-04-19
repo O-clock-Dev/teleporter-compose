@@ -8,6 +8,10 @@
         icon: si-openvpn
         ping: 10.0.0.1
         statusStyle: basic
+    - Accès VPN:
+        description: pour générer ma configuration VPN
+        icon: si-openvpn
+        href: https://vpn.eddi.cloud
     - File Browser:
         href: ./file-browser
         container: teleporter-filebrowser
