@@ -1,56 +1,74 @@
-# module to make requests to the VPN api
-
 import os
 import requests
 from jinja2 import Template
-from logs_config import configure_logs
+from logs_config import (
+    configure_logs,
+)  # Assurez-vous que votre configuration de logs est correcte
 
+# Configuration des variables d'environnement par défaut
 PROMO = os.getenv("PROMO", "hati")
 CLIENT_NAME = os.getenv("VPN_NAME", "nuno-marcelino")
 IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 
-logger = configure_logs()  # Create logger
+# Création du logger
+logger = configure_logs()
 
-logger.info(f"Using promo: {PROMO}")
-
-
-############# Chemin du fichier de configuration HAProxy #############
-ha_proxy_config_file_relatif_path = "haproxy.cfg"
+# Chemin absolu du fichier de configuration HAProxy
+ha_proxy_config_file_relatif_path = "../haproxy/haproxy.cfg"
 path = os.path.dirname(os.path.abspath(__file__))
-
-ha_proxy_config = os.path.join(
-    os.path.dirname(__file__), ha_proxy_config_file_relatif_path
-)
-
-######################################################################
+ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
 
 
 def get_vpn_clients():
     """
-    Send a request to the VPN API to get the list of clients and their IP addresses
-    delete the name of the client that is making the request
+    Récupérer la liste des clients VPN depuis l'API
     """
     url = f"http://vpn.eddi.cloud/promo_list/{PROMO}"
-    response = requests.get(url)
-    logger.info(f"Requesting clients from {url}")
-    logger.info(f"Response: {response.json()}")
-    dict_clients = response.json()
-    del dict_clients[CLIENT_NAME]
-    return dict_clients
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Vérifie si la requête a échoué
+        logger.info(f"Requête envoyée à {url}")
+        dict_clients = response.json()
+        logger.debug(f"Réponse reçue : {dict_clients}")
+        del dict_clients[CLIENT_NAME]  # Supprime le client effectuant la requête
+        logger.debug(f"Clients VPN récupérés : {dict_clients}")
+        return dict_clients
+    except Exception as e:
+        logger.error(f"Erreur lors de la récupération des clients VPN : {e}")
+        return None
 
 
 # Charger le modèle Jinja depuis le fichier
-with open("haproxy_template.cfg") as file:
-    template = Template(file.read())
+try:
+    with open("haproxy_template.cfg") as file:
+        template = Template(file.read())
+        logger.info("Modèle Jinja chargé avec succès.")
+except FileNotFoundError:
+    logger.error("Le fichier haproxy_template.cfg n'existe pas.")
+    exit(1)
+except Exception as e:
+    logger.error(f"Erreur lors de la lecture du fichier de modèle : {e}")
+    exit(1)
 
 # Récupérer les clients VPN
 clients = get_vpn_clients()
-# Convertir le dictionnaire en une liste de tuples (name, ip)
-clients = clients.items()
+if clients is None:
+    logger.error("Impossible de récupérer les clients VPN. Arrêt du script.")
+    exit(1)
 
+# Convertir le dictionnaire en une liste de tuples (name, ip)
+clients = list(clients.items())
+logger.debug(f"Clients VPN : {clients}")
 
 # Rendre le modèle Jinja avec les valeurs spécifiées
-haproxy_config = template.render(clients)
+haproxy_config = template.render(clients=clients)
+logger.debug(f"Configuration HAProxy générée : {haproxy_config}")
 
-with open(ha_proxy_config_file_relatif_path, "w") as file:
-    file.write(haproxy_config)
+# Écrire la configuration HAProxy générée dans un fichier
+try:
+    with open(ha_proxy_config_file_relatif_path, "w") as file:
+        file.write(haproxy_config)
+    logger.info("Configuration HAProxy générée avec succès.")
+except Exception as e:
+    logger.error(f"Erreur lors de l'écriture du fichier de configuration HAProxy : {e}")
+    exit(1)

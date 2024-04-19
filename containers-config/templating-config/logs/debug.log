@@ -1,0 +1,986 @@
+2024-04-19 13:03:50,122 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:03:50,122 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:05:49,072 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:05:50,472 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:05:50,474 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:07:48,164 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:07:49,515 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:07:49,515 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:07:49,517 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:08:37,659 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:08:39,118 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:08:39,119 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:08:39,121 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:08:55,566 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:08:56,904 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:08:56,904 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:08:56,912 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:09:16,839 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:09:18,191 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:09:18,191 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:09:18,191 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:09:18,193 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:10:02,592 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:10:04,006 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:10:04,006 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:10:04,006 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:10:04,006 - logs_config - DEBUG - Clients VPN : dict_items([('aurelien-bras', '10.0.3.227'), ('clement-gineste', '10.0.0.154')])
+2024-04-19 13:10:04,008 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:12:03,464 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:12:04,805 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:12:04,805 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:12:04,805 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:12:04,805 - logs_config - DEBUG - Clients VPN : [('aurelien-bras', '10.0.3.227'), ('clement-gineste', '10.0.0.154')]
+2024-04-19 13:12:04,805 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:13:12,615 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:13:13,967 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:13:13,967 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:13:13,967 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:13:13,967 - logs_config - DEBUG - Clients VPN : [('aurelien-bras', '10.0.3.227'), ('clement-gineste', '10.0.0.154')]
+2024-04-19 13:13:13,967 - logs_config - DEBUG - Configuration HAProxy générée : global
+        maxconn         20
+
+# The public 'www' address in the DMZ
+frontend public
+        bind            0.0.0.0:80 name clear
+        #bind            192.168.1.10:443 ssl crt /etc/haproxy/haproxy.pem
+        mode            http
+        log             global
+        option          dontlognull
+        maxconn         8000
+        timeout client  30s
+        
+        use_backend     caddyserver if { path_beg /caddyserver }
+        use_backend     vscode-server if { path_beg /vscode }
+        use_backend     phpmyadmin if { path_beg /phpmyadmin }
+        use_backend     filebrowser if { path_beg /file-browser }
+        use_backend     terminal if { path_beg /terminal }
+        use_backend     adminer if { path_beg /adminer }
+        use_backend     mongo-express if { path_beg /mongo-express }
+        use_backend     pgadmin if { path_beg /pgadmin }
+        default_backend homepage
+
+# The static backend backend for 'Host: img', /img and /css.
+
+        
+backend caddyserver
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        #option httpchk  HEAD /favicon.ico
+        server          caddyserver 10.200.0.10:80 check inter 1000
+
+# the application servers go here :
+backend adminer
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          adminer 10.200.0.12:8080 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend filebrowser
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          filebrowser 10.200.0.201:80 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+backend homepage
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          homepage 10.200.0.203:3000 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend mongo-express
+        balance         roundrobin
+        # http-request replace-path /mongo-express(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          mongo-express 10.200.0.16:8081 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend pgadmin
+        balance         roundrobin
+        http-request set-header X-Script-Name /pgadmin
+        #http-request replace-path /pgadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /pgadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          pgadmin 10.200.0.18:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend phpmyadmin
+        balance         roundrobin
+        # http-request replace-path /phpmyadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          phpmyadmin 10.200.0.13:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend terminal
+        balance         roundrobin
+        http-request replace-path /terminal(/)?(.*) /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          terminal 10.200.0.202:7681 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend vscode-server
+        balance         roundrobin
+        # http-request replace-path /vscode-server(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          vscode-server 10.200.0.14:8443 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+2024-04-19 13:13:13,967 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:17:48,200 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:17:49,637 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:17:49,637 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:17:49,637 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:17:49,637 - logs_config - DEBUG - Clients VPN : [('aurelien-bras', '10.0.3.227'), ('clement-gineste', '10.0.0.154')]
+2024-04-19 13:17:49,637 - logs_config - DEBUG - Configuration HAProxy générée : global
+        maxconn         20
+
+# The public 'www' address in the DMZ
+frontend public
+        bind            0.0.0.0:80 name clear
+        #bind            192.168.1.10:443 ssl crt /etc/haproxy/haproxy.pem
+        mode            http
+        log             global
+        option          dontlognull
+        maxconn         8000
+        timeout client  30s
+        
+                use_backend     aurelien-bras.localhost if { hdr(host) -i aurelien-bras.localhost }
+        
+                use_backend     clement-gineste.localhost if { hdr(host) -i clement-gineste.localhost }
+        
+        use_backend     caddyserver if { path_beg /caddyserver }
+        use_backend     vscode-server if { path_beg /vscode }
+        use_backend     phpmyadmin if { path_beg /phpmyadmin }
+        use_backend     filebrowser if { path_beg /file-browser }
+        use_backend     terminal if { path_beg /terminal }
+        use_backend     adminer if { path_beg /adminer }
+        use_backend     mongo-express if { path_beg /mongo-express }
+        use_backend     pgadmin if { path_beg /pgadmin }
+        default_backend homepage
+
+# The static backend backend for 'Host: img', /img and /css.
+
+        backend aurelien-bras.localhost
+                mode            http
+                balance         roundrobin
+                option prefer-last-server
+                retries         2
+                option redispatch
+                timeout connect 5s
+                timeout server  5s
+                server aurelien-bras 10.0.3.227::80 check inter 1000
+
+        backend clement-gineste.localhost
+                mode            http
+                balance         roundrobin
+                option prefer-last-server
+                retries         2
+                option redispatch
+                timeout connect 5s
+                timeout server  5s
+                server clement-gineste 10.0.0.154::80 check inter 1000
+
+        
+backend caddyserver
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        #option httpchk  HEAD /favicon.ico
+        server          caddyserver 10.200.0.10:80 check inter 1000
+
+# the application servers go here :
+backend adminer
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          adminer 10.200.0.12:8080 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend filebrowser
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          filebrowser 10.200.0.201:80 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+backend homepage
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          homepage 10.200.0.203:3000 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend mongo-express
+        balance         roundrobin
+        # http-request replace-path /mongo-express(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          mongo-express 10.200.0.16:8081 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend pgadmin
+        balance         roundrobin
+        http-request set-header X-Script-Name /pgadmin
+        #http-request replace-path /pgadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /pgadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          pgadmin 10.200.0.18:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend phpmyadmin
+        balance         roundrobin
+        # http-request replace-path /phpmyadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          phpmyadmin 10.200.0.13:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend terminal
+        balance         roundrobin
+        http-request replace-path /terminal(/)?(.*) /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          terminal 10.200.0.202:7681 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend vscode-server
+        balance         roundrobin
+        # http-request replace-path /vscode-server(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          vscode-server 10.200.0.14:8443 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+2024-04-19 13:17:49,637 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:18:38,447 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:18:39,816 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:18:39,816 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:18:39,816 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:18:39,818 - logs_config - DEBUG - Clients VPN : [('aurelien-bras', '10.0.3.227'), ('clement-gineste', '10.0.0.154')]
+2024-04-19 13:18:39,818 - logs_config - DEBUG - Configuration HAProxy générée : global
+        maxconn         20
+
+# The public 'www' address in the DMZ
+frontend public
+        bind            0.0.0.0:80 name clear
+        #bind            192.168.1.10:443 ssl crt /etc/haproxy/haproxy.pem
+        mode            http
+        log             global
+        option          dontlognull
+        maxconn         8000
+        timeout client  30s
+        
+                use_backend     aurelien-bras.localhost if { hdr(host) -i aurelien-bras.localhost }
+        
+                use_backend     clement-gineste.localhost if { hdr(host) -i clement-gineste.localhost }
+        
+        use_backend     caddyserver if { path_beg /caddyserver }
+        use_backend     vscode-server if { path_beg /vscode }
+        use_backend     phpmyadmin if { path_beg /phpmyadmin }
+        use_backend     filebrowser if { path_beg /file-browser }
+        use_backend     terminal if { path_beg /terminal }
+        use_backend     adminer if { path_beg /adminer }
+        use_backend     mongo-express if { path_beg /mongo-express }
+        use_backend     pgadmin if { path_beg /pgadmin }
+        default_backend homepage
+
+# The static backend backend for 'Host: img', /img and /css.
+
+        backend aurelien-bras.localhost
+                mode            http
+                balance         roundrobin
+                option prefer-last-server
+                retries         2
+                option redispatch
+                timeout connect 5s
+                timeout server  5s
+                server aurelien-bras 10.0.3.227::80 check inter 1000
+
+        backend clement-gineste.localhost
+                mode            http
+                balance         roundrobin
+                option prefer-last-server
+                retries         2
+                option redispatch
+                timeout connect 5s
+                timeout server  5s
+                server clement-gineste 10.0.0.154::80 check inter 1000
+
+        
+backend caddyserver
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        #option httpchk  HEAD /favicon.ico
+        server          caddyserver 10.200.0.10:80 check inter 1000
+
+# the application servers go here :
+backend adminer
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          adminer 10.200.0.12:8080 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend filebrowser
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          filebrowser 10.200.0.201:80 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+backend homepage
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          homepage 10.200.0.203:3000 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend mongo-express
+        balance         roundrobin
+        # http-request replace-path /mongo-express(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          mongo-express 10.200.0.16:8081 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend pgadmin
+        balance         roundrobin
+        http-request set-header X-Script-Name /pgadmin
+        #http-request replace-path /pgadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /pgadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          pgadmin 10.200.0.18:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend phpmyadmin
+        balance         roundrobin
+        # http-request replace-path /phpmyadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          phpmyadmin 10.200.0.13:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend terminal
+        balance         roundrobin
+        http-request replace-path /terminal(/)?(.*) /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          terminal 10.200.0.202:7681 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend vscode-server
+        balance         roundrobin
+        # http-request replace-path /vscode-server(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          vscode-server 10.200.0.14:8443 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+2024-04-19 13:18:39,819 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:18:51,183 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:18:52,540 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:18:52,540 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:18:52,540 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:18:52,541 - logs_config - DEBUG - Clients VPN : [('aurelien-bras', '10.0.3.227'), ('clement-gineste', '10.0.0.154')]
+2024-04-19 13:18:52,541 - logs_config - DEBUG - Configuration HAProxy générée : global
+        maxconn         20
+
+# The public 'www' address in the DMZ
+frontend public
+        bind            0.0.0.0:80 name clear
+        #bind            192.168.1.10:443 ssl crt /etc/haproxy/haproxy.pem
+        mode            http
+        log             global
+        option          dontlognull
+        maxconn         8000
+        timeout client  30s
+
+        use_backend     aurelien-bras.localhost if { hdr(host) -i aurelien-bras.localhost }
+
+        use_backend     clement-gineste.localhost if { hdr(host) -i clement-gineste.localhost }
+
+        use_backend     caddyserver if { path_beg /caddyserver }
+        use_backend     vscode-server if { path_beg /vscode }
+        use_backend     phpmyadmin if { path_beg /phpmyadmin }
+        use_backend     filebrowser if { path_beg /file-browser }
+        use_backend     terminal if { path_beg /terminal }
+        use_backend     adminer if { path_beg /adminer }
+        use_backend     mongo-express if { path_beg /mongo-express }
+        use_backend     pgadmin if { path_beg /pgadmin }
+        default_backend homepage
+
+# The static backend backend for 'Host: img', /img and /css.
+
+backend aurelien-bras.localhost
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        server aurelien-bras 10.0.3.227::80 check inter 1000
+
+backend clement-gineste.localhost
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        server clement-gineste 10.0.0.154::80 check inter 1000
+
+        
+backend caddyserver
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        #option httpchk  HEAD /favicon.ico
+        server          caddyserver 10.200.0.10:80 check inter 1000
+
+# the application servers go here :
+backend adminer
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          adminer 10.200.0.12:8080 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend filebrowser
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          filebrowser 10.200.0.201:80 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+backend homepage
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          homepage 10.200.0.203:3000 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend mongo-express
+        balance         roundrobin
+        # http-request replace-path /mongo-express(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          mongo-express 10.200.0.16:8081 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend pgadmin
+        balance         roundrobin
+        http-request set-header X-Script-Name /pgadmin
+        #http-request replace-path /pgadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /pgadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          pgadmin 10.200.0.18:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend phpmyadmin
+        balance         roundrobin
+        # http-request replace-path /phpmyadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          phpmyadmin 10.200.0.13:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend terminal
+        balance         roundrobin
+        http-request replace-path /terminal(/)?(.*) /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          terminal 10.200.0.202:7681 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend vscode-server
+        balance         roundrobin
+        # http-request replace-path /vscode-server(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          vscode-server 10.200.0.14:8443 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+2024-04-19 13:18:52,543 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:30:51,827 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:30:53,216 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:30:53,216 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:30:53,216 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:30:53,231 - logs_config - DEBUG - Clients VPN : [('aurelien-bras', '10.0.3.227'), ('clement-gineste', '10.0.0.154')]
+2024-04-19 13:30:53,231 - logs_config - DEBUG - Configuration HAProxy générée : global
+        maxconn         20
+
+# The public 'www' address in the DMZ
+frontend public
+        bind            0.0.0.0:80 name clear
+        #bind            192.168.1.10:443 ssl crt /etc/haproxy/haproxy.pem
+        mode            http
+        log             global
+        option          dontlognull
+        maxconn         8000
+        timeout client  30s
+
+        use_backend     aurelien-bras.localhost if { hdr(host) -i aurelien-bras.localhost }
+
+        use_backend     clement-gineste.localhost if { hdr(host) -i clement-gineste.localhost }
+
+        use_backend     caddyserver if { path_beg /caddyserver }
+        use_backend     vscode-server if { path_beg /vscode }
+        use_backend     phpmyadmin if { path_beg /phpmyadmin }
+        use_backend     filebrowser if { path_beg /file-browser }
+        use_backend     terminal if { path_beg /terminal }
+        use_backend     adminer if { path_beg /adminer }
+        use_backend     mongo-express if { path_beg /mongo-express }
+        use_backend     pgadmin if { path_beg /pgadmin }
+        default_backend homepage
+
+# The static backend backend for 'Host: img', /img and /css.
+
+backend aurelien-bras.localhost
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        server aurelien-bras 10.0.3.227::80 check inter 1000
+
+backend clement-gineste.localhost
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        server clement-gineste 10.0.0.154::80 check inter 1000
+        
+backend caddyserver
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        #option httpchk  HEAD /favicon.ico
+        server          caddyserver 10.200.0.10:80 check inter 1000
+
+# the application servers go here :
+backend adminer
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          adminer 10.200.0.12:8080 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend filebrowser
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          filebrowser 10.200.0.201:80 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+backend homepage
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          homepage 10.200.0.203:3000 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend mongo-express
+        balance         roundrobin
+        # http-request replace-path /mongo-express(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          mongo-express 10.200.0.16:8081 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend pgadmin
+        balance         roundrobin
+        http-request set-header X-Script-Name /pgadmin
+        #http-request replace-path /pgadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /pgadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          pgadmin 10.200.0.18:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend phpmyadmin
+        balance         roundrobin
+        # http-request replace-path /phpmyadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          phpmyadmin 10.200.0.13:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend terminal
+        balance         roundrobin
+        http-request replace-path /terminal(/)?(.*) /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          terminal 10.200.0.202:7681 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend vscode-server
+        balance         roundrobin
+        # http-request replace-path /vscode-server(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          vscode-server 10.200.0.14:8443 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+2024-04-19 13:30:53,233 - logs_config - INFO - Configuration HAProxy générée avec succès.
+2024-04-19 13:31:16,979 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-19 13:31:18,382 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-19 13:31:18,382 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-19 13:31:18,382 - logs_config - DEBUG - Clients VPN récupérés : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154'}
+2024-04-19 13:31:18,382 - logs_config - DEBUG - Clients VPN : [('aurelien-bras', '10.0.3.227'), ('clement-gineste', '10.0.0.154')]
+2024-04-19 13:31:18,382 - logs_config - DEBUG - Configuration HAProxy générée : global
+        maxconn         20
+
+# The public 'www' address in the DMZ
+frontend public
+        bind            0.0.0.0:80 name clear
+        #bind            192.168.1.10:443 ssl crt /etc/haproxy/haproxy.pem
+        mode            http
+        log             global
+        option          dontlognull
+        maxconn         8000
+        timeout client  30s
+
+        use_backend     aurelien-bras.localhost if { hdr(host) -i aurelien-bras.localhost }
+
+        use_backend     clement-gineste.localhost if { hdr(host) -i clement-gineste.localhost }
+
+        use_backend     caddyserver if { path_beg /caddyserver }
+        use_backend     vscode-server if { path_beg /vscode }
+        use_backend     phpmyadmin if { path_beg /phpmyadmin }
+        use_backend     filebrowser if { path_beg /file-browser }
+        use_backend     terminal if { path_beg /terminal }
+        use_backend     adminer if { path_beg /adminer }
+        use_backend     mongo-express if { path_beg /mongo-express }
+        use_backend     pgadmin if { path_beg /pgadmin }
+        default_backend homepage
+
+# The static backend backend for 'Host: img', /img and /css.
+
+backend aurelien-bras.localhost
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        server aurelien-bras 10.0.3.227::80 check inter 1000
+
+backend clement-gineste.localhost
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        server clement-gineste 10.0.0.154::80 check inter 1000
+        
+backend caddyserver
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        #option httpchk  HEAD /favicon.ico
+        server          caddyserver 10.200.0.10:80 check inter 1000
+
+# the application servers go here :
+backend adminer
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          adminer 10.200.0.12:8080 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend filebrowser
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          filebrowser 10.200.0.201:80 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+backend homepage
+        balance         roundrobin
+        mode            http
+        option redispatch
+        retries         2
+        server          homepage 10.200.0.203:3000 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend mongo-express
+        balance         roundrobin
+        # http-request replace-path /mongo-express(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          mongo-express 10.200.0.16:8081 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend pgadmin
+        balance         roundrobin
+        http-request set-header X-Script-Name /pgadmin
+        #http-request replace-path /pgadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /pgadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          pgadmin 10.200.0.18:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend phpmyadmin
+        balance         roundrobin
+        # http-request replace-path /phpmyadmin(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          phpmyadmin 10.200.0.13:80 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+backend terminal
+        balance         roundrobin
+        http-request replace-path /terminal(/)?(.*) /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          terminal 10.200.0.202:7681 check inter 1000
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+
+backend vscode-server
+        balance         roundrobin
+        # http-request replace-path /vscode-server(/)?(.*) /\2
+        # reqirep  ^(GET|POST|HEAD)\ /phpmyadmin/(.*)     \1\ /\2
+        mode            http
+        option redispatch
+        retries         2
+        server          vscode-server 10.200.0.14:8443 check inter 100
+        timeout connect 5s
+        timeout queue   30s
+        timeout server  30s
+        #option httpchk  HEAD /login.php
+
+2024-04-19 13:31:18,382 - logs_config - INFO - Configuration HAProxy générée avec succès.

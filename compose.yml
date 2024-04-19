@@ -327,3 +327,13 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.14
+## Templeting-config
+  templating-config:
+    container_name: teleporter-templating-config
+    build:
+      context: .
+      dockerfile: container-config/templating-config/Dockerfile
+    environment:
+      - vpn.env
+    volumes:
+      - app_logs:/app/logs
