@@ -5,3 +5,4 @@ configs/homepage/logs/*
 node_modules
 vpn.env
 .swp
+containers-config/templating-config/venv
