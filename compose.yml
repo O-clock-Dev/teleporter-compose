@@ -332,7 +332,7 @@ services:
     container_name: teleporter-templating-config
     build:
       context: ./containers-config/templating-config
-    environment:
+    env_file: 
       - vpn.env
     volumes:
       - ${CONFIG_DIR}/:/app/configs/

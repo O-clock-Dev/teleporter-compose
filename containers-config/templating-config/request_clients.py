@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 from jinja2 import Template
 from logs_config import (
     configure_logs,
@@ -7,7 +8,7 @@ from logs_config import (
 
 # Configuration des variables d'environnement par défaut
 PROMO = os.getenv("PROMO", "hati")
-CLIENT_NAME = os.getenv("VPN_NAME", "nuno-marcelino")
+CLIENT_NAME = os.getenv("VPN_NAME", "aurelien-bras")
 IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 
 # Création du logger
@@ -28,9 +29,9 @@ def get_vpn_clients():
         response = requests.get(url)
         response.raise_for_status()  # Vérifie si la requête a échoué
         logger.info(f"Requête envoyée à {url}")
-        dict_clients = response.json()
+        dict_clients = json.loads(response.json())
         logger.debug(f"Réponse reçue : {dict_clients}")
-        del dict_clients[CLIENT_NAME]  # Supprime le client effectuant la requête
+        del dict_clients[CLIENT_NAME]  # Supprimer le client actuel
         logger.debug(f"Clients VPN récupérés : {dict_clients}")
         return dict_clients
     except Exception as e:
@@ -57,11 +58,11 @@ if clients is None:
     exit(1)
 
 # Convertir le dictionnaire en une liste de tuples (name, ip)
-clients = list(clients.items())
-logger.debug(f"Clients VPN : {clients}")
+clients_list = list(clients.items())
+logger.debug(f"Clients VPN : {clients_list}")
 
 # Rendre le modèle Jinja avec les valeurs spécifiées
-haproxy_config = template.render(clients=clients)
+haproxy_config = template.render(clients=clients_list)
 logger.debug(f"Configuration HAProxy générée : {haproxy_config}")
 
 # Écrire la configuration HAProxy générée dans un fichier
