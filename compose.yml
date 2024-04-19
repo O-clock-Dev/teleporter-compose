@@ -59,15 +59,19 @@ services:
 
   reverse_proxy:
     container_name: teleporter-haproxy
-    build:
-      context: ./containers-config/haproxy
+    image: haproxy:lts-alpine
+#    build:
+#      context: ./containers-config/haproxy
     hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
+    user: root
     ports:
       - "80:80"
     #command: ["sh","-c","ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && exec sockd -N 2"]
     cap_add:
       - NET_ADMIN
     command: ["sh","-c","/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && haproxy -W -db -f /usr/local/etc/haproxy/haproxy.cfg"]
+    volumes:
+      - ./configs/haproxy:/usr/local/etc/haproxy
     networks:
       oclock:
         ipv4_address: 10.200.0.200
