@@ -54,9 +54,10 @@ services:
     hostname: teleporter-autoheal
     restart: always
     image: willfarrell/autoheal
+    network_mode: none
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
-
   reverse_proxy:
     container_name: teleporter-haproxy
     image: haproxy:lts-alpine
