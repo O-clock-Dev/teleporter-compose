@@ -335,6 +335,7 @@ services:
     environment:
       - vpn.env
     volumes:
+      - ${CONFIG_DIR}/:/app/configs/
       - app_logs:/app/logs
     networks:
       - oclock

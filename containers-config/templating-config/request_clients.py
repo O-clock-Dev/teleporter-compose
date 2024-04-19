@@ -14,7 +14,7 @@ IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 logger = configure_logs()
 
 # Chemin absolu du fichier de configuration HAProxy
-ha_proxy_config_file_relatif_path = "../../configs/haproxy/haproxy.cfg"
+ha_proxy_config_file_relatif_path = "./configs/haproxy/haproxy.cfg"
 path = os.path.dirname(os.path.abspath(__file__))
 ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
 
@@ -40,7 +40,7 @@ def get_vpn_clients():
 
 # Charger le modèle Jinja depuis le fichier
 try:
-    with open("haproxy_template.cfg") as file:
+    with open("./configs/haproxy/haproxy_template.j2") as file:
         template = Template(file.read())
         logger.info("Modèle Jinja chargé avec succès.")
 except FileNotFoundError:
