@@ -3,7 +3,7 @@
 # https://gethomepage.dev/latest/configs/settings
 
 title: "Le Téléporteur - Docker"
-startUrl: http://clement-gineste.localhost
+startUrl: http://{{HOMEPAGE_VAR_VPN_NAME}}.localhost
 language: fr
 disableCollapse: false
 headerStyle: clean

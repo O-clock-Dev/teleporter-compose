@@ -10,7 +10,7 @@
     disk: /
 - greeting:
     text_size: xs
-    text: 🕹️ Clément Gineste
+    text: 🕹️ {{HOMEPAGE_VAR_USER_NAME}}
 - datetime:
     text_size: x1
     format:
