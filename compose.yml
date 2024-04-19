@@ -331,9 +331,12 @@ services:
   templating-config:
     container_name: teleporter-templating-config
     build:
-      context: .
-      dockerfile: container-config/templating-config/Dockerfile
+      context: ./containers-config/templating-config
     environment:
       - vpn.env
     volumes:
       - app_logs:/app/logs
+    networks:
+      - oclock
+volumes:
+  app_logs:

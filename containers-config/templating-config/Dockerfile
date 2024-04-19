@@ -1,11 +1,13 @@
-FROM python:3.13.0-slim-buster
+FROM python:3.13-rc-slim
 
 WORKDIR /app
 
-COPY requirements.txt ./
+COPY . /app
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+VOLUME /app/logs
 
-CMD [ "python", "./request_clients.py" ]
+
+CMD [ "python3", "request_clients.py" ]
 
