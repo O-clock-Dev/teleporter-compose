@@ -2,7 +2,16 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/service-widgets
 
+- logo:
+    icon: https://oclock.io/wp-content/uploads/2023/11/logo-noir-blanc-rouge-768x768_centre-rond720px.png
 - resources:
     cpu: true
     memory: true
     disk: /
+- greeting:
+    text_size: xs
+    text: 🕹️ Clément Gineste
+- datetime:
+    text_size: x1
+    format:
+      timeStyle: short
