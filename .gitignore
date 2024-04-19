@@ -1,6 +1,7 @@
 data/*
 !data/configs/vscode
 !data/configs/homepage
+configs/homepage/logs/*
 node_modules
 vpn.env
 .swp
