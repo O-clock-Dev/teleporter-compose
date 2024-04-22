@@ -15,8 +15,8 @@ IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 logger = configure_logs()
 
 # Chemin absolu du fichier de configuration HAProxy
-template_relatif_path = "./configs/haproxy/haproxy_template.j2"
-ha_proxy_config_file_relatif_path = "./configs/haproxy/haproxy.cfg"
+template_relatif_path = "haproxy_template.j2"
+ha_proxy_config_file_relatif_path = "../containers-config/haproxy.cfg"
 path = os.path.dirname(os.path.abspath(__file__))
 ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
 template_path = os.path.join(path, template_relatif_path)
@@ -31,7 +31,7 @@ def get_vpn_clients():
         response = requests.get(url)
         response.raise_for_status()  # Vérifie si la requête a échoué
         logger.info(f"Requête envoyée à {url}")
-        dict_clients = json.loads(response.json())
+        dict_clients = response.json()
         logger.debug(f"Réponse reçue : {dict_clients}")
         del dict_clients[CLIENT_NAME]  # Supprimer le client actuel
         logger.debug(f"Clients VPN récupérés : {dict_clients}")
@@ -65,7 +65,7 @@ logger.debug(f"Clients VPN : {clients_list}")
 
 # Rendre le modèle Jinja avec les valeurs spécifiées
 haproxy_config = template.render(clients=clients_list)
-logger.debug(f"Configuration HAProxy générée : {haproxy_config}")
+logger.debug(f"Configuration HAProxy générée avec sussès")
 
 # Écrire la configuration HAProxy générée dans un fichier
 try:

@@ -67,7 +67,6 @@ services:
     restart: always
     depends_on:
       - templating-config
-
     user: root
     ports:
       - "80:80"

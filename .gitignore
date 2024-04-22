@@ -6,3 +6,4 @@ node_modules
 vpn.env
 .swp
 containers-config/templating-config/venv
+containers-config/templating-config/app/logs/*
