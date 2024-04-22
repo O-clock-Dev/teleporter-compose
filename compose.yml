@@ -289,6 +289,16 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.19
+## php
+  php:
+    image: php:8.3-fpm-alpine
+    hostname: teleporter-php
+    container_name: teleporter-php
+    volumes:
+      - "${CODE_DIR}/www/public:/usr/share/caddy/"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.20
 ## postgresQL & pgadmin
   postgreSQL:
     image: postgres:16.2
