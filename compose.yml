@@ -339,5 +339,8 @@ services:
       - app_logs:/app/logs
     networks:
       - oclock
+    restart: no
+    depends_on:
+      - reverse_proxy
 volumes:
   app_logs:
