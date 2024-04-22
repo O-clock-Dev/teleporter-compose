@@ -10,7 +10,7 @@ def configure_logs():
     )  # Set logger level to the lowest level (DEBUG) by default
 
     # Specify the path for logs based on the mounted volume
-    logs_path = "/app/logs"
+    logs_path = "app/logs"
     # imprimet le contennu du dossier frontend
 
     # Create logs directory if it does not exist

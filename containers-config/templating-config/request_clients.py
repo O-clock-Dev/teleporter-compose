@@ -14,16 +14,8 @@ IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 # Création du logger
 logger = configure_logs()
 
-path = os.path.dirname(os.path.abspath(__file__))
 template_path = "./configs/haproxy/haproxy_template.j2"
 ha_proxy_config_file_relatif_path = "./configs/haproxy/haproxy.cfg"
-
-template_path = os.path.join(path, template_path)
-ha_proxy_config_file_relatif_path = os.path.join(path, ha_proxy_config_file_relatif_path)
-
-
-path = os.path.dirname(os.path.abspath(__file__))
-ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
 
 
 def get_vpn_clients():
@@ -51,7 +43,7 @@ try:
         template = Template(file.read())
         logger.info("Modèle Jinja chargé avec succès.")
 except FileNotFoundError:
-    logger.error("Le fichier haproxy_template.cfg n'existe pas.")
+    logger.error("Le fichier haproxy_template.j2 n'existe pas.")
     exit(1)
 except Exception as e:
     logger.error(f"Erreur lors de la lecture du fichier de modèle : {e}")
@@ -80,5 +72,3 @@ try:
 except Exception as e:
     logger.error(f"Erreur lors de l'écriture du fichier de configuration HAProxy : {e}")
     exit(1)
-    
-    
