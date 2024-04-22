@@ -14,8 +14,10 @@ IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 # Création du logger
 logger = configure_logs()
 
-template_path = "./configs/haproxy/haproxy_template.j2"
+# Chemin absolu du fichier de configuration HAProxy
 ha_proxy_config_file_relatif_path = "./configs/haproxy/haproxy.cfg"
+path = os.path.dirname(os.path.abspath(__file__))
+ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
 
 
 def get_vpn_clients():
