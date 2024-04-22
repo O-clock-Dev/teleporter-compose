@@ -76,9 +76,6 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.200
-    restart: always
-    depends_on:
-    - templating-config
 #  proxy:
 #    container_name: teleporter-proxy
 #    hostname: teleporter-proxy
@@ -330,17 +327,20 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.14
-## Templeting-config
+  ## Templeting-config
   templating-config:
-    container_name: teleporter-templating-config
-    build:
-      context: ./containers-config/templating-config
-    env_file: 
-      - vpn.env
-    volumes:
-      - ${CONFIG_DIR}/:/app/configs/
-      - app_logs:/app/logs
-    networks:
-      - oclock
-volumes:
-  app_logs:
+      container_name: teleporter-templating-config
+      build:
+        context: ./containers-config/templating-config
+      logging:
+        driver: "json-file"
+        options:
+          max-size: "200k"
+          max-file: "10"
+      env_file: 
+        - vpn.env
+      volumes:
+        - ./configs/haproxy:/app/configs/
+        - logs:/app/logs
+      networks:
+        - oclock
