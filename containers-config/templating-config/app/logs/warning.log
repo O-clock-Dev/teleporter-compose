@@ -1,3 +1,20 @@
 2024-04-22 15:00:25,982 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
 2024-04-22 15:01:49,890 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
 2024-04-22 15:03:20,862 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
+2024-04-22 16:17:09,057 - logs_config - ERROR - Erreur lors de la lecture du fichier de modèle : name 'template_path' is not defined
+2024-04-22 16:17:42,200 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:19:40,041 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:20:09,093 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:20:43,478 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:21:00,654 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:21:27,482 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:21:37,210 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:22:01,179 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:22:49,894 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:23:20,037 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:24:23,779 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:25:09,579 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:25:24,480 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:25:41,284 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: 'configs/haproxy/haproxy.cfg'
+2024-04-22 16:26:52,574 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: 'configs/haproxy/haproxy.cfg'
+2024-04-22 16:29:16,644 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: 'configs/haproxy/haproxy.cfg'

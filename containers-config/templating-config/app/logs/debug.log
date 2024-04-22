@@ -1,3 +1,123 @@
 2024-04-22 15:00:25,982 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
 2024-04-22 15:01:49,890 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
 2024-04-22 15:03:20,862 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
+2024-04-22 16:17:09,057 - logs_config - ERROR - Erreur lors de la lecture du fichier de modèle : name 'template_path' is not defined
+2024-04-22 16:17:38,741 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:17:42,196 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:17:42,197 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:17:42,198 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:17:42,200 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:17:42,200 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:17:42,200 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:19:36,617 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:19:40,039 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:19:40,039 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:19:40,039 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:19:40,041 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:19:40,041 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:19:40,041 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:20:05,658 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:20:09,090 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:20:09,090 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:20:09,090 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:20:09,092 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:20:09,092 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:20:09,093 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:20:40,117 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:20:43,476 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:20:43,476 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:20:43,476 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:20:43,478 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:20:43,478 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:20:43,478 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:20:57,308 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:21:00,652 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:21:00,652 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:21:00,652 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:21:00,653 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:21:00,654 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:21:00,654 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:21:24,144 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:21:27,480 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:21:27,480 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:21:27,480 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:21:27,481 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:21:27,481 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:21:27,482 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:21:33,814 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:21:37,209 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:21:37,209 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:21:37,209 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:21:37,210 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:21:37,210 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:21:37,210 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:21:57,841 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:22:01,177 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:22:01,177 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:22:01,177 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:22:01,179 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:22:01,179 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:22:01,179 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:22:46,434 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:22:49,892 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:22:49,892 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:22:49,892 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:22:49,893 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:22:49,893 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:22:49,894 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:23:16,650 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:23:20,035 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:23:20,035 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:23:20,035 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:23:20,036 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:23:20,037 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:23:20,037 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:24:20,412 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:24:23,778 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:24:23,778 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:24:23,778 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:24:23,779 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:24:23,779 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:24:23,779 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:25:06,131 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:25:09,577 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:25:09,577 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:25:09,577 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:25:09,579 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:25:09,579 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:25:09,579 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: './configs/haproxy/haproxy.cfg'
+2024-04-22 16:25:21,068 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:25:24,478 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:25:24,478 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:25:24,478 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:25:24,480 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:25:24,480 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:25:24,480 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: '/configs/haproxy/haproxy.cfg'
+2024-04-22 16:25:37,894 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:25:41,283 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:25:41,283 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:25:41,283 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:25:41,284 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:25:41,284 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:25:41,284 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: 'configs/haproxy/haproxy.cfg'
+2024-04-22 16:26:49,234 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:26:52,572 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:26:52,572 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:26:52,572 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:26:52,574 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:26:52,574 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:26:52,574 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: 'configs/haproxy/haproxy.cfg'
+2024-04-22 16:29:13,295 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:29:16,643 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:29:16,643 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:29:16,643 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:29:16,644 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:29:16,644 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:29:16,644 - logs_config - ERROR - Erreur lors de l'écriture du fichier de configuration HAProxy : [Errno 2] No such file or directory: 'configs/haproxy/haproxy.cfg'
+2024-04-22 16:29:38,000 - logs_config - INFO - Modèle Jinja chargé avec succès.
+2024-04-22 16:29:41,396 - logs_config - INFO - Requête envoyée à http://vpn.eddi.cloud/promo_list/hati
+2024-04-22 16:29:41,396 - logs_config - DEBUG - Réponse reçue : {'aurelien-bras': '10.0.3.227', 'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:29:41,396 - logs_config - DEBUG - Clients VPN récupérés : {'clement-gineste': '10.0.0.154', 'nuno-marcelino': '10.0.1.179'}
+2024-04-22 16:29:41,397 - logs_config - DEBUG - Clients VPN : [('clement-gineste', '10.0.0.154'), ('nuno-marcelino', '10.0.1.179')]
+2024-04-22 16:29:41,397 - logs_config - DEBUG - Configuration HAProxy générée avec sussès
+2024-04-22 16:29:41,398 - logs_config - INFO - Configuration HAProxy générée avec succès.

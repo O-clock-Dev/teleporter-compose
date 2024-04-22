@@ -16,10 +16,12 @@ logger = configure_logs()
 
 # Chemin absolu du fichier de configuration HAProxy
 template_relatif_path = "haproxy_template.j2"
-ha_proxy_config_file_relatif_path = "../containers-config/haproxy.cfg"
-path = os.path.dirname(os.path.abspath(__file__))
+
+ha_proxy_config_file_relatif_path = "configs/haproxy/haproxy.cfg"
+path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
-template_path = os.path.join(path, template_relatif_path)
+print(path)
+print(ha_proxy_config)
 
 
 def get_vpn_clients():
@@ -43,7 +45,7 @@ def get_vpn_clients():
 
 # Charger le modèle Jinja depuis le fichier
 try:
-    with open(template_path) as file:
+    with open(template_relatif_path) as file:
         template = Template(file.read())
         logger.info("Modèle Jinja chargé avec succès.")
 except FileNotFoundError:
@@ -69,7 +71,7 @@ logger.debug(f"Configuration HAProxy générée avec sussès")
 
 # Écrire la configuration HAProxy générée dans un fichier
 try:
-    with open(ha_proxy_config_file_relatif_path, "w") as file:
+    with open(ha_proxy_config, "w") as file:
         file.write(haproxy_config)
     logger.info("Configuration HAProxy générée avec succès.")
     exit(0)
