@@ -19,10 +19,9 @@ services:
     cap_add:
       - NET_ADMIN
     command: ["sh","-c","/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
-    env_file: vpn.env
     environment:
-      HOMEPAGE_VAR_USER_NAME: "${USER_NAME:-Téléporteur pas configuré !}"
-      HOMEPAGE_VAR_COHORT: "${SCHOOL_COHORT:-Sans Promo}"
+      HOMEPAGE_VAR_USER_NAME: "${FULL_NAME:-Téléporteur pas configuré !}"
+      HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
       HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:-sans-vpn}"
     networks:
       oclock:
@@ -35,7 +34,7 @@ services:
     build:
       context: ./containers-config/vpn
     restart: always
-    hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
+    hostname: teleporter-vpn
     cap_add:
       - NET_ADMIN
     ports:
@@ -66,7 +65,7 @@ services:
     image: haproxy:lts-alpine
 #    build:
 #      context: ./containers-config/haproxy
-    hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
+    hostname: teleporter-haproxy"
     user: root
     ports:
       - "80:80"
