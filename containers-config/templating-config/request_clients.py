@@ -70,6 +70,7 @@ try:
     with open(ha_proxy_config_file_relatif_path, "w") as file:
         file.write(haproxy_config)
     logger.info("Configuration HAProxy générée avec succès.")
+    exit(0)
 except Exception as e:
     logger.error(f"Erreur lors de l'écriture du fichier de configuration HAProxy : {e}")
     exit(1)
