@@ -33,7 +33,7 @@ backend {{ client_name }}.localhost
         option redispatch
         timeout connect 5s
         timeout server  5s
-        server {{ client_name }} {{ client_ip }}::80 check inter 1000
+        server {{ client_name }} {{ client_ip }}:80 check inter 1000
 {% endfor %}        
 backend caddyserver
         mode            http
