@@ -1,3 +1,3 @@
-2024-04-22 14:54:56,871 - logs_config - ERROR - Le fichier haproxy_template.cfg n'existe pas.
-2024-04-22 14:56:02,918 - logs_config - ERROR - Le fichier haproxy_template.cfg n'existe pas.
-2024-04-22 14:57:46,057 - logs_config - ERROR - Erreur lors de la lecture du fichier de modèle : name 'template_path' is not defined
+2024-04-22 15:00:25,982 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
+2024-04-22 15:01:49,890 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
+2024-04-22 15:03:20,862 - logs_config - ERROR - Le fichier haproxy_template.j2 n'existe pas.
