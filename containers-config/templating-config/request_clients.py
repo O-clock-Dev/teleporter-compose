@@ -5,7 +5,7 @@ from jinja2 import Template
 from logs_config import (
     configure_logs,
 )  # Assurez-vous que votre configuration de logs est correcte
-
+import time
 # Configuration des variables d'environnement par défaut
 PROMO = os.getenv("PROMO", "hati")
 CLIENT_NAME = os.getenv("VPN_NAME", "aurelien-bras")
@@ -70,7 +70,11 @@ try:
     with open(ha_proxy_config_file_relatif_path, "w") as file:
         file.write(haproxy_config)
     logger.info("Configuration HAProxy générée avec succès.")
+    time.sleep(120)
     exit(0)
 except Exception as e:
     logger.error(f"Erreur lors de l'écriture du fichier de configuration HAProxy : {e}")
+    time.sleep(120)
     exit(1)
+    
+    

@@ -76,6 +76,7 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.200
+    restart: always
     depends_on:
     - templating-config
 #  proxy:
@@ -341,6 +342,5 @@ services:
       - app_logs:/app/logs
     networks:
       - oclock
-    restart: no
 volumes:
   app_logs:
