@@ -76,6 +76,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.200
+    depends_on:
+    - templating-config
 #  proxy:
 #    container_name: teleporter-proxy
 #    hostname: teleporter-proxy
@@ -340,7 +342,5 @@ services:
     networks:
       - oclock
     restart: no
-    depends_on:
-      - reverse_proxy
 volumes:
   app_logs:
