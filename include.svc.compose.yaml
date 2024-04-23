@@ -134,3 +134,13 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.20
+
+  # Template Config
+  templating-config:
+    container_name: teleporter-templating-config
+    build:
+      context: ./containers-config/templating-config
+    volumes:
+      - ${CONFIG_DIR}/:/app/configs/
+    networks:
+      - oclock
