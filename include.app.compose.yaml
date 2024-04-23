@@ -1,0 +1,153 @@
+# Teleporter Applications
+
+services:
+
+  # Dashboard
+  homepage:
+    container_name: teleporter-homepage
+    hostname: teleporter-homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    command: ["sh","-c","/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
+    environment:
+      HOMEPAGE_VAR_USER_NAME: "${FULL_NAME:-Téléporteur pas configuré !}"
+      HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
+      HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:-sans-vpn}"
+    volumes:
+      - ./configs/homepage:/app/config
+      - ./configs/homepage/images:/app/public/images
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.203
+    cap_add:
+      - NET_ADMIN
+
+  # Browser
+  filebrowser:
+    container_name: teleporter-filebrowser
+    hostname: teleporter-filebrowser
+    build:
+      context: ./containers-config/filebrowser
+    environment:
+      - FB_NOAUTH=true
+    restart: always
+    volumes:
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.201
+
+  # Terminal
+  terminal:
+    container_name: teleporter-terminal
+    hostname: teleporter-terminal
+    build:
+      context: ./containers-config/terminal
+    environment:
+    - TZ=${TZ}
+    ports:
+      - 81:7681
+    volumes:
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.202
+
+  # WebServer
+  caddyserver:
+    container_name: teleporter-caddyserver
+    hostname: teleporter-caddyserver
+    image: caddy:2.7.6
+    environment:
+    - LANG=${LANG}
+    - TZ=${TZ}
+    healthcheck: # https://stackoverflow.com/a/47722899/5008962
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:2019/metrics", "||", "exit", "1"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - "8080:80"
+    volumes:
+      - "${CODE_DIR}/www/public:/usr/share/caddy/"
+      - "${DATA_DIR}/caddyserver/data:/data"
+      - "${DATA_DIR}/caddyserver/config:/config"
+      - ./containers-config/caddyserver/Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.10
+
+  # DBMS Access Adminer
+  adminer:
+    container_name: teleporter-adminer
+    hostname: teleporter-adminer 
+    image: adminer:4.8.1
+    environment:
+      - ADMINER_DEFAULT_SERVER=mariadb
+      - ADMINER_DESIGN=dracula
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.12
+    depends_on:
+      mariaDB:
+        condition: service_healthy
+
+  # DBMS Access PHPmyAdmin
+  phpmyadmin:
+    container_name: teleporter-phpmyadmin
+    hostname: teleporter-phpmyadmin
+    build:
+      context: ./containers-config/phpmyadmin                                   
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    restart: always
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.13
+    depends_on:
+      mariaDB:
+        condition: service_healthy
+
+  # DBMS Access MongoExpress
+  mongo-express:
+  # Be careful, the documentation on Docker Hub is outdated, use this one instead :
+  # https://github.com/mongo-express/mongo-express?tab=readme-ov-file#usage-docker
+    container_name: teleporter-mongo-express
+    hostname: teleporter-mongo-express
+    image: mongo-express:1.0.2-20-alpine3.19
+    environment:
+      - LANG=${LANG}
+      - TZ=${TZ}
+      - ME_CONFIG_MONGODB_URL=mongodb://root:root@mongodb:27017/
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_BASICAUTH=false
+      - ME_CONFIG_SITE_BASEURL=/mongo-express/
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.16
+
+  # VSCode
+  vscode-server:
+    container_name: teleporter-vscode
+    hostname: teleporter-vscode
+    image: linuxserver/code-server:4.21.2
+    environment:
+      - TZ=${TZ}
+      - LANG=${LANG}
+      - DOCKER_MODS=linuxserver/mods:code-server-extension-arguments
+      - VSCODE_EXTENSION_IDS=${VSCODE_EXTENSIONS_LIST}
+      - DEFAULT_WORKSPACE=/code
+    volumes:
+      - ${DATA_DIR}/configs/vscode:/config
+      - ${CODE_DIR}:/code
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.14

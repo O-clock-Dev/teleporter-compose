@@ -6,6 +6,7 @@ configs/haproxy/haproxy.cfg
 node_modules
 vpn.env
 .swp
+.env*
 containers-config/templating-config/__pycache__
 containers-config/templating-config/venv
 containers-config/templating-config/app/logs/*

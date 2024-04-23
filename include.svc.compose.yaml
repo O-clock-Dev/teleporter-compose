@@ -1,0 +1,146 @@
+# Teleporter Services
+
+services:
+
+  # WireGuard VPN
+  vpn:
+    container_name: teleporter-vpn
+    hostname: teleporter-vpn
+    build:
+      context: ./containers-config/vpn
+    restart: always
+    ports:
+      - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: ["CMD","ping","-c1","${VPN_PRIV_IP}","-w1"]
+      interval: 50s
+      retries: 5
+      start_period: 10s
+    labels:
+      autoheal: True
+    networks:
+      oclock:
+        ipv4_address: ${VPN_LOCAL_IP}
+    cap_add:
+      - NET_ADMIN
+
+  # AutoHeal Service
+  autoheal:
+    container_name: teleporter-autoheal
+    hostname: teleporter-autoheal
+    image: willfarrell/autoheal
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: none
+
+  # Reverse Proxy
+  reverse_proxy:
+    container_name: teleporter-haproxy
+    hostname: teleporter-haproxy"
+    image: haproxy:lts-alpine
+    command: ["sh","-c","/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && haproxy -W -db -f /usr/local/etc/haproxy/haproxy.cfg"]
+    user: root
+    ports:
+      - "80:80"
+    volumes:
+      - ./configs/haproxy:/usr/local/etc/haproxy
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.200
+    cap_add:
+      - NET_ADMIN
+
+  # DBMS MariaDB
+  mariaDB:
+    container_name: teleporter-mariaDB
+    hostname: teleporter-mariaDB
+    image: mariadb:11.3.2
+    environment:
+    - LANG=${LANG}
+    - TZ=${TZ}
+    - MARIADB_ROOT_PASSWORD=root
+    volumes:
+      - ${DATA_DIR}/mysql:/var/lib/mysql
+      - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
+    healthcheck:
+      interval: 10s
+      retries: 5
+      test:
+        [
+          "CMD",
+          "healthcheck.sh",
+          "--su-mysql",
+          "--connect",
+          "--innodb_initialized"
+        ]
+      timeout: 30s
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.11
+
+  # DBMS MongoDB
+  mongodb:
+    container_name: teleporter-mongodb
+    hostname: teleporter-mongodb
+    image: mongo:7.0
+    environment:
+      - LANG=${LANG}
+      - TZ=${TZ}
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.15
+
+  # DBMS PostgreSQL
+  postgreSQL:
+    container_name: teleporter-postgres
+    hostname: teleporter-postgres
+    image: postgres:16.2
+    environment:
+      POSTGRES_PASSWORD: js4life
+    restart: always
+    shm_size: 128mb
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.17
+
+  # NodeJS
+  node:
+    container_name: teleporter-node
+    hostname: teleporter-node
+    image: node:20
+    command: sleep infinity
+    ports:
+      - "3000-3100:3000-3100"
+      - "3999:3999"
+    volumes:
+      - ./code/node:/code/node
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.19
+
+  # PHP
+  php:
+    container_name: teleporter-php
+    hostname: teleporter-php
+    image: php:8.3-fpm-alpine
+    volumes:
+      - "${CODE_DIR}/www/public:/usr/share/caddy/"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.20
+
+  # Template Config
+  templating-config:
+    container_name: teleporter-templating-config
+    build:
+      context: ./containers-config/templating-config
+    volumes:
+      - ${CONFIG_DIR}/:/app/configs/
+    networks:
+      - oclock
