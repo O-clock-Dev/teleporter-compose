@@ -6,7 +6,6 @@ networks:
         - subnet: 10.200.0.0/16
           ip_range: 10.200.0.0/16
           gateway: 10.200.0.1
-
 services:
 ## Dashboard
   homepage:
@@ -34,11 +33,10 @@ services:
     container_name: teleporter-vpn
     env_file: 
       - vpn.env
-      - .env
     build:
       context: ./containers-config/vpn
     restart: always
-    hostname: "${GITHUB_PSEUDO:-johndoe}-vpn"
+    hostname: teleporter-vpn
     cap_add:
       - NET_ADMIN
     ports:
@@ -69,7 +67,7 @@ services:
     image: haproxy:lts-alpine
 #    build:
 #      context: ./containers-config/haproxy
-    hostname: "${GITHUB_PSEUDO:-johndoe}-haproxy"
+    hostname: teleporter-haproxy"
     user: root
     ports:
       - "80:80"
@@ -343,3 +341,17 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.14
+## Templeting-config
+  templating-config:
+    container_name: teleporter-templating-config
+    build:
+      context: ./containers-config/templating-config
+    env_file: 
+      - vpn.env
+    volumes:
+      - ${CONFIG_DIR}/:/app/configs/
+      - app_logs:/app/logs
+    networks:
+      - oclock
+volumes:
+  app_logs:

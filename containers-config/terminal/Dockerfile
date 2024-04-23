@@ -10,6 +10,7 @@ RUN apt update \
         wget \
         update-motd \
         htop \
+        iputils-ping \
         docker.io \
         coreutils \
         bash-completion \
