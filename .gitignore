@@ -4,7 +4,7 @@ data/*
 configs/homepage/logs/*
 configs/haproxy/haproxy.cfg
 node_modules
-vpn.env
+vpn.env*
 .swp
 .env*
 containers-config/templating-config/__pycache__

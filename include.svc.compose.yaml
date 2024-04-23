@@ -8,6 +8,13 @@ services:
     hostname: teleporter-vpn
     build:
       context: ./containers-config/vpn
+    environment:
+      KEY_PRIV: ${KEY_PRIV}
+      KEY_VPN_SERVER: ${KEY_VPN_SERVER}
+      IP_PRIV: ${IP_PRIV}
+      VPN_SERVER: ${VPN_SERVER}
+      VPN_LOCAL_PORT: ${VPN_LOCAL_PORT}
+      VPN_WILDCARD: ${VPN_WILDCARD}
     restart: always
     ports:
       - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
@@ -43,6 +50,7 @@ services:
     hostname: teleporter-haproxy"
     image: haproxy:lts-alpine
     command: ["sh","-c","/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && haproxy -W -db -f /usr/local/etc/haproxy/haproxy.cfg"]
+    restart: always
     user: root
     ports:
       - "80:80"
@@ -51,6 +59,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.200
+    depends_on:
+      - templating-config
     cap_add:
       - NET_ADMIN
 
@@ -60,9 +70,9 @@ services:
     hostname: teleporter-mariaDB
     image: mariadb:11.3.2
     environment:
-    - LANG=${LANG}
-    - TZ=${TZ}
-    - MARIADB_ROOT_PASSWORD=root
+      LANG: ${LANG}
+      TZ: ${TZ}
+      MARIADB_ROOT_PASSWORD: root
     volumes:
       - ${DATA_DIR}/mysql:/var/lib/mysql
       - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
@@ -88,10 +98,10 @@ services:
     hostname: teleporter-mongodb
     image: mongo:7.0
     environment:
-      - LANG=${LANG}
-      - TZ=${TZ}
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
+      LANG: ${LANG}
+      TZ: ${TZ}
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
     networks:
       oclock:
         ipv4_address: 10.200.0.15
@@ -140,6 +150,9 @@ services:
     container_name: teleporter-templating-config
     build:
       context: ./containers-config/templating-config
+    environment:
+      IP_PRIV: ${IP_PRIV}
+      VPN_NAME: ${VPN_NAME}
     volumes:
       - ${CONFIG_DIR}/:/app/configs/
     networks:
