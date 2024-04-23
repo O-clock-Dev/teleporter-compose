@@ -29,7 +29,7 @@ services:
     build:
       context: ./containers-config/filebrowser
     environment:
-      - FB_NOAUTH=true
+      FB_NOAUTH: true
     restart: always
     volumes:
       - "${CODE_DIR}:/srv/code"
@@ -46,7 +46,7 @@ services:
     build:
       context: ./containers-config/terminal
     environment:
-    - TZ=${TZ}
+      TZ: ${TZ}
     ports:
       - 81:7681
     volumes:
@@ -64,8 +64,8 @@ services:
     hostname: teleporter-caddyserver
     image: caddy:2.7.6
     environment:
-    - LANG=${LANG}
-    - TZ=${TZ}
+      LANG: ${LANG}
+      TZ: ${TZ}
     healthcheck: # https://stackoverflow.com/a/47722899/5008962
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:2019/metrics", "||", "exit", "1"]
       interval: 1m30s
@@ -89,8 +89,8 @@ services:
     hostname: teleporter-adminer 
     image: adminer:4.8.1
     environment:
-      - ADMINER_DEFAULT_SERVER=mariadb
-      - ADMINER_DESIGN=dracula
+      ADMINER_DEFAULT_SERVER: mariadb
+      ADMINER_DESIGN: dracula
     networks:
       oclock:
         ipv4_address: 10.200.0.12
@@ -105,9 +105,9 @@ services:
     build:
       context: ./containers-config/phpmyadmin                                   
     environment:
-      - PMA_HOST=mariadb
-      - PMA_USER=root
-      - PMA_PASSWORD=root
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: root
     restart: always
     networks:
       oclock:
@@ -124,12 +124,12 @@ services:
     hostname: teleporter-mongo-express
     image: mongo-express:1.0.2-20-alpine3.19
     environment:
-      - LANG=${LANG}
-      - TZ=${TZ}
-      - ME_CONFIG_MONGODB_URL=mongodb://root:root@mongodb:27017/
-      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
-      - ME_CONFIG_BASICAUTH=false
-      - ME_CONFIG_SITE_BASEURL=/mongo-express/
+      LANG: ${LANG}
+      TZ: ${TZ}
+      ME_CONFIG_MONGODB_URL: mongodb://root:root@mongodb:27017/
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: true
+      ME_CONFIG_BASICAUTH: false
+      ME_CONFIG_SITE_BASEURL: /mongo-express/
     networks:
       oclock:
         ipv4_address: 10.200.0.16
@@ -140,11 +140,11 @@ services:
     hostname: teleporter-vscode
     image: linuxserver/code-server:4.21.2
     environment:
-      - TZ=${TZ}
-      - LANG=${LANG}
-      - DOCKER_MODS=linuxserver/mods:code-server-extension-arguments
-      - VSCODE_EXTENSION_IDS=${VSCODE_EXTENSIONS_LIST}
-      - DEFAULT_WORKSPACE=/code
+      TZ: ${TZ}
+      LANG: ${LANG}
+      DOCKER_MODS: linuxserver/mods:code-server-extension-arguments
+      VSCODE_EXTENSION_IDS: ${VSCODE_EXTENSIONS_LIST}
+      DEFAULT_WORKSPACE: /code
     volumes:
       - ${DATA_DIR}/configs/vscode:/config
       - ${CODE_DIR}:/code
