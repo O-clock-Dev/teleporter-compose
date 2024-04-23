@@ -1,6 +1,5 @@
 import os
 import requests
-import json
 from jinja2 import Template
 from logs_config import (
     configure_logs,
