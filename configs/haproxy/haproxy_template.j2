@@ -10,9 +10,9 @@ frontend public
         option          dontlognull
         maxconn         8000
         timeout client  30s
-        use_backend     clement-gineste.localhost if { hdr(host) -i clement-gineste.localhost }
-        use_backend     aurelien-bras.localhost if { hdr(host) -i aurelien-bras.localhost }
-        use_backend     nuno-marcelino.localhost if { hdr(host) -i nuno-marcelino.localhost }
+{% for client_name, client_ip in clients %}
+        use_backend     {{client_name}}.localhost if { hdr(host) -i {{client_name}}.localhost }
+{% endfor %}
         use_backend     caddyserver if { path_beg /caddyserver }
         use_backend     vscode-server if { path_beg /vscode }
         use_backend     phpmyadmin if { path_beg /phpmyadmin }
@@ -23,7 +23,9 @@ frontend public
         use_backend     pgadmin if { path_beg /pgadmin }
         default_backend homepage
 
-backend aurelien-bras.localhost
+# The static backend backend for 'Host: img', /img and /css.
+{% for client_name, client_ip in clients %}
+backend {{ client_name }}.localhost
         mode            http
         balance         roundrobin
         option prefer-last-server
@@ -31,30 +33,8 @@ backend aurelien-bras.localhost
         option redispatch
         timeout connect 5s
         timeout server  5s
-        #option httpchk  HEAD /favicon.ico
-        server          aurelien-bras.localhost 10.0.3.227:80 check inter 1000
-backend nuno-marcelino.localhost
-        mode            http
-        balance         roundrobin
-        option prefer-last-server
-        retries         2
-        option redispatch
-        timeout connect 5s
-        timeout server  5s
-        #option httpchk  HEAD /favicon.ico
-        server          nuno-marcelino.localhost 10.0.2.183:80 check inter 1000
- 
-backend clement-gineste.localhost
-        mode            http
-        balance         roundrobin
-        option prefer-last-server
-        retries         2
-        option redispatch
-        timeout connect 5s
-        timeout server  5s
-        #option httpchk  HEAD /favicon.ico
-        server          clement-gineste.localhost 10.0.0.154:80 check inter 1000
-        
+        server {{ client_name }} {{ client_ip }}:80 check inter 1000
+{% endfor %}        
 backend caddyserver
         mode            http
         balance         roundrobin

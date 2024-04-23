@@ -6,6 +6,7 @@
     - Connexion VPN:
         description: Statut de la connexion au VPN O'clock
         icon: si-openvpn
+        href: https://vpn.eddi.cloud
         ping: 10.0.0.1
         statusStyle: basic
     - Accès VPN:
@@ -70,4 +71,8 @@
         href: ./caddyserver
         ping: http://localhost/caddyserver
         #container: teleporter-caddyserver
-    
+    - PHP:
+        description: PHP-FPM 8.3
+        icon: si-php
+        statusStyle: basic
+        container: teleporter-php

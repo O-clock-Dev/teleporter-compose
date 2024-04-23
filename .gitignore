@@ -6,3 +6,4 @@ node_modules
 vpn.env
 .swp
 .env*
+containers-config/templating-config/venv
