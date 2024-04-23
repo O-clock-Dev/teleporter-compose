@@ -67,7 +67,10 @@ services:
     image: haproxy:lts-alpine
 #    build:
 #      context: ./containers-config/haproxy
-    hostname: teleporter-haproxy"
+    restart: always
+    depends_on:
+      - templating-config
+    hostname: teleporter-haproxy
     user: root
     ports:
       - "80:80"
@@ -350,8 +353,5 @@ services:
       - vpn.env
     volumes:
       - ${CONFIG_DIR}/:/app/configs/
-      - app_logs:/app/logs
     networks:
       - oclock
-volumes:
-  app_logs:

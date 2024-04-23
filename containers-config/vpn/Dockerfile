@@ -27,5 +27,3 @@ COPY authorized_keys /root/authorized_keys
 ENTRYPOINT ["./entrypoint.sh"]
 
 CMD ["sleep","infinity"]
-
-

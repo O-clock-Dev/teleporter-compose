@@ -15,9 +15,12 @@ IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 logger = configure_logs()
 
 # Chemin absolu du fichier de configuration HAProxy
-ha_proxy_config_file_relatif_path = "./configs/haproxy/haproxy.cfg"
-path = os.path.dirname(os.path.abspath(__file__))
+template_relatif_path = "configs/haproxy/haproxy_template.j2"
+
+ha_proxy_config_file_relatif_path = "configs/haproxy/haproxy.cfg"
+path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
+template_path = os.path.join(path, template_relatif_path)
 
 
 def get_vpn_clients():
@@ -29,7 +32,7 @@ def get_vpn_clients():
         response = requests.get(url)
         response.raise_for_status()  # Vérifie si la requête a échoué
         logger.info(f"Requête envoyée à {url}")
-        dict_clients = json.loads(response.json())
+        dict_clients = response.json()
         logger.debug(f"Réponse reçue : {dict_clients}")
         del dict_clients[CLIENT_NAME]  # Supprimer le client actuel
         logger.debug(f"Clients VPN récupérés : {dict_clients}")
@@ -41,11 +44,11 @@ def get_vpn_clients():
 
 # Charger le modèle Jinja depuis le fichier
 try:
-    with open("./configs/haproxy/haproxy_template.j2") as file:
+    with open(template_path) as file:
         template = Template(file.read())
         logger.info("Modèle Jinja chargé avec succès.")
 except FileNotFoundError:
-    logger.error("Le fichier haproxy_template.cfg n'existe pas.")
+    logger.error("Le fichier haproxy_template.j2 n'existe pas.")
     exit(1)
 except Exception as e:
     logger.error(f"Erreur lors de la lecture du fichier de modèle : {e}")
@@ -63,13 +66,14 @@ logger.debug(f"Clients VPN : {clients_list}")
 
 # Rendre le modèle Jinja avec les valeurs spécifiées
 haproxy_config = template.render(clients=clients_list)
-logger.debug(f"Configuration HAProxy générée : {haproxy_config}")
+logger.debug(f"Configuration HAProxy générée avec succès")
 
 # Écrire la configuration HAProxy générée dans un fichier
 try:
-    with open(ha_proxy_config_file_relatif_path, "w") as file:
+    with open(ha_proxy_config, "w") as file:
         file.write(haproxy_config)
     logger.info("Configuration HAProxy générée avec succès.")
+    exit(0)
 except Exception as e:
     logger.error(f"Erreur lors de l'écriture du fichier de configuration HAProxy : {e}")
     exit(1)
