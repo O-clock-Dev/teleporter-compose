@@ -9,18 +9,13 @@ from logs_config import (
 # Configuration des variables d'environnement par défaut
 PROMO = os.getenv("PROMO", "hati")
 CLIENT_NAME = os.getenv("VPN_NAME", "aurelien-bras")
-IP_PRIV = os.getenv("VPN_IP_PRIV", "10.0.2.183")
 
 # Création du logger
 logger = configure_logs()
 
 # Chemin absolu du fichier de configuration HAProxy
-template_relatif_path = "configs/haproxy/haproxy_template.j2"
-
-ha_proxy_config_file_relatif_path = "configs/haproxy/haproxy.cfg"
-path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-ha_proxy_config = os.path.join(path, ha_proxy_config_file_relatif_path)
-template_path = os.path.join(path, template_relatif_path)
+template_path = "configs/haproxy/haproxy_template.j2"
+ha_proxy_config = "configs/haproxy/haproxy.cfg"
 
 
 def get_vpn_clients():
