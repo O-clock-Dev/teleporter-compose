@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main  # Modifier selon votre branche principale
+      - NunoMars-patch-1
 
 jobs:
   docker-build-tag-push:
