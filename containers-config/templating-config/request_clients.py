@@ -66,7 +66,7 @@ logger.debug(f"Clients VPN : {clients_list}")
 
 # Rendre le modèle Jinja avec les valeurs spécifiées
 haproxy_config = template.render(clients=clients_list)
-logger.debug(f"Configuration HAProxy générée avec sussès")
+logger.debug(f"Configuration HAProxy générée avec succès")
 
 # Écrire la configuration HAProxy générée dans un fichier
 try:

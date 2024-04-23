@@ -337,7 +337,5 @@ services:
       context: ./containers-config/templating-config
     env_file: 
       - vpn.env
-    volumes:
-      - ${CONFIG_DIR}/:/app/configs/
     networks:
       - oclock
