@@ -2,16 +2,16 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/settings
 
-providers:
-  openweathermap: openweathermapapikey
-  weatherapi: weatherapiapikey
-
 title: "Le Téléporteur - Docker"
-color: slate
+startUrl: http://{{HOMEPAGE_VAR_VPN_NAME}}.localhost
 language: fr
-disableCollapse: true
-headerStyle: boxedWidgets
+disableCollapse: false
+headerStyle: clean
+useEqualHeights: true
 hideVersion: true
 statusStyle: "dot"
 quicklaunch:
+  searchDescriptions: true
   hideInternetSearch: true
+  showSearchSuggestions: true
+  hideVisitURL: true
