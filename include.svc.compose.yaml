@@ -123,3 +123,14 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.19
+
+  # PHP
+  php:
+    container_name: teleporter-php
+    hostname: teleporter-php
+    image: php:8.3-fpm-alpine
+    volumes:
+      - "${CODE_DIR}/www/public:/usr/share/caddy/"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.20
