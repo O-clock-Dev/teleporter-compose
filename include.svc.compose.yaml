@@ -13,6 +13,13 @@ services:
       - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - KEY_PRIV=${KEY_PRIV}
+      - KEY_VPN_SERVER=${KEY_VPN_SERVER}
+      - IP_PRIV=${IP_PRIV}
+      - VPN_SERVER=${VPN_SERVER}
+      - VPN_LOCAL_PORT=${VPN_LOCAL_PORT}
+      - VPN_WILDCARD=${VPN_WILDCARD}
     healthcheck:
       test: ["CMD","ping","-c1","${VPN_PRIV_IP}","-w1"]
       interval: 50s
