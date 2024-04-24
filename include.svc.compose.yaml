@@ -1,7 +1,6 @@
 # Teleporter Services
 
 services:
-
   # WireGuard VPN
   vpn:
     container_name: teleporter-vpn
@@ -18,9 +17,7 @@ services:
     ports:
     - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
     volumes:
-    # - ./containers-config/vpn:/opt/vpn
     - /var/run/docker.sock:/var/run/docker.sock
-    # entrypoint: /opt/vpn/entrypoint.sh
     healthcheck:
       test: ["CMD", "ping", "-c1", "${VPN_PRIV_IP}", "-w1"]
       interval: 50s
