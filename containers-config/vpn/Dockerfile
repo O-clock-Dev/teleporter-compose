@@ -21,8 +21,8 @@ WORKDIR /opt/vpn
 # Le but est de le remplacer a terme par un mount bind
 COPY . /opt/vpn
 
-RUN chmod +x /opt/vpn/entrypoint.sh
+RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ["./opt/vpn/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 
 CMD ["sleep","infinity"]
