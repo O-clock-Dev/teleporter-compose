@@ -31,7 +31,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          file: ./containers-config/vpn/Dockerfile
+          context: ./containers-config/vpn/
           platforms: linux/amd64,linux/arm64
           push: true
           tags: nunoloupy/teleporter-vpn:latest
