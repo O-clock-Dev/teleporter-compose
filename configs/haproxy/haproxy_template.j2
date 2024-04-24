@@ -23,7 +23,6 @@ frontend public
         use_backend     pgadmin if { path_beg /pgadmin }
         default_backend homepage
         errorfiles myerrors
-        http-response return status 503 default-errorfiles if { status 503 }
 
 http-errors myerrors
 	errorfile 503 /etc/haproxy/errors/503.html
