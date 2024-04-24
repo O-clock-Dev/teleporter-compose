@@ -23,6 +23,6 @@ COPY . /opt/vpn
 
 RUN chmod +x /opt/vpn/entrypoint.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./opt/vpn/entrypoint.sh"]
 
 CMD ["sleep","infinity"]
