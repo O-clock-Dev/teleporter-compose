@@ -11,6 +11,8 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    environment: 
+      name: DOCKER
     steps:
       -
         name: Checkout
@@ -34,4 +36,4 @@ jobs:
           context: .
           file: ./containers-config/vpn/Dockerfile
           push: true
-          tags: nunoloupy/teleporter-vpn:latest
+          tags: ${{ secrets.DOCKERHUB_TOKEN }}/teleporter-vpn:latest
