@@ -17,8 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          sparse-checkout: 'containers-config/vpn'
-          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            'containers-config/vpn/*'
+
           
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
