@@ -3,6 +3,8 @@ data/*
 !data/configs/homepage
 configs/homepage/logs/*
 configs/haproxy/haproxy.cfg
+
+configs/homepage/bookmarks.yaml
 node_modules
 vpn.env*
 .swp
