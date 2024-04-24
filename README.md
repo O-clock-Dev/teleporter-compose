@@ -1,3 +1,5 @@
+[![Build and push vpn container](https://github.com/O-clock-Dev/teleporter-compose/actions/workflows/docker-image.yml/badge.svg)](https://github.com/O-clock-Dev/teleporter-compose/actions/workflows/docker-image.yml)
+
 # Le téléporteur containerisé
 
 L'idée de ce projet est de fournir un téléporteur iso fonctionnel avec l'actuel qui repose sur une base de virtualisation Docker et donc qui s'appuierai sur Docker Desktop pour s'executer sur les 3 OS : Windows, MacOS, et bien sûr Linux.
