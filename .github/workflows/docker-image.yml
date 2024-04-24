@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            'containers-config/vpn/*'
+            '/containers-config/vpn/*'
 
           
       - name: Set up QEMU
