@@ -36,4 +36,4 @@ jobs:
           context: .
           file: ./containers-config/vpn/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_TOKEN }}/teleporter-vpn:latest
+          tags: nunoloupy/teleporter-vpn:latest
