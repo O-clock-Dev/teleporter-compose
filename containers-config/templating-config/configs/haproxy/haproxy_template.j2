@@ -26,7 +26,7 @@ frontend public
         http-response return status 503 default-errorfiles if { status 503 }
 
 http-errors myerrors
-	errorfile 503 /etc/haproxy/errors/503-custom.http
+	errorfile 503 /usr/local/etc/haproxy/errors/503-custom.http
 
 # The static backend backend for 'Host: img', /img and /css.
 {% for client_name, client_ip in clients %}
