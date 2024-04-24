@@ -35,5 +35,6 @@ jobs:
         with:
           context: .
           file: ./containers-config/vpn/Dockerfile
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: nunoloupy/teleporter-vpn:latest
