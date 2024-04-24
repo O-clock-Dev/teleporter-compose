@@ -19,10 +19,7 @@ WORKDIR /opt/vpn/
 
 
 # Le but est de le remplacer a terme par un mount bind
-COPY entrypoint.sh /opt/vpn/
-COPY authorized_keys /root/authorized_keys
-
-
+COPY . /opt/vpn/
 
 ENTRYPOINT ["./entrypoint.sh"]
 
