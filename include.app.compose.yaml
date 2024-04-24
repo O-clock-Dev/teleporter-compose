@@ -140,6 +140,8 @@ services:
     hostname: teleporter-vscode
     image: linuxserver/code-server:4.21.2
     environment:
+      PUID: 0
+      PGID: 0
       TZ: ${TZ}
       LANG: ${LANG}
       DOCKER_MODS: linuxserver/mods:code-server-extension-arguments
