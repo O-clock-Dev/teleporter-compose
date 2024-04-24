@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - 'main'
-      - 'NunoMars-patch-1'
+      - 'feat/actions'
       
         
 jobs:
