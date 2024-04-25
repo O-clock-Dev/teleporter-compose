@@ -23,6 +23,6 @@ COPY authorized_keys /root/.ssh/authorized_keys
 
 RUN chmod +x /opt/vpn/entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 
 CMD ["sleep","infinity"]
