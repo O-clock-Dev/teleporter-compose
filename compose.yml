@@ -8,6 +8,10 @@ include:
         - .env
         - vpn.env
 
+volumes:
+  mariadb_data:
+    driver: local
+
 networks:
   oclock:
     ipam:
