@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'feat/generate-docker-images'
+      - 'main'
     paths:
       - containers-config/templating-config/**
       
