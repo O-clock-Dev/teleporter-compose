@@ -3,6 +3,8 @@ name: Build and push templating-config container
 on:
   workflow_dispatch:
   push:
+    branches:
+      - 'feat/generate-docker-images'
     paths:
       - containers-config/templating-config/**
       
