@@ -72,7 +72,7 @@ services:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: root
     volumes:
-    - ${DATA_DIR}/mysql:/var/lib/mysql
+    - mariadb_data:/var/lib/mysql
     - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
     healthcheck:
       interval: 10s
