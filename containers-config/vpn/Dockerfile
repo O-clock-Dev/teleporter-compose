@@ -15,14 +15,13 @@ RUN set -x \
     && apt -y install docker-ce-cli \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt/vpn/
-
+WORKDIR /opt/vpn
 
 # Le but est de le remplacer a terme par un mount bind
-COPY entrypoint.sh /opt/vpn/
-COPY authorized_keys /root/authorized_keys
+COPY entrypoint.sh /opt/vpn/entrypoint.sh
+COPY authorized_keys /root/.ssh/authorized_keys
 
-
+RUN chmod +x /opt/vpn/entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
 
