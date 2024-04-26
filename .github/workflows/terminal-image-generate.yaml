@@ -1,4 +1,4 @@
-name: Build and push vpn container
+name: Build and push terminal container
 
 on:
   workflow_dispatch:
