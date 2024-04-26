@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 sleep 5s
 echo "Activation de l'interface wg0"
@@ -8,6 +8,7 @@ echo "Activation de l'IP ${IP_PRIV}"
 ip address add dev wg0 ${IP_PRIV}/${VPN_WILDCARD}
 echo "Activation du listen port"
 wg set wg0 listen-port 51820
+
 echo "Activation de la clé privée"
 echo ${KEY_PRIV} > privkey
 chmod 600 privkey

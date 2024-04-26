@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'feat/build-and-pull-last-images'
+      - 'main'
     paths:
       - containers-config/phpmyadmin/**
       
