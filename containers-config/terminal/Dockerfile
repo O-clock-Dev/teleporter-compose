@@ -14,6 +14,7 @@ RUN apt update \
         docker.io \
         coreutils \
         bash-completion \
+        mysql-client \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -24,6 +25,11 @@ RUN chmod +x /bin/teleport
 
 COPY ./scripts/teleport-autocomplete /etc/bash_completion.d/teleport_autocomplete
 RUN chmod +x /etc/bash_completion.d/teleport_autocomplete
+
+
+# Add MySQL credentials
+ARG MARIADB_ROOT_PASSWORD
+RUN echo "[client]\nhost=teleporter-mariadb\nuser=root\npassword=${MARIADB_ROOT_PASSWORD}" > .my.cnf
 
 # Theming
 RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" \

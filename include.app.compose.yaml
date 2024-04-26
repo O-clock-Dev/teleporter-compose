@@ -45,6 +45,8 @@ services:
     hostname: teleporter-terminal
     build:
       context: ./containers-config/terminal
+      args:
+        MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
     environment:
       TZ: ${TZ}
     ports:
