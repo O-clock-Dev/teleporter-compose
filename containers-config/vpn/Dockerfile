@@ -18,10 +18,8 @@ RUN set -x \
 WORKDIR /opt/vpn
 
 # Le but est de le remplacer a terme par un mount bind
-COPY entrypoint.sh /opt/vpn/entrypoint.sh
-COPY authorized_keys /root/.ssh/authorized_keys
+COPY containers-config/vpn/ .
 
-RUN chmod +x /opt/vpn/entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
 
