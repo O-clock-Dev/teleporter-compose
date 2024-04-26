@@ -7,34 +7,33 @@ services:
     container_name: teleporter-homepage
     hostname: teleporter-homepage
     image: ghcr.io/gethomepage/homepage:latest
-    command: ["sh","-c","/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
+    command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
     environment:
       HOMEPAGE_VAR_USER_NAME: "${FULL_NAME:-Téléporteur pas configuré !}"
       HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
       HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:-sans-vpn}"
     volumes:
-      - ./configs/homepage:/app/config
-      - ./configs/homepage/images:/app/public/images
-      - /var/run/docker.sock:/var/run/docker.sock
+    - ./configs/homepage:/app/config
+    - ./configs/homepage/images:/app/public/images
+    - /var/run/docker.sock:/var/run/docker.sock
     networks:
       oclock:
         ipv4_address: 10.200.0.203
     cap_add:
-      - NET_ADMIN
+    - NET_ADMIN
 
   # Browser
   filebrowser:
     container_name: teleporter-filebrowser
     hostname: teleporter-filebrowser
-    build:
-      context: ./containers-config/filebrowser
+    image: oclock/teleporter-filebrowser:latest
     environment:
       FB_NOAUTH: true
     restart: always
     volumes:
-      - "${CODE_DIR}:/srv/code"
-      - "${DATA_DIR}:/srv/data"
-      - "${CONFIG_DIR}:/srv/config"
+    - "${CODE_DIR}:/srv/code"
+    - "${DATA_DIR}:/srv/data"
+    - "${CONFIG_DIR}:/srv/config"
     networks:
       oclock:
         ipv4_address: 10.200.0.201
@@ -43,17 +42,16 @@ services:
   terminal:
     container_name: teleporter-terminal
     hostname: teleporter-terminal
-    build:
-      context: ./containers-config/terminal
+    image: oclock/teleporter-terminal:latest
     environment:
       TZ: ${TZ}
     ports:
-      - 81:7681
+    - 81:7681
     volumes:
-      - "${CODE_DIR}:/srv/code"
-      - "${DATA_DIR}:/srv/data"
-      - "${CONFIG_DIR}:/srv/config"
-      - /var/run/docker.sock:/var/run/docker.sock
+    - "${CODE_DIR}:/srv/code"
+    - "${DATA_DIR}:/srv/data"
+    - "${CONFIG_DIR}:/srv/config"
+    - /var/run/docker.sock:/var/run/docker.sock
     networks:
       oclock:
         ipv4_address: 10.200.0.202
@@ -73,12 +71,12 @@ services:
       retries: 3
       start_period: 20s
     ports:
-      - "8080:80"
+    - "8080:80"
     volumes:
-      - "${CODE_DIR}/www/public:/usr/share/caddy/"
-      - "${DATA_DIR}/caddyserver/data:/data"
-      - "${DATA_DIR}/caddyserver/config:/config"
-      - ./containers-config/caddyserver/Caddyfile:/etc/caddy/Caddyfile
+    - "${CODE_DIR}/www/public:/usr/share/caddy/"
+    - "${DATA_DIR}/caddyserver/data:/data"
+    - "${DATA_DIR}/caddyserver/config:/config"
+    - ./containers-config/caddyserver/Caddyfile:/etc/caddy/Caddyfile
     networks:
       oclock:
         ipv4_address: 10.200.0.10
@@ -86,7 +84,7 @@ services:
   # DBMS Access Adminer
   adminer:
     container_name: teleporter-adminer
-    hostname: teleporter-adminer 
+    hostname: teleporter-adminer
     image: adminer:4.8.1
     environment:
       ADMINER_DEFAULT_SERVER: mariadb
@@ -102,8 +100,7 @@ services:
   phpmyadmin:
     container_name: teleporter-phpmyadmin
     hostname: teleporter-phpmyadmin
-    build:
-      context: ./containers-config/phpmyadmin                                   
+    image: phpmyadmin/phpmyadmin:5.1.1
     environment:
       PMA_HOST: mariadb
       PMA_USER: root
@@ -118,8 +115,8 @@ services:
 
   # DBMS Access MongoExpress
   mongo-express:
-  # Be careful, the documentation on Docker Hub is outdated, use this one instead :
-  # https://github.com/mongo-express/mongo-express?tab=readme-ov-file#usage-docker
+    # Be careful, the documentation on Docker Hub is outdated, use this one instead :
+    # https://github.com/mongo-express/mongo-express?tab=readme-ov-file#usage-docker
     container_name: teleporter-mongo-express
     hostname: teleporter-mongo-express
     image: mongo-express:1.0.2-20-alpine3.19
@@ -148,8 +145,8 @@ services:
       VSCODE_EXTENSION_IDS: ${VSCODE_EXTENSIONS_LIST}
       DEFAULT_WORKSPACE: /code
     volumes:
-      - ${DATA_DIR}/configs/vscode:/config
-      - ${CODE_DIR}:/code
+    - ${DATA_DIR}/configs/vscode:/config
+    - ${CODE_DIR}:/code
     networks:
       oclock:
         ipv4_address: 10.200.0.14
