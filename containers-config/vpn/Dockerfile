@@ -10,3 +10,4 @@ COPY . .
 
 ENTRYPOINT ["./entrypoint.sh"]
 
+CMD ["sleep","infinity"]
