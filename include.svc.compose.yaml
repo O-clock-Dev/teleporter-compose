@@ -1,5 +1,4 @@
 # Teleporter Services
-
 services:
   # WireGuard VPN
   vpn:
@@ -15,9 +14,9 @@ services:
       VPN_WILDCARD: ${VPN_WILDCARD}
     restart: always
     ports:
-    - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
+      - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
     volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
     healthcheck:
       test: ["CMD", "ping", "-c1", "${VPN_PRIV_IP}", "-w1"]
       interval: 50s
@@ -29,20 +28,20 @@ services:
       oclock:
         ipv4_address: ${VPN_LOCAL_IP}
     cap_add:
-    - NET_ADMIN
-
+      - NET_ADMIN
   # AutoHeal Service
+
   autoheal:
     container_name: teleporter-autoheal
     hostname: teleporter-autoheal
     image: willfarrell/autoheal
     restart: always
     volumes:
-    - /etc/localtime:/etc/localtime:ro
-    - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     network_mode: none
-
   # Reverse Proxy
+
   reverse_proxy:
     container_name: teleporter-haproxy
     hostname: teleporter-haproxy"
@@ -51,18 +50,18 @@ services:
     restart: always
     user: root
     ports:
-    - "80:80"
+      - "80:80"
     volumes:
-    - ./configs/haproxy:/usr/local/etc/haproxy
+      - ./configs/haproxy:/usr/local/etc/haproxy
     networks:
       oclock:
         ipv4_address: 10.200.0.200
     depends_on:
-    - templating-config
+      - templating-config
     cap_add:
-    - NET_ADMIN
-
+      - NET_ADMIN
   # DBMS MariaDB
+
   mariaDB:
     container_name: teleporter-mariaDB
     hostname: teleporter-mariaDB
@@ -72,8 +71,8 @@ services:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: root
     volumes:
-    - mariadb_data:/var/lib/mysql
-    - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
+      - mariadb_data:/var/lib/mysql
+      - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
     healthcheck:
       interval: 10s
       retries: 5
@@ -82,8 +81,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.11
-
   # DBMS MongoDB
+
   mongodb:
     container_name: teleporter-mongodb
     hostname: teleporter-mongodb
@@ -96,8 +95,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.15
-
   # DBMS PostgreSQL
+
   postgreSQL:
     container_name: teleporter-postgres
     hostname: teleporter-postgres
@@ -109,34 +108,34 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.17
-
   # NodeJS
+
   node:
     container_name: teleporter-node
     hostname: teleporter-node
     image: node:20
     command: sleep infinity
     ports:
-    - "3000-3100:3000-3100"
-    - "3999:3999"
+      - "3000-3100:3000-3100"
+      - "3999:3999"
     volumes:
-    - ./code/node:/code/node
+      - ./code/node:/code/node
     networks:
       oclock:
         ipv4_address: 10.200.0.19
-
   # PHP
+
   php:
     container_name: teleporter-php
     hostname: teleporter-php
     image: php:8.3-fpm-alpine
     volumes:
-    - "${CODE_DIR}/www/public:/usr/share/caddy/"
+      - "${CODE_DIR}/www/public:/usr/share/caddy/"
     networks:
       oclock:
         ipv4_address: 10.200.0.20
-
   # Template Config
+
   templating-config:
     container_name: teleporter-templating-config
     image: oclock/teleporter-templating-config:latest
@@ -144,6 +143,6 @@ services:
       IP_PRIV: ${IP_PRIV}
       VPN_NAME: ${VPN_NAME}
     volumes:
-    - ${CONFIG_DIR}/:/app/configs/
+      - ${CONFIG_DIR}/:/app/configs/
     networks:
-    - oclock
+      - oclock
