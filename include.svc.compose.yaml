@@ -139,7 +139,7 @@ services:
   # Template Config
   templating-config:
     container_name: teleporter-templating-config
-    image: nunoloupy/teleporter-templating-config:latest
+    image: oclock/teleporter-templating-config:latest
     environment:
       IP_PRIV: ${IP_PRIV}
       VPN_NAME: ${VPN_NAME}
