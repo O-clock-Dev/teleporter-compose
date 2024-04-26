@@ -1,12 +1,12 @@
-name: Build and push templating-config container
+name: Build and push phpmyadmin container
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - 'main'
+      - 'feat/build-and-pull-last-images'
     paths:
-      - containers-config/templating-config/**
+      - containers-config/phpmyadmin/**
       
         
 jobs:
@@ -33,7 +33,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./containers-config/templating-config/
+          context: ./containers-config/phpmyadmin/
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-templating-config:latest
+          tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-phpmyadmin:latest
