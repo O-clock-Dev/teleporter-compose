@@ -6,7 +6,7 @@ configs/haproxy/haproxy.cfg
 
 configs/homepage/bookmarks.yaml
 node_modules
-vpn.env
+vpn.env*
 .swp
 .env*
 containers-config/templating-config/__pycache__
