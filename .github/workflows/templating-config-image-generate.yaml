@@ -1,10 +1,12 @@
-name: Build and push vpn container
+name: Build and push templating-config container
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - 'feat/actions'
+      - 'main'
+    paths:
+      - containers-config/templating-config/**
       
         
 jobs:
@@ -31,7 +33,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./containers-config/vpn/
+          context: ./containers-config/templating-config/
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: nunoloupy/teleporter-vpn:latest
+          tags: nunoloupy/teleporter-templating-config:latest
