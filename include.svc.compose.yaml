@@ -5,7 +5,7 @@ services:
   vpn:
     container_name: teleporter-vpn
     hostname: teleporter-vpn
-    image: oclock/teleporter-vpn:latest
+    image: nunoloupy/teleporter-vpn:latest
     environment:
       KEY_PRIV: ${KEY_PRIV}
       KEY_VPN_SERVER: ${KEY_VPN_SERVER}
@@ -139,7 +139,7 @@ services:
   # Template Config
   templating-config:
     container_name: teleporter-templating-config
-    image: oclock/teleporter-templating-config:latest
+    image: nunoloupy/teleporter-templating-config:latest
     environment:
       IP_PRIV: ${IP_PRIV}
       VPN_NAME: ${VPN_NAME}
