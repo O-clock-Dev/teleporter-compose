@@ -7,8 +7,7 @@ on:
       - 'main'
     paths:
       - containers-config/terminal/**
-      
-        
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -17,7 +16,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-          
+
+      - name: Dotenv Action
+        uses: falti/dotenv-action@v1.1.2
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -29,7 +31,7 @@ jobs:
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -37,3 +39,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-terminal:latest
+          build-args: |
+            MARIADB_ROOT_PASSWORD=${{ steps.dotenv.outputs.MARIADB_ROOT_PASSWORD }}
