@@ -19,6 +19,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --no-cache-dir pywal
+
 # Copy our scripts
 COPY ./scripts/teleport /bin/teleport
 RUN chmod +x /bin/teleport
@@ -26,16 +27,13 @@ RUN chmod +x /bin/teleport
 COPY ./scripts/teleport-autocomplete /etc/bash_completion.d/teleport_autocomplete
 RUN chmod +x /etc/bash_completion.d/teleport_autocomplete
 
-
-# Add MySQL credentials
-ARG MARIADB_ROOT_PASSWORD
-RUN echo "[client]\nhost=teleporter-mariadb\nuser=root\npassword=${MARIADB_ROOT_PASSWORD}" > .my.cnf
-
 # Theming
 RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" \
     && sed -i '/OSH_THEME=/s/.*/OSH_THEME="cupcake"/' /root/.bashrc \
     && sed -i 's/\\W/\\w/' /root/.oh-my-bash/themes/cupcake/cupcake.theme.sh \
     && wal --theme base16-dracula
 COPY config/default.bashrc /root/.bashrc
-CMD "/usr/bin/ttyd" "-t" "fontSize=16" "-t" "titleFixed='Terminal'" "-W" "bash" 
-    
+
+# Entrypoint
+COPY entrypoint.sh ./entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]

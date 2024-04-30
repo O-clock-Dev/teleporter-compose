@@ -17,10 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Dotenv Action
-        id: dotenv
-        uses: falti/dotenv-action@v1.1.2
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -40,5 +36,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-terminal:latest
-          build-args: |
-            MARIADB_ROOT_PASSWORD=${{ steps.dotenv.outputs.MARIADB_ROOT_PASSWORD }}

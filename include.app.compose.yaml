@@ -45,6 +45,7 @@ services:
     image: oclock/teleporter-terminal:latest
     environment:
       TZ: ${TZ}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
     ports:
     - 81:7681
     volumes:
