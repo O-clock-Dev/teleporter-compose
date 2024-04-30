@@ -13,14 +13,14 @@ services:
       HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
       HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:-sans-vpn}"
     volumes:
-    - ./configs/homepage:/app/config
-    - ./configs/homepage/images:/app/public/images
-    - /var/run/docker.sock:/var/run/docker.sock
+      - ./configs/homepage:/app/config
+      - ./configs/homepage/images:/app/public/images
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       oclock:
         ipv4_address: 10.200.0.203
     cap_add:
-    - NET_ADMIN
+      - NET_ADMIN
 
   # Browser
   filebrowser:
@@ -31,9 +31,9 @@ services:
       FB_NOAUTH: true
     restart: always
     volumes:
-    - "${CODE_DIR}:/srv/code"
-    - "${DATA_DIR}:/srv/data"
-    - "${CONFIG_DIR}:/srv/config"
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
     networks:
       oclock:
         ipv4_address: 10.200.0.201
@@ -46,12 +46,12 @@ services:
     environment:
       TZ: ${TZ}
     ports:
-    - 81:7681
+      - 81:7681
     volumes:
-    - "${CODE_DIR}:/srv/code"
-    - "${DATA_DIR}:/srv/data"
-    - "${CONFIG_DIR}:/srv/config"
-    - /var/run/docker.sock:/var/run/docker.sock
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       oclock:
         ipv4_address: 10.200.0.202
@@ -71,12 +71,12 @@ services:
       retries: 3
       start_period: 20s
     ports:
-    - "8080:80"
+      - "8080:80"
     volumes:
-    - "${CODE_DIR}/www/public:/usr/share/caddy/"
-    - "${DATA_DIR}/caddyserver/data:/data"
-    - "${DATA_DIR}/caddyserver/config:/config"
-    - ./containers-config/caddyserver/Caddyfile:/etc/caddy/Caddyfile
+      - "${CODE_DIR}/www/public:/usr/share/caddy/"
+      - "${DATA_DIR}/caddyserver/data:/data"
+      - "${DATA_DIR}/caddyserver/config:/config"
+      - ./containers-config/caddyserver/Caddyfile:/etc/caddy/Caddyfile
     networks:
       oclock:
         ipv4_address: 10.200.0.10
@@ -145,8 +145,8 @@ services:
       VSCODE_EXTENSION_IDS: ${VSCODE_EXTENSIONS_LIST}
       DEFAULT_WORKSPACE: /code
     volumes:
-    - ${DATA_DIR}/configs/vscode:/config
-    - ${CODE_DIR}:/code
+      - ${DATA_DIR}/configs/vscode:/config
+      - ${CODE_DIR}:/code
     networks:
       oclock:
         ipv4_address: 10.200.0.14
