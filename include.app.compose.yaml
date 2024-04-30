@@ -1,5 +1,7 @@
 # Teleporter Applications
+
 services:
+
   # Dashboard
   homepage:
     container_name: teleporter-homepage
@@ -19,8 +21,8 @@ services:
         ipv4_address: 10.200.0.203
     cap_add:
       - NET_ADMIN
-  # Browser
 
+  # Browser
   filebrowser:
     container_name: teleporter-filebrowser
     hostname: teleporter-filebrowser
@@ -35,8 +37,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.201
-  # Terminal
 
+  # Terminal
   terminal:
     container_name: teleporter-terminal
     hostname: teleporter-terminal
@@ -53,8 +55,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.202
-  # WebServer
 
+  # WebServer
   caddyserver:
     container_name: teleporter-caddyserver
     hostname: teleporter-caddyserver
@@ -78,8 +80,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.10
-  # DBMS Access Adminer
 
+  # DBMS Access Adminer
   adminer:
     container_name: teleporter-adminer
     hostname: teleporter-adminer
@@ -93,8 +95,8 @@ services:
     depends_on:
       mariaDB:
         condition: service_healthy
-  # DBMS Access PHPmyAdmin
 
+  # DBMS Access PHPmyAdmin
   phpmyadmin:
     container_name: teleporter-phpmyadmin
     hostname: teleporter-phpmyadmin
@@ -110,8 +112,8 @@ services:
     depends_on:
       mariaDB:
         condition: service_healthy
-  # DBMS Access MongoExpress
 
+  # DBMS Access MongoExpress
   mongo-express:
     # Be careful, the documentation on Docker Hub is outdated, use this one instead :
     # https://github.com/mongo-express/mongo-express?tab=readme-ov-file#usage-docker
@@ -128,8 +130,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.16
-  # VSCode
 
+  # VSCode
   vscode-server:
     container_name: teleporter-vscode
     hostname: teleporter-vscode

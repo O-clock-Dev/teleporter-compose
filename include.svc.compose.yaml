@@ -1,5 +1,7 @@
 # Teleporter Services
+
 services:
+
   # WireGuard VPN
   vpn:
     container_name: teleporter-vpn
@@ -29,8 +31,8 @@ services:
         ipv4_address: ${VPN_LOCAL_IP}
     cap_add:
       - NET_ADMIN
-  # AutoHeal Service
 
+  # AutoHeal Service
   autoheal:
     container_name: teleporter-autoheal
     hostname: teleporter-autoheal
@@ -40,8 +42,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
     network_mode: none
-  # Reverse Proxy
 
+  # Reverse Proxy
   reverse_proxy:
     container_name: teleporter-haproxy
     hostname: teleporter-haproxy"
@@ -60,8 +62,8 @@ services:
       - templating-config
     cap_add:
       - NET_ADMIN
-  # DBMS MariaDB
 
+  # DBMS MariaDB
   mariaDB:
     container_name: teleporter-mariaDB
     hostname: teleporter-mariaDB
@@ -81,8 +83,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.11
-  # DBMS MongoDB
 
+  # DBMS MongoDB
   mongodb:
     container_name: teleporter-mongodb
     hostname: teleporter-mongodb
@@ -95,8 +97,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.15
-  # DBMS PostgreSQL
 
+  # DBMS PostgreSQL
   postgreSQL:
     container_name: teleporter-postgres
     hostname: teleporter-postgres
@@ -108,8 +110,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.17
-  # NodeJS
 
+  # NodeJS
   node:
     container_name: teleporter-node
     hostname: teleporter-node
@@ -123,8 +125,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.19
-  # PHP
 
+  # PHP
   php:
     container_name: teleporter-php
     hostname: teleporter-php
@@ -134,8 +136,8 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.20
-  # Template Config
 
+  # Template Config
   templating-config:
     container_name: teleporter-templating-config
     image: oclock/teleporter-templating-config:latest
