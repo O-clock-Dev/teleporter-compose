@@ -35,5 +35,5 @@ RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master
 COPY config/default.bashrc /root/.bashrc
 
 # Entrypoint
-COPY entrypoint.sh ./entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
