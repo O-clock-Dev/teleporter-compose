@@ -13,7 +13,7 @@ frontend public
 {% for client_name, client_ip in clients %}
         use_backend     {{client_name}}.localhost if { hdr(host) -i {{client_name}}.localhost }
 {% endfor %}
-        use_backend     caddyserver if { path_beg /caddyserver }
+        use_backend     caddyserver if { hdr_beg(host) -i www }
         use_backend     vscode-server if { path_beg /vscode }
         use_backend     phpmyadmin if { path_beg /phpmyadmin }
         use_backend     filebrowser if { path_beg /file-browser }
