@@ -11,7 +11,7 @@ services:
     environment:
       HOMEPAGE_VAR_USER_NAME: "${FULL_NAME:-Téléporteur pas configuré !}"
       HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
-      HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:myself}"
+      HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:-myself}"
     volumes:
       - ./configs/homepage:/app/config
       - ./configs/homepage/images:/app/public/images
