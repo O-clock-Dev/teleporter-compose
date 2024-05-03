@@ -6,7 +6,9 @@ services:
   vpn:
     container_name: teleporter-vpn
     hostname: teleporter-vpn
-    image: oclock/teleporter-vpn:latest
+    build:
+      context: ./containers-config/vpn
+      #image: oclock/teleporter-vpn:latest
     environment:
       KEY_PRIV: ${KEY_PRIV}
       KEY_VPN_SERVER: ${KEY_VPN_SERVER}
