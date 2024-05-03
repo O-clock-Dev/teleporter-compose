@@ -1,9 +1,5 @@
 #!/bin/sh
 
-
-# Should be removed when issue #9 on vpn-compose will be fixed.
-VPN_SERVER_PORT=${VPN_LOCAL_PORT}
-
 sleep 5s
 echo "Activation de l'interface wg0"
 ip link add dev wg0 type wireguard
