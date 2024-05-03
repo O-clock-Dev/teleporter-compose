@@ -13,6 +13,8 @@ services:
       IP_PRIV: ${IP_PRIV}
       VPN_SERVER: ${VPN_SERVER}
       VPN_LOCAL_PORT: ${VPN_LOCAL_PORT}
+      # Should be switched to VPN_SERVER_PORT when issue#6 is done on vpn-compose project
+      VPN_SERVER_PORT: ${VPN_LOCAL_PORT}
       VPN_WILDCARD: ${VPN_WILDCARD}
     restart: always
     ports:
