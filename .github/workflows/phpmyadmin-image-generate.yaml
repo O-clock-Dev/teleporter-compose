@@ -36,4 +36,4 @@ jobs:
           context: ./containers-config/phpmyadmin/
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-phpmyadmin:latest
+          tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-phpmyadmin:${{ github.sha }}
