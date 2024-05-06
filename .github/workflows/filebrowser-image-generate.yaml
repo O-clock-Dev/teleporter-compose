@@ -36,4 +36,4 @@ jobs:
           context: ./containers-config/filebrowser/
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-filebrowser:latest
+          tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-filebrowser:${{ github.sha }}
