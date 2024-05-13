@@ -68,8 +68,8 @@
     - Caddy:
         description: Sert le code situé dans le dossier /code/www/public en utilisant Caddy
         icon: si-caddy
-        href: ./caddyserver
-        ping: http://localhost/caddyserver
+        href: http://caddy.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
+        ping: http://caddy.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
         #container: teleporter-caddyserver
     - PHP:
         description: PHP-FPM 8.3
