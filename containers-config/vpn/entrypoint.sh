@@ -30,6 +30,7 @@ iptables -t nat -I POSTROUTING -o wg0 -j MASQUERADE
 
 # The run the only service of this container : ssh
 chmod 600 /root/.ssh/authorized_keys
-mkdir -p /run/sshd
+mkdir -p /run/sshd && chmod 0755 /run/sshd
+
 ssh-keygen -A
 /usr/sbin/sshd -D -e -f /etc/ssh/sshd_config -o PermitRootLogin=yes
