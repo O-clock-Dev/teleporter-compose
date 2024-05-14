@@ -252,9 +252,11 @@ VPN_SERVER_PORT=44222
 VPN_LOCAL_PORT=44222
 ```
 
-> [!CAUTION] Ensure that this file is properly configured with your own details and stored securely, as it contains sensitive information needed to establish a secure VPN connection.
+> [!CAUTION]
+> Ensure that this file is properly configured with your own details and stored securely, as it contains sensitive information needed to establish a secure VPN connection.
 
-> [!NOTE] This configuration is necessary to customize the names displayed on the Teleporter Compose homepage interface.
+> [!NOTE] 
+> This configuration is necessary to customize the names displayed on the Teleporter Compose homepage interface.
 
 ## Volumes
 
