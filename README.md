@@ -173,9 +173,9 @@ Below is a list of the containers configured for this project, divided into appl
     cd teleporter-compose
     ```
 
-2. Build and start the containers:
+2. Start the containers:
     ```bash
-    docker-compose up --build
+    docker-compose up
     ```
 
 ## Usage
