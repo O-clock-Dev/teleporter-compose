@@ -14,6 +14,7 @@ frontend public
         use_backend     {{client_name}}.localhost if { hdr_end(host) -i {{client_name}}.localhost }
 {% endfor %}
         use_backend     caddyserver if { hdr_beg(host) -i caddy }
+        use_backend     node3000 if { hdr_beg(host) -i node3000 }
         use_backend     vscode-server if { path_beg /vscode }
         use_backend     phpmyadmin if { path_beg /phpmyadmin }
         use_backend     filebrowser if { path_beg /file-browser }
@@ -50,6 +51,18 @@ backend caddyserver
         timeout server  5s
         #option httpchk  HEAD /favicon.ico
         server          caddyserver 10.200.0.10:80 check inter 1000
+
+backend node3000
+        mode            http
+        balance         roundrobin
+        option prefer-last-server
+        retries         2
+        option redispatch
+        timeout connect 5s
+        timeout server  5s
+        #option httpchk  HEAD /favicon.ico
+        server          node3000 10.200.0.202:3000 check inter 1000
+
 
 # the application servers go here :
 backend adminer

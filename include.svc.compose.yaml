@@ -114,14 +114,13 @@ services:
         ipv4_address: 10.200.0.17
 
   # NodeJS
-  node:
-    container_name: teleporter-node
-    hostname: teleporter-node
+  node3000:
+    container_name: teleporter-node3000
+    hostname: teleporter-node3000
     image: node:20
     command: sleep infinity
     ports:
-      - "3000-3100:3000-3100"
-      - "3999:3999"
+      - "3000"
     volumes:
       - ./code/node:/code/node
     networks:
