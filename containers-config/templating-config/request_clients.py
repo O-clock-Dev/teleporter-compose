@@ -1,4 +1,5 @@
 import os
+import docker
 import requests
 from jinja2 import Template
 from logs_config import (
@@ -71,7 +72,15 @@ def create_haproxy_config(clients):
             f"Erreur lors de l'écriture du fichier de configuration HAProxy : {e}"
         )
         exit(1)
-
+    try:
+        d_cli = docker.from_env()
+        ct = d_cli.containers.get('teleporter-haproxy')
+        ct.restart()
+    except Exception as e:
+        logger.error(
+            f"Erreur lors du reload haproxy : {e}"
+        )
+        exit(1)
 
 def prepare_clients_list_to_bookmarks(clients):
     """Préparer la liste des clients VPN pour la page d'accueil"""
