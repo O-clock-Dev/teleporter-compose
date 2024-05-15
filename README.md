@@ -9,7 +9,7 @@
 - Docker
 - Docker Compose [`>=2.20.3`](https://docs.docker.com/compose/multiple-compose-files/include/)
 
-> ![TIP]
+> [!TIP]
 > For our educational purposes, we are using [Docker Desktop](https://www.docker.com/products/docker-desktop/), which is available on Linux, macOS (Intel & Apple Silicon chips), and Windows. An alternative could be [Podman Desktop](https://podman-desktop.io/), although it remains untested at the moment.
 
 ## Features
