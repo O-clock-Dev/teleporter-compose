@@ -14,7 +14,7 @@
 
 ## Features
 
-This project leverages Docker Compose to manage various applications and services, all of which are accessible via a centralized homepage at localhost. This homepage not only provides access to the different web services hosted by the Compose setup but also monitors and displays the status of launched and usable servers (e.g., PHP, MariaDB).
+This project leverages Docker Compose to manage various applications and services, all of which are accessible via a **centralized homepage at localhost**. This homepage not only provides access to the different web services hosted by the Compose setup but also monitors and displays the status of launched and usable servers (e.g., PHP, MariaDB).
 
 Below is a list of the containers configured for this project, divided into application containers and service containers.
 
@@ -240,6 +240,9 @@ The `.env` file allows you to configure various aspects of the development and p
 
 ### VPN Configuration
 
+> [!NOTE]
+> This configuration is necessary to customize the names displayed on the Teleporter Compose homepage interface.
+
 To access the VPN functionality of the VPN container (WireGuard), you need to generate a `vpn.env` file yourself. Below is an example of what the `vpn.env` file might look like (do not include the actual values or change them):
 
 ```bash
@@ -259,9 +262,6 @@ VPN_LOCAL_PORT=44222
 
 > [!CAUTION]
 > Ensure that this file is properly configured with your own details and stored securely, as it contains sensitive information needed to establish a secure VPN connection.
-
-> [!NOTE] 
-> This configuration is necessary to customize the names displayed on the Teleporter Compose homepage interface.
 
 ## Volumes
 
