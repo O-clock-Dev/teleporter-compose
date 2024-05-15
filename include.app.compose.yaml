@@ -52,6 +52,8 @@ services:
       - "${CODE_DIR}:/srv/code"
       - "${DATA_DIR}:/srv/data"
       - "${CONFIG_DIR}:/srv/config"
+      - "${CONFIG_DIR}/terminal/oh-my-bash/:/root/.oh-my-bash/custom/"
+      - "${CONFIG_DIR}/terminal/.bashrc:/root/.bashrc"
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       oclock:

@@ -76,3 +76,10 @@
         icon: si-php
         statusStyle: basic
         container: teleporter-php
+    - Node:
+        description: Node port 3000
+        icon: si-nodejs
+        statusStyle: basic
+        href: http://node3000.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
+        ping: http://node3000.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
+
