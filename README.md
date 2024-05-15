@@ -279,4 +279,4 @@ Contributions are welcome! Please follow the steps below to contribute:
 
 ## License
 
-This project is licensed under the AGPLv3 License. See the [LICENSE](LICENCE) file for more details.
+This project is licensed under the AGPLv3 License. See the [LICENSE](LICENSE) file for more details.
