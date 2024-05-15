@@ -180,7 +180,7 @@ Below is a list of the containers configured for this project, divided into appl
 
 2. Start the containers:
     ```bash
-    docker-compose up
+    docker compose up
     ```
 
 ## Usage
@@ -189,7 +189,7 @@ Below is a list of the containers configured for this project, divided into appl
 
 To start the containers, use the following command:
 ```bash
-docker-compose up
+docker compose up
 ```
 
 ### Stopping the Containers
@@ -197,7 +197,7 @@ docker-compose up
 To stop the containers, use the following command:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Recreating the Containers
@@ -205,7 +205,7 @@ docker-compose down
 If you need to recreate the containers (for example, after a configuration change), use the following command:
 
 ```bash
-docker-compose up --force-recreate
+docker compose up --force-recreate
 ```
 
 ### Project Structure
