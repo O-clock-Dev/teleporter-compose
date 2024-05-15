@@ -6,7 +6,7 @@
 Bienvenue dans la documentation de **Teleporte Compose**. Vous trouverez ici toutes les informations dont vous avez besoin pour comprendre, installer et utiliser ce projet.
 
 > [!IMPORTANT]  
-> Notre documentation est un travail en cours. Soyez patient ou n'hésitez pas à [contribuer](#contribute).
+> Notre documentation est un travail en cours. Soyez patient ou n'hésitez pas à [contribuer](#contribuer).
 
 ## Table des matières
 
@@ -14,7 +14,7 @@ Bienvenue dans la documentation de **Teleporte Compose**. Vous trouverez ici tou
 2. [Installation](#installation)
 3. [Utilisation](#utilisation)
 4. [Contribuer](#contribuer)
-5. [Licence](#license)
+5. [Licence](#licence)
 
 ## Introduction
 
