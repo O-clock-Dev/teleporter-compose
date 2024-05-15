@@ -14,7 +14,7 @@
 
 ## Features
 
-This project leverages Docker Compose to manage various applications and services, all of which are accessible via a centralized homepage at localhost. This homepage not only provides access to the different web services hosted by the Compose setup but also monitors and displays the status of launched and usable servers (e.g., PHP, MariaDB).
+This project leverages Docker Compose to manage various applications and services, all of which are accessible via a **centralized homepage at localhost**. This homepage not only provides access to the different web services hosted by the Compose setup but also monitors and displays the status of launched and usable servers (e.g., PHP, MariaDB).
 
 Below is a list of the containers configured for this project, divided into application containers and service containers.
 
@@ -180,7 +180,7 @@ Below is a list of the containers configured for this project, divided into appl
 
 2. Start the containers:
     ```bash
-    docker-compose up
+    docker compose up
     ```
 
 ## Usage
@@ -189,7 +189,7 @@ Below is a list of the containers configured for this project, divided into appl
 
 To start the containers, use the following command:
 ```bash
-docker-compose up
+docker compose up
 ```
 
 ### Stopping the Containers
@@ -197,7 +197,7 @@ docker-compose up
 To stop the containers, use the following command:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Recreating the Containers
@@ -205,7 +205,7 @@ docker-compose down
 If you need to recreate the containers (for example, after a configuration change), use the following command:
 
 ```bash
-docker-compose up --force-recreate
+docker compose up --force-recreate
 ```
 
 ### Project Structure
@@ -240,6 +240,9 @@ The `.env` file allows you to configure various aspects of the development and p
 
 ### VPN Configuration
 
+> [!NOTE]
+> This configuration is necessary to customize the names displayed on the Teleporter Compose homepage interface.
+
 To access the VPN functionality of the VPN container (WireGuard), you need to generate a `vpn.env` file yourself. Below is an example of what the `vpn.env` file might look like (do not include the actual values or change them):
 
 ```bash
@@ -260,9 +263,6 @@ VPN_LOCAL_PORT=44222
 > [!CAUTION]
 > Ensure that this file is properly configured with your own details and stored securely, as it contains sensitive information needed to establish a secure VPN connection.
 
-> [!NOTE] 
-> This configuration is necessary to customize the names displayed on the Teleporter Compose homepage interface.
-
 ## Volumes
 
 Volumes are used to persist data between container restarts. You can configure volumes in the compose files.
@@ -279,4 +279,4 @@ Contributions are welcome! Please follow the steps below to contribute:
 
 ## License
 
-This project is licensed under the AGPLv3 License. See the [LICENSE](LICENCE) file for more details.
+This project is licensed under the AGPLv3 License. See the [LICENSE](LICENSE) file for more details.
