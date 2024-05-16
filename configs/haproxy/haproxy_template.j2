@@ -15,6 +15,9 @@ frontend public
 {% endfor %}
         use_backend     caddyserver if { hdr_beg(host) -i caddy }
         use_backend     node3000 if { hdr_beg(host) -i node3000 }
+        use_backend     node3001 if { hdr_beg(host) -i node3001 }
+        use_backend     node3002 if { hdr_beg(host) -i node3002 }
+        use_backend     node3003 if { hdr_beg(host) -i node3003 }
         use_backend     vscode-server if { path_beg /vscode }
         use_backend     phpmyadmin if { path_beg /phpmyadmin }
         use_backend     filebrowser if { path_beg /file-browser }
@@ -24,7 +27,7 @@ frontend public
         use_backend     pgadmin if { path_beg /pgadmin }
         default_backend homepage
         errorfiles myerrors
-        http-response return status 503 default-errorfiles if { status 503 }
+        #http-response return status 503 default-errorfiles if { status 503 }
 
 http-errors myerrors
 	errorfile 503 /usr/local/etc/haproxy/errors/503-custom.http
@@ -54,14 +57,16 @@ backend caddyserver
 
 backend node3000
         mode            http
-        balance         roundrobin
-        option prefer-last-server
-        retries         2
-        option redispatch
-        timeout connect 5s
-        timeout server  5s
-        #option httpchk  HEAD /favicon.ico
-        server          node3000 10.200.0.202:3000 check inter 1000
+        server          node3000 10.200.0.202:3000
+backend node3001
+        mode            http
+        server          node3000 10.200.0.202:3001
+backend node3002
+        mode            http
+        server          node3000 10.200.0.202:3002
+backend node3003
+        mode            http
+        server          node3000 10.200.0.202:3003
 
 
 # the application servers go here :

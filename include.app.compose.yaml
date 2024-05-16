@@ -46,8 +46,6 @@ services:
     environment:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-    ports:
-      - 81:7681
     volumes:
       - "${CODE_DIR}:/srv/code"
       - "${DATA_DIR}:/srv/data"
@@ -73,8 +71,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 20s
-    ports:
-      - "8080:80"
     volumes:
       - "${CODE_DIR}/www/public:/usr/share/caddy/"
       - "${DATA_DIR}/caddyserver/data:/data"
