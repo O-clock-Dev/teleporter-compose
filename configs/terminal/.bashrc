@@ -1,4 +1,4 @@
- Enable the subsequent settings only in interactive sessions
+# Enable the subsequent settings only in interactive sessions
 case $- in
   *i*) ;;
     *) return;;
@@ -9,7 +9,8 @@ export OSH='/root/.oh-my-bash'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="cupcake"
+#OSH_THEME="cupcake"
+OSH_THEME="powerline-icon"
 
 # If you set OSH_THEME to "random", you can ignore themes you don't like.
 # OMB_THEME_RANDOM_IGNORED=("powerbash10k" "wanelo")
@@ -95,7 +96,6 @@ completions=(
 # Add wisely, as too many aliases slow down shell startup.
 aliases=(
   general
-  node
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -143,4 +143,5 @@ source "$OSH"/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
-cat ~/.cache/wal/sequences
+#cat ~/.cache/wal/sequences
+cd /srv/code

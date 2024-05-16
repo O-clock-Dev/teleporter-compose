@@ -8,6 +8,8 @@ RUN apt update \
         vim \
         git \
         wget \
+        curl \
+        gnupg2 \
         update-motd \
         htop \
         iputils-ping \
@@ -17,6 +19,12 @@ RUN apt update \
         mysql-client \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+    echo "deb https://deb.nodesource.com/node_20.x bullseye main" | tee /etc/apt/sources.list.d/nodesource.list
+
+RUN apt-get update && apt-get install -y nodejs && npm install -g n && \
+    rm -rf /var/lib/apt/lists/* && rm -rf /tmp/* && apt-get clean
 
 RUN pip3 install --no-cache-dir pywal
 
@@ -28,11 +36,11 @@ COPY ./scripts/teleport-autocomplete /etc/bash_completion.d/teleport_autocomplet
 RUN chmod +x /etc/bash_completion.d/teleport_autocomplete
 
 # Theming
-RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" \
-    && sed -i '/OSH_THEME=/s/.*/OSH_THEME="cupcake"/' /root/.bashrc \
-    && sed -i 's/\\W/\\w/' /root/.oh-my-bash/themes/cupcake/cupcake.theme.sh \
-    && wal --theme base16-dracula
-COPY config/default.bashrc /root/.bashrc
+RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" 
+#    && sed -i '/OSH_THEME=/s/.*/OSH_THEME="cupcake"/' /root/.bashrc \
+#    && sed -i 's/\\W/\\w/' /root/.oh-my-bash/themes/cupcake/cupcake.theme.sh \
+#    && wal --theme base16-dracula
+#COPY config/default.bashrc /root/.bashrc
 
 # Entrypoint
 COPY entrypoint.sh /entrypoint.sh
