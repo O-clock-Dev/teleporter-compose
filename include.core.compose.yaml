@@ -1,6 +1,65 @@
-# Teleporter Services
+# Teleporter Core Containers
 
 services:
+
+  # Dashboard
+  homepage:
+    container_name: teleporter-homepage
+    hostname: teleporter-homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
+    environment:
+      HOMEPAGE_VAR_USER_NAME: "${FULL_NAME:-Téléporteur pas configuré !}"
+      HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
+      HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:-myself}"
+    volumes:
+      - ./configs/homepage:/app/config
+      - ./configs/homepage/images:/app/public/images
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.203
+    cap_add:
+      - NET_ADMIN
+
+  # Reverse Proxy
+  reverse_proxy:
+    container_name: teleporter-haproxy
+    hostname: teleporter-haproxy"
+    image: haproxy:lts-alpine
+    command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && haproxy -W -db -f /usr/local/etc/haproxy/haproxy.cfg"]
+    restart: always
+    user: root
+    ports:
+      - "80:80"
+    volumes:
+      - ./configs/haproxy:/usr/local/etc/haproxy
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.200
+    depends_on:
+      - templating-config
+    cap_add:
+      - NET_ADMIN
+
+  # Terminal
+  terminal:
+    container_name: teleporter-terminal
+    hostname: teleporter-terminal
+    image: oclock/teleporter-terminal:4697a3dd2aa01b9d40a741da0d6fe270fe379fa0
+    environment:
+      TZ: ${TZ}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    volumes:
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
+      - "${CONFIG_DIR}/terminal/oh-my-bash/:/root/.oh-my-bash/custom/"
+      - "${CONFIG_DIR}/terminal/.bashrc:/root/.bashrc"
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.202
 
   # WireGuard VPN
   vpn:
@@ -34,6 +93,22 @@ services:
     cap_add:
       - NET_ADMIN
 
+  # Browser
+  filebrowser:
+    container_name: teleporter-filebrowser
+    hostname: teleporter-filebrowser
+    image: oclock/teleporter-filebrowser:latest
+    environment:
+      FB_NOAUTH: true
+    restart: always
+    volumes:
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.201
+
   # AutoHeal Service
   autoheal:
     container_name: teleporter-autoheal
@@ -44,85 +119,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
     network_mode: none
-
-  # Reverse Proxy
-  reverse_proxy:
-    container_name: teleporter-haproxy
-    hostname: teleporter-haproxy"
-    image: haproxy:lts-alpine
-    command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && haproxy -W -db -f /usr/local/etc/haproxy/haproxy.cfg"]
-    restart: always
-    user: root
-    ports:
-      - "80:80"
-    volumes:
-      - ./configs/haproxy:/usr/local/etc/haproxy
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.200
-    depends_on:
-      - templating-config
-    cap_add:
-      - NET_ADMIN
-
-  # DBMS MariaDB
-  mariaDB:
-    container_name: teleporter-mariaDB
-    hostname: teleporter-mariaDB
-    image: mariadb:11.3.2
-    environment:
-      LANG: ${LANG}
-      TZ: ${TZ}
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-    volumes:
-      - mariadb_data:/var/lib/mysql
-      - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
-    healthcheck:
-      interval: 10s
-      retries: 5
-      test: ["CMD", "healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized"]
-      timeout: 30s
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.11
-
-  # DBMS MongoDB
-  mongodb:
-    container_name: teleporter-mongodb
-    hostname: teleporter-mongodb
-    image: mongo:7.0
-    environment:
-      LANG: ${LANG}
-      TZ: ${TZ}
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.15
-
-  # DBMS PostgreSQL
-  postgreSQL:
-    container_name: teleporter-postgres
-    hostname: teleporter-postgres
-    image: postgres:16.2
-    environment:
-      POSTGRES_PASSWORD: js4life
-    restart: always
-    shm_size: 128mb
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.17
-
-  # PHP
-  php:
-    container_name: teleporter-php
-    hostname: teleporter-php
-    image: php:8.3-fpm-alpine
-    volumes:
-      - "${CODE_DIR}/www/public:/usr/share/caddy/"
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.20
 
   # Template Config
   templating-config:
