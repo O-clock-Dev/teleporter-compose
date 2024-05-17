@@ -21,11 +21,9 @@ include:
 
 volumes:
   mariadb_data:
-    driver: local
 
 networks:
   oclock:
     ipam:
-      driver: default
       config:
         - subnet: 10.200.0.0/16
