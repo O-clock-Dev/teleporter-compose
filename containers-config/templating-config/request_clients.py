@@ -72,6 +72,7 @@ def create_haproxy_config(clients):
             f"Erreur lors de l'écriture du fichier de configuration HAProxy : {e}"
         )
         exit(1)
+    # restart the Haproxy container
     try:
         d_cli = docker.from_env()
         ct = d_cli.containers.get('teleporter-haproxy')
