@@ -113,21 +113,6 @@ services:
       oclock:
         ipv4_address: 10.200.0.17
 
-  # NodeJS
-  node:
-    container_name: teleporter-node
-    hostname: teleporter-node
-    image: node:20
-    command: sleep infinity
-    ports:
-      - "3000-3100:3000-3100"
-      - "3999:3999"
-    volumes:
-      - ./code/node:/code/node
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.19
-
   # PHP
   php:
     container_name: teleporter-php
