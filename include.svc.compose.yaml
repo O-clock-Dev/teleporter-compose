@@ -6,7 +6,7 @@ services:
   vpn:
     container_name: teleporter-vpn
     hostname: teleporter-vpn
-    image: oclock/teleporter-vpn:latest
+    image: oclock/teleporter-vpn:66b5ee9ca3a7676383cbf4be037bece1d336e23f
     environment:
       KEY_PRIV: ${KEY_PRIV}
       KEY_VPN_SERVER: ${KEY_VPN_SERVER}

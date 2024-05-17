@@ -42,7 +42,7 @@ services:
   terminal:
     container_name: teleporter-terminal
     hostname: teleporter-terminal
-    image: oclock/teleporter-terminal:latest
+    image: oclock/teleporter-terminal:4697a3dd2aa01b9d40a741da0d6fe270fe379fa0
     environment:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
