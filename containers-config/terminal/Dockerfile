@@ -37,11 +37,8 @@ RUN chmod +x /etc/bash_completion.d/teleport_autocomplete
 
 # Theming
 RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)" 
-#    && sed -i '/OSH_THEME=/s/.*/OSH_THEME="cupcake"/' /root/.bashrc \
-#    && sed -i 's/\\W/\\w/' /root/.oh-my-bash/themes/cupcake/cupcake.theme.sh \
-#    && wal --theme base16-dracula
-#COPY config/default.bashrc /root/.bashrc
 
 # Entrypoint
 COPY entrypoint.sh /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
