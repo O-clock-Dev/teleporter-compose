@@ -143,6 +143,22 @@ services:
       oclock:
         ipv4_address: 10.200.0.17
 
+  pgadmin:
+    image: dpage/pgadmin4:8.5
+    depends_on:
+      - postgreSQL
+    hostname: teleporter-pgadmin4
+    container_name: teleporter-pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
+      PGADMIN_DEFAULT_PASSWORD: js4life
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.18
+
   # PHP
   php:
     container_name: teleporter-php
