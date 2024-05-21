@@ -46,10 +46,13 @@ services:
   terminal:
     container_name: teleporter-terminal
     hostname: teleporter-terminal
-    image: oclock/teleporter-terminal:4697a3dd2aa01b9d40a741da0d6fe270fe379fa0
+    image: oclock/teleporter-terminal:5094ad719657502b81f783a15f4bf7554cc59030
     environment:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      PGHOST: teleporter-postgres
+      PGUSER: postgres
+      PGPASSWORD: js4life
     volumes:
       - "${CODE_DIR}:/srv/code"
       - "${DATA_DIR}:/srv/data"
