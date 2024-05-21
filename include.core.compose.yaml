@@ -1,0 +1,134 @@
+# Teleporter Core Containers
+
+services:
+
+  # Dashboard
+  homepage:
+    container_name: teleporter-homepage
+    hostname: teleporter-homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
+    environment:
+      HOMEPAGE_VAR_USER_NAME: "${FULL_NAME:-Téléporteur pas configuré !}"
+      HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
+      HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:-myself}"
+    volumes:
+      - ./configs/homepage:/app/config
+      - ./configs/homepage/images:/app/public/images
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.203
+    cap_add:
+      - NET_ADMIN
+
+  # Reverse Proxy
+  reverse_proxy:
+    container_name: teleporter-haproxy
+    hostname: teleporter-haproxy"
+    image: haproxy:lts-alpine
+    command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && haproxy -W -db -f /usr/local/etc/haproxy/haproxy.cfg"]
+    restart: always
+    user: root
+    ports:
+      - "80:80"
+    volumes:
+      - ./configs/haproxy:/usr/local/etc/haproxy
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.200
+    depends_on:
+      - templating-config
+    cap_add:
+      - NET_ADMIN
+
+  # Terminal
+  terminal:
+    container_name: teleporter-terminal
+    hostname: teleporter-terminal
+    image: oclock/teleporter-terminal:4697a3dd2aa01b9d40a741da0d6fe270fe379fa0
+    environment:
+      TZ: ${TZ}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    volumes:
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
+      - "${CONFIG_DIR}/terminal/oh-my-bash/:/root/.oh-my-bash/custom/"
+      - "${CONFIG_DIR}/terminal/.bashrc:/root/.bashrc"
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.202
+
+  # WireGuard VPN
+  vpn:
+    container_name: teleporter-vpn
+    hostname: teleporter-vpn
+    image: oclock/teleporter-vpn:66b5ee9ca3a7676383cbf4be037bece1d336e23f
+    environment:
+      KEY_PRIV: ${KEY_PRIV}
+      KEY_VPN_SERVER: ${KEY_VPN_SERVER}
+      IP_PRIV: ${IP_PRIV}
+      VPN_SERVER: ${VPN_SERVER}
+      VPN_LOCAL_PORT: ${VPN_LOCAL_PORT}
+      # Should be switched to VPN_SERVER_PORT when issue#6 is done on vpn-compose project
+      VPN_SERVER_PORT: ${VPN_LOCAL_PORT}
+      VPN_WILDCARD: ${VPN_WILDCARD}
+    restart: always
+    ports:
+      - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: ["CMD", "ping", "-c1", "${VPN_PRIV_IP}", "-w1"]
+      interval: 50s
+      retries: 5
+      start_period: 10s
+    labels:
+      autoheal: True
+    networks:
+      oclock:
+        ipv4_address: ${VPN_LOCAL_IP}
+    cap_add:
+      - NET_ADMIN
+
+  # Browser
+  filebrowser:
+    container_name: teleporter-filebrowser
+    hostname: teleporter-filebrowser
+    image: oclock/teleporter-filebrowser:latest
+    environment:
+      FB_NOAUTH: true
+    restart: always
+    volumes:
+      - "${CODE_DIR}:/srv/code"
+      - "${DATA_DIR}:/srv/data"
+      - "${CONFIG_DIR}:/srv/config"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.201
+
+  # AutoHeal Service
+  autoheal:
+    container_name: teleporter-autoheal
+    hostname: teleporter-autoheal
+    image: willfarrell/autoheal
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: none
+
+  # Template Config
+  templating-config:
+    container_name: teleporter-templating-config
+    image: oclock/teleporter-templating-config:4f48dee219df884fa9c58528ad0cb6027b644505
+    environment:
+      IP_PRIV: ${IP_PRIV}
+      VPN_NAME: ${VPN_NAME}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${CONFIG_DIR}/:/app/configs/
+    networks:
+      - oclock
