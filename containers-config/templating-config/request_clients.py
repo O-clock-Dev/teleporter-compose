@@ -59,7 +59,7 @@ def create_haproxy_config(clients):
 
     # Rendre le modèle Jinja avec les valeurs spécifiées
     haproxy_config = template.render(clients=clients_list)
-    logger.debug(f"Configuration HAProxy générée avec succès")
+    logger.debug("Configuration HAProxy générée avec succès")
 
     # Écrire la configuration HAProxy générée dans un fichier
     try:
@@ -75,13 +75,12 @@ def create_haproxy_config(clients):
     # restart the Haproxy container
     try:
         d_cli = docker.from_env()
-        ct = d_cli.containers.get('teleporter-haproxy')
+        ct = d_cli.containers.get("teleporter-haproxy")
         ct.restart()
     except Exception as e:
-        logger.error(
-            f"Erreur lors du reload haproxy : {e}"
-        )
+        logger.error(f"Erreur lors du reload haproxy : {e}")
         exit(1)
+
 
 def prepare_clients_list_to_bookmarks(clients):
     """Préparer la liste des clients VPN pour la page d'accueil"""
@@ -112,7 +111,7 @@ def create_homepage_bookmarks_list(clients):
     # On rend le modèle Jinja avec les valeurs spécifiées
     ctx = {"clients": clients_list, "promo": PROMO}
     bookmarks_list = template.render(ctx)
-    logger.debug(f"Liste de bookmarks générée avec succès")
+    logger.debug("Liste de bookmarks générée avec succès")
     # Écrire la liste de bookmarks générée dans un fichier
     try:
         with open(bookmark_list_path, "w") as file:
@@ -127,8 +126,7 @@ def create_homepage_bookmarks_list(clients):
 
 
 if __name__ == "__main__":
-    clients = get_vpn_clients()
-    if clients:
+    if clients := get_vpn_clients():
         create_haproxy_config(clients)
         create_homepage_bookmarks_list(clients)
         exit(0)
