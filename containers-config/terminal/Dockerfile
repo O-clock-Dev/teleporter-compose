@@ -2,6 +2,7 @@ FROM tsl0922/ttyd
 
 # Install various dependencies
 ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_DISTRIB=focal
 RUN apt update \
     && apt install -y \
         python3-pip \
@@ -17,13 +18,20 @@ RUN apt update \
         coreutils \
         bash-completion \
         mysql-client \
+        ca-certificates \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-    echo "deb https://deb.nodesource.com/node_20.x bullseye main" | tee /etc/apt/sources.list.d/nodesource.list
+# Installation of postgresql repo
+RUN install -d /usr/share/postgresql-common/pgdg && \
+    curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc && \
+    sh -c 'echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt ${DEBIAN_DISTRIB}-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
-RUN apt-get update && apt-get install -y nodejs && npm install -g n && \
+# Installation of node repo
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+    echo "deb https://deb.nodesource.com/node_20.x ${DEBIAN_DISTRIB} main" | tee /etc/apt/sources.list.d/nodesource.list
+
+RUN apt-get update && apt-get install -y nodejs postgresql-client-16 && npm install -g n && \
     rm -rf /var/lib/apt/lists/* && rm -rf /tmp/* && apt-get clean
 
 RUN pip3 install --no-cache-dir pywal
