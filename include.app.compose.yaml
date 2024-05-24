@@ -45,6 +45,29 @@ services:
       oclock:
         ipv4_address: 10.200.0.10
 
+  # Backup
+  backup:
+    container_name: teleporter-backup
+    hostname: teleporter-backup
+    image: ubuntu:latest
+    environment:
+      TZ: ${TZ}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      POSTGRES_PASSWORD: js4life
+    volumes:
+        - ./backup:/backup
+        - ./containers-config/backup:/scripts
+    command: "sleep 3600"
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.132
+    depends_on:
+        - mariaDB
+        - postgreSQL
+        - mongodb
+
   # DBMS Access Adminer
   adminer:
     container_name: teleporter-adminer

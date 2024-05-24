@@ -21,6 +21,8 @@ include:
 
 volumes:
   mariadb_data:
+  postgres_data:
+  mongodb_data:
 
 networks:
   oclock:
