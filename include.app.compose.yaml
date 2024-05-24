@@ -7,6 +7,7 @@ services:
     container_name: teleporter-vscode
     hostname: teleporter-vscode
     image: linuxserver/code-server:4.21.2
+    restart: always
     environment:
       PUID: 0
       PGID: 0
@@ -27,6 +28,7 @@ services:
     container_name: teleporter-caddyserver
     hostname: teleporter-caddyserver
     image: caddy:2.7.6
+    restart: always
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
@@ -50,6 +52,7 @@ services:
     container_name: teleporter-adminer
     hostname: teleporter-adminer
     image: adminer:4.8.1
+    restart: always
     environment:
       ADMINER_DEFAULT_SERVER: mariadb
       ADMINER_DESIGN: dracula
@@ -65,11 +68,11 @@ services:
     container_name: teleporter-phpmyadmin
     hostname: teleporter-phpmyadmin
     image: oclock/teleporter-phpmyadmin:latest
+    restart: always
     environment:
       PMA_HOST: mariadb
       PMA_USER: root
       PMA_PASSWORD: root
-    restart: always
     networks:
       oclock:
         ipv4_address: 10.200.0.13
@@ -84,6 +87,7 @@ services:
     container_name: teleporter-mongo-express
     hostname: teleporter-mongo-express
     image: mongo-express:1.0.2-20-alpine3.19
+    restart: always
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
@@ -95,11 +99,30 @@ services:
       oclock:
         ipv4_address: 10.200.0.16
 
+  # DBMS Access pgAdmin
+  pgadmin:
+    container_name: teleporter-pgadmin4
+    hostname: teleporter-pgadmin4
+    image: dpage/pgadmin4:8.5
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
+      PGADMIN_DEFAULT_PASSWORD: js4life
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.18
+    depends_on:
+      - postgreSQL
+
   # DBMS MariaDB
   mariaDB:
     container_name: teleporter-mariaDB
     hostname: teleporter-mariaDB
     image: mariadb:11.3.2
+    restart: always
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
@@ -121,6 +144,7 @@ services:
     container_name: teleporter-mongodb
     hostname: teleporter-mongodb
     image: mongo:7.0
+    restart: always
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
@@ -135,35 +159,20 @@ services:
     container_name: teleporter-postgres
     hostname: teleporter-postgres
     image: postgres:16.2
+    restart: always
     environment:
       POSTGRES_PASSWORD: js4life
-    restart: always
     shm_size: 128mb
     networks:
       oclock:
         ipv4_address: 10.200.0.17
-
-  pgadmin:
-    image: dpage/pgadmin4:8.5
-    depends_on:
-      - postgreSQL
-    hostname: teleporter-pgadmin4
-    container_name: teleporter-pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
-      PGADMIN_DEFAULT_PASSWORD: js4life
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.18
 
   # PHP
   php:
     container_name: teleporter-php
     hostname: teleporter-php
     image: php:8.3-fpm-alpine
+    restart: always
     volumes:
       - "${CODE_DIR}/www/public:/usr/share/caddy/"
     networks:
