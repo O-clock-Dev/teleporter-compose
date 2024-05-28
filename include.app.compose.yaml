@@ -53,9 +53,9 @@ services:
     environment:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-      POSTGRES_PASSWORD: js4life
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
         - ./backup:/backup
         - ./containers-config/backup:/scripts
@@ -147,8 +147,8 @@ services:
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     networks:
       oclock:
         ipv4_address: 10.200.0.15
@@ -159,7 +159,7 @@ services:
     hostname: teleporter-postgres
     image: postgres:16.2
     environment:
-      POSTGRES_PASSWORD: js4life
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     restart: always
     shm_size: 128mb
     networks:
@@ -174,7 +174,7 @@ services:
     container_name: teleporter-pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
-      PGADMIN_DEFAULT_PASSWORD: js4life
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
       - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
