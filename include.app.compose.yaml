@@ -59,7 +59,7 @@ services:
     volumes:
         - ./backup:/backup
         - ./containers-config/backup:/scripts
-    command: "bash /scripts/backup.sh"
+    command: /scripts/backup.sh
     networks:
       oclock:
         ipv4_address: 10.200.0.132

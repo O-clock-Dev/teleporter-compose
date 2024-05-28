@@ -21,7 +21,7 @@ fi
 DAY=$(date +%A | awk '{print tolower($0)}')
 
 # Check if an argument is provided for on-demand backup
-if [ "$1" == "save" ]; then
+if [ "$1" == "--save" ]; then
   # Generate a backup with the current date in the filename
   DATE_INSTANT=$(date +%Y-%m-%d_%H-%M-%S)
   mongodump --host $HOST --username $USER --password "$PASSWORD" --out "$BACKUP_DIR/mongodb-$DATE_INSTANT"

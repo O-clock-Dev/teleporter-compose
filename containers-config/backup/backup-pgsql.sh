@@ -17,7 +17,7 @@ fi
 DAY=$(date +%A | awk '{print tolower($0)}')
 
 # Check if an argument is provided for on-demand backup
-if [ "$1" == "save" ]; then
+if [ "$1" == "--save" ]; then
   # Generate a backup with the current date in the filename
   DATE_INSTANT=$(date +%Y-%m-%d_%H-%M-%S)
   PGPASSWORD="$PASSWORD" pg_dumpall --host=$HOST --username=$USER > "$BACKUP_DIR/postgres-$DATE_INSTANT.sql"
