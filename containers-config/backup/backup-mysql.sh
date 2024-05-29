@@ -6,13 +6,6 @@ USER="${MARIADB_USER:-root}"
 PASSWORD="${MARIADB_ROOT_PASSWORD:-root}"
 BACKUP_DIR="/backup"
 
-# Check if mariadb-client is present
-if ! dpkg -s mariadb-client &> /dev/null
-then
-    apt update
-    DEBIAN_FRONTEND=noninteractive apt install mariadb-client -y
-fi
-
 # Get the day of the week
 DAY=$(date +%A | awk '{print tolower($0)}')
 
@@ -20,12 +13,13 @@ DAY=$(date +%A | awk '{print tolower($0)}')
 if [ "$1" == "--save" ]; then
   # Generate a backup with the current date in the filename
   DATE_INSTANT=$(date +%Y-%m-%d_%H-%M-%S)
-  mysqldump --host $HOST --user $USER --password="$PASSWORD" --all-databases --single-transaction > "$BACKUP_DIR/mysql-$DATE_INSTANT.sql"
+  docker exec $HOST mariadb-dump --user $USER --password="$PASSWORD" --all-databases --single-transaction > "$BACKUP_DIR/mysql-$DATE_INSTANT.sql"
   if [ $? -eq 0 ]; then
     gzip "$BACKUP_DIR/mysql-$DATE_INSTANT.sql"
     echo "On-demand backup created for $DATE_INSTANT."
   else
     echo "On-demand backup failed."
+    rm -rf "$BACKUP_DIR/mysql-$DATE_INSTANT.sql"
   fi
   exit 0
 fi
@@ -40,12 +34,13 @@ if [ -f "$BACKUP_DIR/mysql-$DAY.sql.gz" ]; then
 fi
 
 # Generate a backup
-mysqldump --host $HOST --user $USER --password="$PASSWORD" --all-databases --single-transaction > "$BACKUP_DIR/mysql-$DAY.sql"
+docker exec $HOST mariadb-dump --user $USER --password="$PASSWORD" --all-databases --single-transaction > "$BACKUP_DIR/mysql-$DAY.sql"
 if [ $? -eq 0 ]; then
   gzip "$BACKUP_DIR/mysql-$DAY.sql"
   echo "Backup for all databases successful for $DAY."
 else
   echo "Backup for all databases failed for $DAY."
+  rm -rf "$BACKUP_DIR/mysql-$DAY.sql"
   exit 1
 fi
 

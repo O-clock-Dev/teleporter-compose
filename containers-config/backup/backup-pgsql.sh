@@ -6,13 +6,6 @@ USER="${POSTGRES_USER:-postgres}"
 PASSWORD="${POSTGRES_PASSWORD:-postgres}"
 BACKUP_DIR="/backup"
 
-# Check if postgresql-client is present
-if ! dpkg -s postgresql-client &> /dev/null
-then
-    apt update
-    DEBIAN_FRONTEND=noninteractive apt install postgresql-client -y
-fi
-
 # Get the day of the week
 DAY=$(date +%A | awk '{print tolower($0)}')
 
@@ -20,12 +13,13 @@ DAY=$(date +%A | awk '{print tolower($0)}')
 if [ "$1" == "--save" ]; then
   # Generate a backup with the current date in the filename
   DATE_INSTANT=$(date +%Y-%m-%d_%H-%M-%S)
-  PGPASSWORD="$PASSWORD" pg_dumpall --host=$HOST --username=$USER > "$BACKUP_DIR/postgres-$DATE_INSTANT.sql"
+  docker exec -e PGPASSWORD="$PASSWORD" $HOST pg_dumpall --host=$HOST --username=$USER > "$BACKUP_DIR/postgres-$DATE_INSTANT.sql"
   if [ $? -eq 0 ]; then
     gzip "$BACKUP_DIR/postgres-$DATE_INSTANT.sql"
     echo "On-demand backup created for $DATE_INSTANT."
   else
     echo "On-demand backup failed."
+    rm -rf "$BACKUP_DIR/postgres-$DATE_INSTANT.sql"
   fi
   exit 0
 fi
@@ -40,12 +34,13 @@ if [ -f "$BACKUP_DIR/postgres-$DAY.sql.gz" ]; then
 fi
 
 # Generate a backup
-PGPASSWORD="$PASSWORD" pg_dumpall --host=$HOST --username=$USER > "$BACKUP_DIR/postgres-$DAY.sql"
+docker exec -e PGPASSWORD="$PASSWORD" $HOST pg_dumpall --host=$HOST --username=$USER > "$BACKUP_DIR/postgres-$DAY.sql"
 if [ $? -eq 0 ]; then
   gzip "$BACKUP_DIR/postgres-$DAY.sql"
   echo "Backup for all databases successful for $DAY."
 else
   echo "Backup for all databases failed for $DAY."
+  rm -rf "$BACKUP_DIR/postgres-$DAY.sql"
   exit 1
 fi
 

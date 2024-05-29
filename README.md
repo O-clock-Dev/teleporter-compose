@@ -121,7 +121,7 @@ Below is a list of the containers configured for this project, divided into appl
         - Integrates with VPN setup for seamless routing.
 
 4. **DBMS (MariaDB)**
-    - **Container Name**: `teleporter-mariaDB`
+    - **Container Name**: `teleporter-mariadb`
     - **Image**: `mariadb:11.3.2`
     - **Description**: Provides MariaDB database services.
     - **Key Features**:

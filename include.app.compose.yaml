@@ -60,12 +60,13 @@ services:
     volumes:
         - ./backup:/backup
         - ./containers-config/backup:/scripts
+        - /var/run/docker.sock:/var/run/docker.sock
     command: /scripts/backup.sh
     networks:
       oclock:
         ipv4_address: 10.200.0.132
     depends_on:
-        - mariaDB
+        - mariadb
         - postgreSQL
         - mongodb
 
@@ -81,7 +82,7 @@ services:
       oclock:
         ipv4_address: 10.200.0.12
     depends_on:
-      mariaDB:
+      mariadb:
         condition: service_healthy
 
   # DBMS Access PHPmyAdmin
@@ -98,7 +99,7 @@ services:
       oclock:
         ipv4_address: 10.200.0.13
     depends_on:
-      mariaDB:
+      mariadb:
         condition: service_healthy
 
   # DBMS Access MongoExpress
@@ -120,9 +121,9 @@ services:
         ipv4_address: 10.200.0.16
 
   # DBMS MariaDB
-  mariaDB:
-    container_name: teleporter-mariaDB
-    hostname: teleporter-mariaDB
+  mariadb:
+    container_name: teleporter-mariadb
+    hostname: teleporter-mariadb
     image: mariadb:11.3.2
     environment:
       LANG: ${LANG}
