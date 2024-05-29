@@ -8,13 +8,17 @@ frontend public
         mode            http
         log             global
         option          dontlognull
+        option forwardfor
         maxconn         8000
-        timeout client  30s
+        timeout client  3600s
+        timeout tunnel 3600s
+        timeout server 30s
 {% for client_name, client_ip in clients %}
         use_backend     {{client_name}}.localhost if { hdr_end(host) -i {{client_name}}.localhost }
 {% endfor %}
         use_backend     caddyserver if { hdr_beg(host) -i caddy }
         use_backend     node3000 if { hdr_beg(host) -i node3000 }
+        use_backend     vm if { hdr_beg(host) -i vm }
         use_backend     node3001 if { hdr_beg(host) -i node3001 }
         use_backend     node3002 if { hdr_beg(host) -i node3002 }
         use_backend     node3003 if { hdr_beg(host) -i node3003 }
@@ -54,7 +58,10 @@ backend caddyserver
         timeout server  5s
         #option httpchk  HEAD /favicon.ico
         server          caddyserver 10.200.0.10:80 check inter 1000
-
+backend vm
+        mode            http
+        server          vm 10.200.0.55:5555
+        
 backend node3000
         mode            http
         server          node3000 10.200.0.202:3000

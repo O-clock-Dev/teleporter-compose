@@ -23,6 +23,11 @@
         description: Un terminal qui permet de manipuler le Téléporteur
         container: teleporter-terminal
         icon: mdi-console
+    - Ma VM:
+        description: Une VM graphique, pour un environnement convivial.
+        icon: si-kde
+        href: http://vm.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
+        siteMonitor: http://10.200.0.55:5555
     - Visual Studio Code:
         description: Editeur de code développé par Microsoft.
         icon: si-visualstudiocode

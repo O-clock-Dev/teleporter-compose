@@ -68,19 +68,24 @@ services:
   vpn:
     container_name: teleporter-vpn
     hostname: teleporter-vpn
-    image: oclock/teleporter-vpn:66b5ee9ca3a7676383cbf4be037bece1d336e23f
+    #image: oclock/teleporter-vpn:66b5ee9ca3a7676383cbf4be037bece1d336e23f
+    image: vmvpn
     environment:
       KEY_PRIV: ${KEY_PRIV}
       KEY_VPN_SERVER: ${KEY_VPN_SERVER}
       IP_PRIV: ${IP_PRIV}
       VPN_SERVER: ${VPN_SERVER}
       VPN_LOCAL_PORT: ${VPN_LOCAL_PORT}
+      VPN_LOCAL_IP: ${VPN_LOCAL_IP}
       # Should be switched to VPN_SERVER_PORT when issue#6 is done on vpn-compose project
       VPN_SERVER_PORT: ${VPN_LOCAL_PORT}
       VPN_WILDCARD: ${VPN_WILDCARD}
     restart: always
     ports:
       - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
+#      - "5555:5555"
+#      - "6666:6666/tcp"
+#      - "6666:6666/udp"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     healthcheck:
