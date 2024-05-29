@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Variables
 HOST="${MONGODB_HOST:-teleporter-mongodb}"

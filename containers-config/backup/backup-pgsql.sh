@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Variables
 HOST="${POSTGRES_HOST:-teleporter-postgres}"

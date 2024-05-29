@@ -49,7 +49,7 @@ services:
   backup:
     container_name: teleporter-backup
     hostname: teleporter-backup
-    image: ubuntu:latest
+    image: docker:dind
     environment:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}

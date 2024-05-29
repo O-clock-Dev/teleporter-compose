@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Variables
 HOST="${MARIADB_HOST:-teleporter-mariadb}"
