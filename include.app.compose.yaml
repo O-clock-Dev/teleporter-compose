@@ -151,6 +151,8 @@ services:
       TZ: ${TZ}
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+    - mongodb_data:/data/db
     networks:
       oclock:
         ipv4_address: 10.200.0.15
@@ -162,12 +164,15 @@ services:
     image: postgres:16.2
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     restart: always
     shm_size: 128mb
     networks:
       oclock:
         ipv4_address: 10.200.0.17
 
+  # DBMS Access pgAdmin
   pgadmin:
     image: dpage/pgadmin4:8.5
     depends_on:
