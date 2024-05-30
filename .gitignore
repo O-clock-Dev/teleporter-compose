@@ -2,6 +2,7 @@
 config/homepage/logs/*
 config/haproxy/haproxy.cfg
 config/homepage/bookmarks.yaml
+config/vscode/
 # Node
 node_modules
 # Private and secrets
@@ -16,3 +17,4 @@ code/
 .docker/templating-config/venv
 .docker/templating-config/app/logs/*
 backup/*.gz
+
