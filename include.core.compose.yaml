@@ -7,8 +7,8 @@ services:
     container_name: teleporter-homepage
     hostname: teleporter-homepage
     image: ghcr.io/gethomepage/homepage:latest
-    restart: always
     command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
+    restart: always
     environment:
       HOMEPAGE_VAR_USER_NAME: "${FULL_NAME:-Téléporteur pas configuré !}"
       HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
@@ -128,9 +128,8 @@ services:
   # Template Config
   templating-config:
     container_name: teleporter-templating-config
-    image: oclock/teleporter-templating-config:4f48dee219df884fa9c58528ad0cb6027b644505
-    restart: always
     image: oclock/teleporter-templating-config:d368ca71b5994163c9b875dac14d54115218fd99
+    restart: always
     environment:
       IP_PRIV: ${IP_PRIV}
       VPN_NAME: ${VPN_NAME}
