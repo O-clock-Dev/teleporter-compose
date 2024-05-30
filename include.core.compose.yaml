@@ -129,7 +129,6 @@ services:
   templating-config:
     container_name: teleporter-templating-config
     image: oclock/teleporter-templating-config:d368ca71b5994163c9b875dac14d54115218fd99
-    restart: always
     environment:
       IP_PRIV: ${IP_PRIV}
       VPN_NAME: ${VPN_NAME}
