@@ -32,7 +32,7 @@
     - Base de données Mysql:
         description: "Etat de la base de données MYSQL"
         icon: si-mysql
-        container: teleporter-mariaDB
+        container: teleporter-mariadb
         statusStyle: basic
     - Base de données MongoDB:
         description: "Etat de la base de données mongoDB"
