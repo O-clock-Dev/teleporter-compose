@@ -67,7 +67,7 @@ services:
         ipv4_address: 10.200.0.132
     depends_on:
         - mariadb
-        - postgreSQL
+        - postgresql
         - mongodb
 
   # DBMS Access Adminer
@@ -84,6 +84,23 @@ services:
     depends_on:
       mariadb:
         condition: service_healthy
+
+  # DBMS Access pgAdmin
+  pgadmin:
+    container_name: teleporter-pgadmin4
+    hostname: teleporter-pgadmin4
+    image: dpage/pgadmin4:8.5
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.18
+    depends_on:
+      - postgresql
 
   # DBMS Access PHPmyAdmin
   phpmyadmin:
@@ -158,7 +175,7 @@ services:
         ipv4_address: 10.200.0.15
 
   # DBMS PostgreSQL
-  postgreSQL:
+  postgresql:
     container_name: teleporter-postgres
     hostname: teleporter-postgres
     image: postgres:16.2
@@ -171,23 +188,6 @@ services:
     networks:
       oclock:
         ipv4_address: 10.200.0.17
-
-  # DBMS Access pgAdmin
-  pgadmin:
-    image: dpage/pgadmin4:8.5
-    depends_on:
-      - postgreSQL
-    hostname: teleporter-pgadmin4
-    container_name: teleporter-pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
-      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.18
 
   # PHP
   php:
