@@ -1,0 +1,14 @@
+[2024-05-30T13:53:57.849Z] info  code-server 4.21.2 460a4564c360a8acedcc68a14957f9c0c2d78665
+[2024-05-30T13:53:57.850Z] info  Using user-data-dir /config/data
+[2024-05-30T13:53:57.863Z] info  Using config file /config/.config/code-server/config.yaml
+[2024-05-30T13:53:57.863Z] info  HTTP server listening on http://0.0.0.0:8443/
+[2024-05-30T13:53:57.863Z] info    - Authentication is disabled
+[2024-05-30T13:53:57.863Z] info    - Not serving HTTPS
+[2024-05-30T13:53:57.863Z] info  Session server listening on /config/data/code-server-ipc.sock
+[2024-05-30T14:11:15.523Z] info  code-server 4.21.2 460a4564c360a8acedcc68a14957f9c0c2d78665
+[2024-05-30T14:11:15.524Z] info  Using user-data-dir /config/data
+[2024-05-30T14:11:15.542Z] info  Using config file /config/.config/code-server/config.yaml
+[2024-05-30T14:11:15.542Z] info  HTTP server listening on http://0.0.0.0:8443/
+[2024-05-30T14:11:15.542Z] info    - Authentication is disabled
+[2024-05-30T14:11:15.542Z] info    - Not serving HTTPS
+[2024-05-30T14:11:15.542Z] info  Session server listening on /config/data/code-server-ipc.sock

@@ -1,0 +1,13 @@
+2024-05-30 15:51:31.495 [info] Getting Manifest... davidanson.vscode-markdownlint
+2024-05-30 15:51:32.124 [info] Installing extension: davidanson.vscode-markdownlint
+2024-05-30 15:51:33.887 [error] Could not load vsce-sign module Cannot find module 'node-vsce-sign'
+Require stack:
+- /app/code-server/lib/vscode/out/bootstrap-amd.js
+- /app/code-server/out/node/util.js
+- /app/code-server/out/node/cli.js
+- /app/code-server/out/node/entry.js
+2024-05-30 15:51:33.889 [info] Extension signature verification is not done: davidanson.vscode-markdownlint
+2024-05-30 15:51:33.962 [info] Extracted extension to file:///config/extensions/davidanson.vscode-markdownlint-0.55.0-universal: davidanson.vscode-markdownlint
+2024-05-30 15:51:33.966 [info] Renamed to /config/extensions/davidanson.vscode-markdownlint-0.55.0-universal
+2024-05-30 15:51:33.970 [info] Extracting extension completed. davidanson.vscode-markdownlint
+2024-05-30 15:51:33.979 [info] Extension installed successfully: davidanson.vscode-markdownlint

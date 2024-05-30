@@ -8,6 +8,7 @@ services:
     hostname: teleporter-homepage
     image: ghcr.io/gethomepage/homepage:latest
     command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
+    restart: always
     environment:
       HOMEPAGE_VAR_USER_NAME: "${FULL_NAME:-Téléporteur pas configuré !}"
       HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
@@ -47,6 +48,7 @@ services:
     container_name: teleporter-terminal
     hostname: teleporter-terminal
     image: oclock/teleporter-terminal:5094ad719657502b81f783a15f4bf7554cc59030
+    restart: always
     environment:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
@@ -68,6 +70,7 @@ services:
     container_name: teleporter-vpn
     hostname: teleporter-vpn
     image: oclock/teleporter-vpn:66b5ee9ca3a7676383cbf4be037bece1d336e23f
+    restart: always
     environment:
       KEY_PRIV: ${KEY_PRIV}
       KEY_VPN_SERVER: ${KEY_VPN_SERVER}
@@ -77,7 +80,6 @@ services:
       # Should be switched to VPN_SERVER_PORT when issue#6 is done on vpn-compose project
       VPN_SERVER_PORT: ${VPN_LOCAL_PORT}
       VPN_WILDCARD: ${VPN_WILDCARD}
-    restart: always
     ports:
       - "${VPN_LOCAL_PORT}:${VPN_LOCAL_PORT}/udp"
     volumes:
@@ -100,9 +102,9 @@ services:
     container_name: teleporter-filebrowser
     hostname: teleporter-filebrowser
     image: oclock/teleporter-filebrowser:latest
+    restart: always
     environment:
       FB_NOAUTH: true
-    restart: always
     volumes:
       - "${CODE_DIR}:/srv/code"
       - "${CONFIG_DIR}:/srv/config"

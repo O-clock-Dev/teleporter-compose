@@ -1,0 +1,13 @@
+2024-05-30 15:51:21.658 [info] Getting Manifest... bmewburn.vscode-intelephense-client
+2024-05-30 15:51:22.329 [info] Installing extension: bmewburn.vscode-intelephense-client
+2024-05-30 15:51:24.426 [error] Could not load vsce-sign module Cannot find module 'node-vsce-sign'
+Require stack:
+- /app/code-server/lib/vscode/out/bootstrap-amd.js
+- /app/code-server/out/node/util.js
+- /app/code-server/out/node/cli.js
+- /app/code-server/out/node/entry.js
+2024-05-30 15:51:24.428 [info] Extension signature verification is not done: bmewburn.vscode-intelephense-client
+2024-05-30 15:51:25.734 [info] Extracted extension to file:///config/extensions/bmewburn.vscode-intelephense-client-1.10.4-universal: bmewburn.vscode-intelephense-client
+2024-05-30 15:51:25.746 [info] Renamed to /config/extensions/bmewburn.vscode-intelephense-client-1.10.4-universal
+2024-05-30 15:51:25.773 [info] Extracting extension completed. bmewburn.vscode-intelephense-client
+2024-05-30 15:51:25.779 [info] Extension installed successfully: bmewburn.vscode-intelephense-client
