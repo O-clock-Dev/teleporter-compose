@@ -16,7 +16,7 @@ services:
       VSCODE_EXTENSION_IDS: ${VSCODE_EXTENSIONS_LIST}
       DEFAULT_WORKSPACE: /code
     volumes:
-      - ${DATA_DIR}/configs/vscode:/config
+      - ${CONFIG_DIR}/vscode:/config
       - ${CODE_DIR}:/code
     networks:
       oclock:
@@ -38,9 +38,7 @@ services:
       start_period: 20s
     volumes:
       - "${CODE_DIR}/www/public:/usr/share/caddy/"
-      - "${DATA_DIR}/caddyserver/data:/data"
-      - "${DATA_DIR}/caddyserver/config:/config"
-      - ./.docker/caddyserver/Caddyfile:/etc/caddy/Caddyfile
+      - ${CONFIG_DIR}/caddyserver/Caddyfile:/etc/caddy/Caddyfile
     networks:
       oclock:
         ipv4_address: 10.200.0.10
@@ -51,6 +49,7 @@ services:
     hostname: teleporter-backup
     image: docker:dind
     environment:
+      LANG: ${LANG}
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
@@ -58,8 +57,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     restart: always
     volumes:
-        - ./backup:/backup
-        - ./.docker/backup:/scripts
+        - ${BACKUP_DIR}:/backup
+        - ${CONFIG_DIR}/backup:/scripts
         - /var/run/docker.sock:/var/run/docker.sock
     command: /scripts/backup.sh
     networks:
@@ -77,7 +76,7 @@ services:
     image: adminer:4.8.1
     environment:
       ADMINER_DEFAULT_SERVER: mariadb
-      ADMINER_DESIGN: dracula
+      ADMINER_DESIGN: oclock
     networks:
       oclock:
         ipv4_address: 10.200.0.12
@@ -148,7 +147,7 @@ services:
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql
-      - ./.docker/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
+      - ${CONFIG_DIR}/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
     healthcheck:
       interval: 10s
       retries: 5

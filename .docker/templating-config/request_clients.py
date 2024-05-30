@@ -14,10 +14,10 @@ CLIENT_NAME = os.getenv("VPN_NAME", "aurelien-bras")
 logger = configure_logs()
 
 # Chemin absolu du fichier de configuration HAProxy
-template_haproxy_path = "configs/haproxy/haproxy_template.j2"
-ha_proxy_config = "configs/haproxy/haproxy.cfg"
-bokkmark_template_path = "configs/homepage/bookmarks_template.j2"
-bookmark_list_path = "configs/homepage/bookmarks.yaml"
+template_haproxy_path = "config/haproxy/haproxy_template.j2"
+ha_proxy_config = "config/haproxy/haproxy.cfg"
+bokkmark_template_path = "config/homepage/bookmarks_template.j2"
+bookmark_list_path = "config/homepage/bookmarks.yaml"
 
 
 def get_vpn_clients():
