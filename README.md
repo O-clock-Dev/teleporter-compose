@@ -217,7 +217,7 @@ This repository contains the main configuration and associated files for Docker 
     - `include.svc.compose.yaml`: Includes descriptions for services.
 - **code/**: Default directory for your coding files.
 - **configs/**: Configuration files used for application and service containers.
-- **containers-config/**: Configuration files used for containers.
+- **.docker/**: Configuration files used for containers.
 - **data/**: Local configuration files for applications.
 
 ## Configuration

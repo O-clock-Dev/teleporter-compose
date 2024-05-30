@@ -9,9 +9,9 @@ node_modules
 vpn.env*
 .swp
 .env*
-containers-config/templating-config/__pycache__
-containers-config/templating-config/venv
-containers-config/templating-config/app/logs/*
+.docker/templating-config/__pycache__
+.docker/templating-config/venv
+.docker/templating-config/app/logs/*
 code/
 *.swp
 backup/*.gz

@@ -40,7 +40,7 @@ services:
       - "${CODE_DIR}/www/public:/usr/share/caddy/"
       - "${DATA_DIR}/caddyserver/data:/data"
       - "${DATA_DIR}/caddyserver/config:/config"
-      - ./containers-config/caddyserver/Caddyfile:/etc/caddy/Caddyfile
+      - ./.docker/caddyserver/Caddyfile:/etc/caddy/Caddyfile
     networks:
       oclock:
         ipv4_address: 10.200.0.10
@@ -59,7 +59,7 @@ services:
     restart: always
     volumes:
         - ./backup:/backup
-        - ./containers-config/backup:/scripts
+        - ./.docker/backup:/scripts
         - /var/run/docker.sock:/var/run/docker.sock
     command: /scripts/backup.sh
     networks:
@@ -148,7 +148,7 @@ services:
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql
-      - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
+      - ./.docker/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
     healthcheck:
       interval: 10s
       retries: 5
