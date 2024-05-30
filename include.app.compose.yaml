@@ -142,24 +142,6 @@ services:
       oclock:
         ipv4_address: 10.200.0.16
 
-  # DBMS Access pgAdmin
-  pgadmin:
-    container_name: teleporter-pgadmin4
-    hostname: teleporter-pgadmin4
-    image: dpage/pgadmin4:8.5
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
-      PGADMIN_DEFAULT_PASSWORD: js4life
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.18
-    depends_on:
-      - postgreSQL
-
   # DBMS MariaDB
   mariadb:
     container_name: teleporter-mariadb
@@ -209,7 +191,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    restart: always
     shm_size: 128mb
     networks:
       oclock:
