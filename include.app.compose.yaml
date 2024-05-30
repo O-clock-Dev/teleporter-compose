@@ -45,6 +45,31 @@ services:
       oclock:
         ipv4_address: 10.200.0.10
 
+  # Backup
+  backup:
+    container_name: teleporter-backup
+    hostname: teleporter-backup
+    image: docker:dind
+    environment:
+      TZ: ${TZ}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    restart: always
+    volumes:
+        - ./backup:/backup
+        - ./containers-config/backup:/scripts
+        - /var/run/docker.sock:/var/run/docker.sock
+    command: /scripts/backup.sh
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.132
+    depends_on:
+        - mariadb
+        - postgresql
+        - mongodb
+
   # DBMS Access Adminer
   adminer:
     container_name: teleporter-adminer
@@ -57,8 +82,25 @@ services:
       oclock:
         ipv4_address: 10.200.0.12
     depends_on:
-      mariaDB:
+      mariadb:
         condition: service_healthy
+
+  # DBMS Access pgAdmin
+  pgadmin:
+    container_name: teleporter-pgadmin4
+    hostname: teleporter-pgadmin4
+    image: dpage/pgadmin4:8.5
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.18
+    depends_on:
+      - postgresql
 
   # DBMS Access PHPmyAdmin
   phpmyadmin:
@@ -74,7 +116,7 @@ services:
       oclock:
         ipv4_address: 10.200.0.13
     depends_on:
-      mariaDB:
+      mariadb:
         condition: service_healthy
 
   # DBMS Access MongoExpress
@@ -96,9 +138,9 @@ services:
         ipv4_address: 10.200.0.16
 
   # DBMS MariaDB
-  mariaDB:
-    container_name: teleporter-mariaDB
-    hostname: teleporter-mariaDB
+  mariadb:
+    container_name: teleporter-mariadb
+    hostname: teleporter-mariadb
     image: mariadb:11.3.2
     environment:
       LANG: ${LANG}
@@ -124,40 +166,28 @@ services:
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+    - mongodb_data:/data/db
     networks:
       oclock:
         ipv4_address: 10.200.0.15
 
   # DBMS PostgreSQL
-  postgreSQL:
+  postgresql:
     container_name: teleporter-postgres
     hostname: teleporter-postgres
     image: postgres:16.2
     environment:
-      POSTGRES_PASSWORD: js4life
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     restart: always
     shm_size: 128mb
     networks:
       oclock:
         ipv4_address: 10.200.0.17
-
-  pgadmin:
-    image: dpage/pgadmin4:8.5
-    depends_on:
-      - postgreSQL
-    hostname: teleporter-pgadmin4
-    container_name: teleporter-pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
-      PGADMIN_DEFAULT_PASSWORD: js4life
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.18
 
   # PHP
   php:

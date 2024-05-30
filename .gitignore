@@ -14,3 +14,4 @@ containers-config/templating-config/venv
 containers-config/templating-config/app/logs/*
 code/
 *.swp
+backup/*.gz
