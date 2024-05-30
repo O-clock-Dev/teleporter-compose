@@ -14,8 +14,8 @@ services:
       HOMEPAGE_VAR_COHORT: "${PROMO:-Sans promo}"
       HOMEPAGE_VAR_VPN_NAME: "${VPN_NAME:-myself}"
     volumes:
-      - ./configs/homepage:/app/config
-      - ./configs/homepage/images:/app/public/images
+      - ${CONFIG_DIR}/homepage:/app/config
+      - ${CONFIG_DIR}/homepage/images:/app/public/images
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       oclock:
@@ -34,7 +34,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./configs/haproxy:/usr/local/etc/haproxy
+      - ${CONFIG_DIR}/haproxy:/usr/local/etc/haproxy
     networks:
       oclock:
         ipv4_address: 10.200.0.200
@@ -57,7 +57,6 @@ services:
       PGPASSWORD: js4life
     volumes:
       - "${CODE_DIR}:/srv/code"
-      - "${DATA_DIR}:/srv/data"
       - "${CONFIG_DIR}:/srv/config"
       - "${CONFIG_DIR}/terminal/oh-my-bash/:/root/.oh-my-bash/custom/"
       - "${CONFIG_DIR}/terminal/.bashrc:/root/.bashrc"
@@ -108,7 +107,6 @@ services:
       FB_NOAUTH: true
     volumes:
       - "${CODE_DIR}:/srv/code"
-      - "${DATA_DIR}:/srv/data"
       - "${CONFIG_DIR}:/srv/config"
     networks:
       oclock:
@@ -135,6 +133,6 @@ services:
       PROMO: ${PROMO}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${CONFIG_DIR}/:/app/configs/
+      - ${CONFIG_DIR}/:/app/config/
     networks:
       - oclock

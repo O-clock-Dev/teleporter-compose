@@ -1,0 +1,6 @@
+2024-05-30 15:53:53.082 [error] Error: Failed Installing Extensions: whatwedo.twig
+    at $.installExtensions (/app/code-server/lib/vscode/out/vs/server/node/server.main.js:141:109)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /app/code-server/lib/vscode/out/vs/server/node/server.main.js:182:66390
+    at async fe.run (/app/code-server/lib/vscode/out/vs/server/node/server.main.js:182:66153)
+    at async V (/app/code-server/lib/vscode/out/vs/server/node/server.main.js:182:68616)

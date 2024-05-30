@@ -1,0 +1,13 @@
+2024-05-30 15:51:16.291 [info] Getting Manifest... bierner.markdown-preview-github-styles
+2024-05-30 15:51:16.892 [info] Installing extension: bierner.markdown-preview-github-styles
+2024-05-30 15:51:18.825 [error] Could not load vsce-sign module Cannot find module 'node-vsce-sign'
+Require stack:
+- /app/code-server/lib/vscode/out/bootstrap-amd.js
+- /app/code-server/out/node/util.js
+- /app/code-server/out/node/cli.js
+- /app/code-server/out/node/entry.js
+2024-05-30 15:51:18.836 [info] Extension signature verification is not done: bierner.markdown-preview-github-styles
+2024-05-30 15:51:19.666 [info] Extracted extension to file:///config/extensions/bierner.markdown-preview-github-styles-0.1.6-universal: bierner.markdown-preview-github-styles
+2024-05-30 15:51:19.676 [info] Renamed to /config/extensions/bierner.markdown-preview-github-styles-0.1.6-universal
+2024-05-30 15:51:19.683 [info] Extracting extension completed. bierner.markdown-preview-github-styles
+2024-05-30 15:51:19.691 [info] Extension installed successfully: bierner.markdown-preview-github-styles
