@@ -1,0 +1,13 @@
+2024-05-30 15:51:27.411 [info] Getting Manifest... dbaeumer.vscode-eslint
+2024-05-30 15:51:28.027 [info] Installing extension: dbaeumer.vscode-eslint
+2024-05-30 15:51:29.725 [error] Could not load vsce-sign module Cannot find module 'node-vsce-sign'
+Require stack:
+- /app/code-server/lib/vscode/out/bootstrap-amd.js
+- /app/code-server/out/node/util.js
+- /app/code-server/out/node/cli.js
+- /app/code-server/out/node/entry.js
+2024-05-30 15:51:29.726 [info] Extension signature verification is not done: dbaeumer.vscode-eslint
+2024-05-30 15:51:29.789 [info] Extracted extension to file:///config/extensions/dbaeumer.vscode-eslint-2.4.4-universal: dbaeumer.vscode-eslint
+2024-05-30 15:51:29.795 [info] Renamed to /config/extensions/dbaeumer.vscode-eslint-2.4.4-universal
+2024-05-30 15:51:29.812 [info] Extracting extension completed. dbaeumer.vscode-eslint
+2024-05-30 15:51:29.818 [info] Extension installed successfully: dbaeumer.vscode-eslint

@@ -1,0 +1,13 @@
+2024-05-30 15:53:49.389 [info] Getting Manifest... wayou.vscode-todo-highlight
+2024-05-30 15:53:50.029 [info] Installing extension: wayou.vscode-todo-highlight
+2024-05-30 15:53:52.025 [error] Could not load vsce-sign module Cannot find module 'node-vsce-sign'
+Require stack:
+- /app/code-server/lib/vscode/out/bootstrap-amd.js
+- /app/code-server/out/node/util.js
+- /app/code-server/out/node/cli.js
+- /app/code-server/out/node/entry.js
+2024-05-30 15:53:52.026 [info] Extension signature verification is not done: wayou.vscode-todo-highlight
+2024-05-30 15:53:52.099 [info] Extracted extension to file:///config/extensions/wayou.vscode-todo-highlight-1.0.5-universal: wayou.vscode-todo-highlight
+2024-05-30 15:53:52.102 [info] Renamed to /config/extensions/wayou.vscode-todo-highlight-1.0.5-universal
+2024-05-30 15:53:52.104 [info] Extracting extension completed. wayou.vscode-todo-highlight
+2024-05-30 15:53:52.109 [info] Extension installed successfully: wayou.vscode-todo-highlight

@@ -1,0 +1,15 @@
+2024-05-30 15:51:10.668 [info] Started initializing default profile extensions in extensions installation folder. file:///config/extensions
+2024-05-30 15:51:10.715 [info] Completed initializing default profile extensions in extensions installation folder. file:///config/extensions
+2024-05-30 15:51:12.279 [info] Getting Manifest... aaron-bond.better-comments
+2024-05-30 15:51:12.885 [info] Installing extension: aaron-bond.better-comments
+2024-05-30 15:51:14.532 [error] Could not load vsce-sign module Cannot find module 'node-vsce-sign'
+Require stack:
+- /app/code-server/lib/vscode/out/bootstrap-amd.js
+- /app/code-server/out/node/util.js
+- /app/code-server/out/node/cli.js
+- /app/code-server/out/node/entry.js
+2024-05-30 15:51:14.533 [info] Extension signature verification is not done: aaron-bond.better-comments
+2024-05-30 15:51:14.620 [info] Extracted extension to file:///config/extensions/aaron-bond.better-comments-3.0.2-universal: aaron-bond.better-comments
+2024-05-30 15:51:14.624 [info] Renamed to /config/extensions/aaron-bond.better-comments-3.0.2-universal
+2024-05-30 15:51:14.628 [info] Extracting extension completed. aaron-bond.better-comments
+2024-05-30 15:51:14.634 [info] Extension installed successfully: aaron-bond.better-comments

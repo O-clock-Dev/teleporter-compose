@@ -1,0 +1,13 @@
+2024-05-30 15:51:39.758 [info] Getting Manifest... editorconfig.editorconfig
+2024-05-30 15:51:40.395 [info] Installing extension: editorconfig.editorconfig
+2024-05-30 15:51:42.148 [error] Could not load vsce-sign module Cannot find module 'node-vsce-sign'
+Require stack:
+- /app/code-server/lib/vscode/out/bootstrap-amd.js
+- /app/code-server/out/node/util.js
+- /app/code-server/out/node/cli.js
+- /app/code-server/out/node/entry.js
+2024-05-30 15:51:42.150 [info] Extension signature verification is not done: editorconfig.editorconfig
+2024-05-30 15:51:42.263 [info] Extracted extension to file:///config/extensions/editorconfig.editorconfig-0.16.6-universal: editorconfig.editorconfig
+2024-05-30 15:51:42.276 [info] Renamed to /config/extensions/editorconfig.editorconfig-0.16.6-universal
+2024-05-30 15:51:42.280 [info] Extracting extension completed. editorconfig.editorconfig
+2024-05-30 15:51:42.289 [info] Extension installed successfully: editorconfig.editorconfig
