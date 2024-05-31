@@ -7,6 +7,7 @@ services:
     container_name: teleporter-vscode
     hostname: teleporter-vscode
     image: linuxserver/code-server:4.21.2
+    restart: always
     environment:
       PUID: 0
       PGID: 0
@@ -16,7 +17,7 @@ services:
       VSCODE_EXTENSION_IDS: ${VSCODE_EXTENSIONS_LIST}
       DEFAULT_WORKSPACE: /code
     volumes:
-      - ${DATA_DIR}/configs/vscode:/config
+      - ${CONFIG_DIR}/vscode:/config
       - ${CODE_DIR}:/code
     networks:
       oclock:
@@ -46,6 +47,7 @@ services:
     container_name: teleporter-vm
     hostname: teleporter-vm
     image: m1k1o/neko:kde
+    restart: always
     ports:
       - "5555:5555"
       - "6666:6666/tcp"
@@ -73,6 +75,7 @@ services:
     container_name: teleporter-caddyserver
     hostname: teleporter-caddyserver
     image: caddy:2.7.6
+    restart: always
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
@@ -84,18 +87,43 @@ services:
       start_period: 20s
     volumes:
       - "${CODE_DIR}/www/public:/usr/share/caddy/"
-      - "${DATA_DIR}/caddyserver/data:/data"
-      - "${DATA_DIR}/caddyserver/config:/config"
-      - ./containers-config/caddyserver/Caddyfile:/etc/caddy/Caddyfile
+      - ${CONFIG_DIR}/caddyserver/Caddyfile:/etc/caddy/Caddyfile
     networks:
       oclock:
         ipv4_address: 10.200.0.10
+
+  # Backup
+  backup:
+    container_name: teleporter-backup
+    hostname: teleporter-backup
+    image: docker:dind
+    restart: always
+    environment:
+      LANG: ${LANG}
+      TZ: ${TZ}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+        - ${BACKUP_DIR}:/backup
+        - ${CONFIG_DIR}/backup:/scripts
+        - /var/run/docker.sock:/var/run/docker.sock
+    command: /scripts/backup.sh
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.132
+    depends_on:
+        - mariadb
+        - postgresql
+        - mongodb
 
   # DBMS Access Adminer
   adminer:
     container_name: teleporter-adminer
     hostname: teleporter-adminer
     image: adminer:4.8.1
+    restart: always
     environment:
       ADMINER_DEFAULT_SERVER: mariadb
       ADMINER_DESIGN: dracula
@@ -103,24 +131,42 @@ services:
       oclock:
         ipv4_address: 10.200.0.12
     depends_on:
-      mariaDB:
+      mariadb:
         condition: service_healthy
+
+  # DBMS Access pgAdmin
+  pgadmin:
+    container_name: teleporter-pgadmin4
+    hostname: teleporter-pgadmin4
+    image: dpage/pgadmin4:8.5
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
+    networks:
+      oclock:
+        ipv4_address: 10.200.0.18
+    depends_on:
+      - postgresql
 
   # DBMS Access PHPmyAdmin
   phpmyadmin:
     container_name: teleporter-phpmyadmin
     hostname: teleporter-phpmyadmin
-    image: oclock/teleporter-phpmyadmin:latest
+    image: oclock/teleporter-phpmyadmin:dd7d23c5eea0cc4d01c658a82405123cb86a2ef6
+    restart: always
     environment:
       PMA_HOST: mariadb
       PMA_USER: root
       PMA_PASSWORD: root
-    restart: always
     networks:
       oclock:
         ipv4_address: 10.200.0.13
     depends_on:
-      mariaDB:
+      mariadb:
         condition: service_healthy
 
   # DBMS Access MongoExpress
@@ -130,6 +176,7 @@ services:
     container_name: teleporter-mongo-express
     hostname: teleporter-mongo-express
     image: mongo-express:1.0.2-20-alpine3.19
+    restart: always
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
@@ -142,17 +189,18 @@ services:
         ipv4_address: 10.200.0.16
 
   # DBMS MariaDB
-  mariaDB:
-    container_name: teleporter-mariaDB
-    hostname: teleporter-mariaDB
+  mariadb:
+    container_name: teleporter-mariadb
+    hostname: teleporter-mariadb
     image: mariadb:11.3.2
+    restart: always
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql
-      - ./containers-config/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
+      - ${CONFIG_DIR}/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
     healthcheck:
       interval: 10s
       retries: 5
@@ -167,49 +215,39 @@ services:
     container_name: teleporter-mongodb
     hostname: teleporter-mongodb
     image: mongo:7.0
+    restart: always
     environment:
       LANG: ${LANG}
       TZ: ${TZ}
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+    - mongodb_data:/data/db
     networks:
       oclock:
         ipv4_address: 10.200.0.15
 
   # DBMS PostgreSQL
-  postgreSQL:
+  postgresql:
     container_name: teleporter-postgres
     hostname: teleporter-postgres
     image: postgres:16.2
-    environment:
-      POSTGRES_PASSWORD: js4life
     restart: always
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     shm_size: 128mb
     networks:
       oclock:
         ipv4_address: 10.200.0.17
-
-  pgadmin:
-    image: dpage/pgadmin4:8.5
-    depends_on:
-      - postgreSQL
-    hostname: teleporter-pgadmin4
-    container_name: teleporter-pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: postgres@oclock.io
-      PGADMIN_DEFAULT_PASSWORD: js4life
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - ${CONFIG_DIR}/pgadmin4/servers.json:/pgadmin4/servers.json
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.18
 
   # PHP
   php:
     container_name: teleporter-php
     hostname: teleporter-php
     image: php:8.3-fpm-alpine
+    restart: always
     volumes:
       - "${CODE_DIR}/www/public:/usr/share/caddy/"
     networks:

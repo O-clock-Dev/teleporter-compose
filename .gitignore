@@ -1,16 +1,19 @@
-data/*
-!data/configs/vscode
-!data/configs/homepage
-configs/homepage/logs/*
-configs/haproxy/haproxy.cfg
-
-configs/homepage/bookmarks.yaml
+# Config dir
+config/homepage/logs/*
+config/haproxy/haproxy.cfg
+config/homepage/bookmarks.yaml
+config/vscode/
+# Node
 node_modules
+# Private and secrets
 vpn.env*
-.swp
-.env*
-containers-config/templating-config/__pycache__
-containers-config/templating-config/venv
-containers-config/templating-config/app/logs/*
+# Code
 code/
+# Others
+.swp
 *.swp
+.env*
+.docker/templating-config/__pycache__
+.docker/templating-config/venv
+.docker/templating-config/app/logs/*
+backup/*.gz
