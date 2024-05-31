@@ -109,7 +109,7 @@ services:
   phpmyadmin:
     container_name: teleporter-phpmyadmin
     hostname: teleporter-phpmyadmin
-    image: oclock/teleporter-phpmyadmin:latest
+    image: oclock/teleporter-phpmyadmin:dd7d23c5eea0cc4d01c658a82405123cb86a2ef6
     restart: always
     environment:
       PMA_HOST: mariadb
