@@ -1,0 +1,37 @@
+#!/bin/bash
+
+cat << 'EOF'
+████████╗███████╗██╗     ███████╗██████╗  ██████╗ ██████╗ ████████╗███████╗██████╗
+╚══██╔══╝██╔════╝██║     ██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗
+   ██║   █████╗  ██║     █████╗  ██████╔╝██║   ██║██████╔╝   ██║   █████╗  ██████╔╝
+   ██║   ██╔══╝  ██║     ██╔══╝  ██╔═══╝ ██║   ██║██╔══██╗   ██║   ██╔══╝  ██╔══██╗
+   ██║   ███████╗███████╗███████╗██║     ╚██████╔╝██║  ██║   ██║   ███████╗██║  ██║
+   ╚═╝   ╚══════╝╚══════╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+EOF
+
+cat << EOF
+$(tput bold)$(tput smul)Welcome commands$(tput rmul)$(tput sgr0)
+
+ $(tput bold)Node.js and Package Managers:$(tput sgr0)
+  $(tput smul)n$(tput rmul) - Command for Node.js installation
+  $(tput smul)node$(tput rmul) - Command to run a Node.js script
+  $(tput smul)npm$(tput rmul) - Command to manage Node.js packages with npm
+  $(tput smul)yarn$(tput rmul) - Command to manage Node.js packages with Yarn
+
+ $(tput bold)Databases:$(tput sgr0)
+  $(tput smul)psql$(tput rmul) - Command to interact with a PostgreSQL database
+  $(tput smul)mysql$(tput rmul) - Command to interact with a MySQL database
+  $(tput smul)mongo$(tput rmul) - Command to interact with a MongoDB database
+
+ $(tput bold)Version Control:$(tput sgr0)
+  $(tput smul)git$(tput rmul) - Command to interact with Git repositories
+
+ $(tput bold)Containerization:$(tput sgr0)
+  $(tput smul)docker$(tput rmul) - Command to interact with Docker containers
+
+ $(tput bold)Teleporter Compose: 🚀$(tput sgr0)
+  $(tput smul)teleport$(tput rmul) - Command to connect to other containers
+  $(tput smul)teleport$(tput rmul) - Command to backup databases
+
+Type: welcome for commands
+EOF

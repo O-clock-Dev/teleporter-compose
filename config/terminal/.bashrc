@@ -96,6 +96,7 @@ completions=(
 # Add wisely, as too many aliases slow down shell startup.
 aliases=(
   general
+  databases
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -145,3 +146,9 @@ source "$OSH"/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 #cat ~/.cache/wal/sequences
 cd /srv/code
+
+# MOTD
+source /etc/motd
+
+# Welcome
+alias welcome="/root/.welcome"
