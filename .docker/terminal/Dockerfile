@@ -17,8 +17,9 @@ RUN apt update \
         docker.io \
         coreutils \
         bash-completion \
-        mysql-client \
+        mariadb-client \
         ca-certificates \
+        yarnpkg \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
