@@ -6,7 +6,7 @@ on:
     branches:
       - 'run/docker-build'
     paths:
-      - containers-config/phpmyadmin/**
+      - .docker/phpmyadmin/**
       
         
 jobs:
@@ -33,7 +33,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./containers-config/phpmyadmin/
+          context: ./.docker/phpmyadmin/
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-phpmyadmin:${{ github.sha }}

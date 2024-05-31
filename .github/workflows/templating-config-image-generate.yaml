@@ -6,7 +6,7 @@ on:
     branches:
       - 'run/docker-build'
     paths:
-      - containers-config/templating-config/**
+      - .docker/templating-config/**
       
         
 jobs:
@@ -33,7 +33,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./containers-config/templating-config/
+          context: ./.docker/templating-config/
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ vars.DOCKERHUB_REPO }}/teleporter-templating-config:${{ github.sha }}

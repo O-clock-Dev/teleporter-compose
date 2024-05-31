@@ -121,7 +121,7 @@ Below is a list of the containers configured for this project, divided into appl
         - Integrates with VPN setup for seamless routing.
 
 4. **DBMS (MariaDB)**
-    - **Container Name**: `teleporter-mariaDB`
+    - **Container Name**: `teleporter-mariadb`
     - **Image**: `mariadb:11.3.2`
     - **Description**: Provides MariaDB database services.
     - **Key Features**:
@@ -216,8 +216,8 @@ This repository contains the main configuration and associated files for Docker 
     - `include.app.compose.yaml`: Includes descriptions for application containers.
     - `include.svc.compose.yaml`: Includes descriptions for services.
 - **code/**: Default directory for your coding files.
-- **configs/**: Configuration files used for application and service containers.
-- **containers-config/**: Configuration files used for containers.
+- **config/**: Configuration files used for application and service containers.
+- **.docker/**: Configuration files used for containers.
 - **data/**: Local configuration files for applications.
 
 ## Configuration
