@@ -150,5 +150,5 @@ cd /srv/code
 # MOTD
 source /etc/motd
 
-# Welcome
-alias welcome="/root/.welcome"
+# ~/.local/bin path
+export PATH="$HOME/.local/bin:$PATH"

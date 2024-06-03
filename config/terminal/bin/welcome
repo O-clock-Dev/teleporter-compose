@@ -25,13 +25,14 @@ $(tput bold)$(tput smul)Welcome commands$(tput rmul)$(tput sgr0)
 
  $(tput bold)Version Control:$(tput sgr0)
   $(tput smul)git$(tput rmul) - Command to interact with Git repositories
+  $(tput smul)gh$(tput rmul) - Command to interact with GitHub via the GitHub CLI
 
  $(tput bold)Containerization:$(tput sgr0)
   $(tput smul)docker$(tput rmul) - Command to interact with Docker containers
 
- $(tput bold)Teleporter Compose: 🚀$(tput sgr0)
+ $(tput bold)Teleporter Compose:$(tput sgr0) 🚀
   $(tput smul)teleport$(tput rmul) - Command to connect to other containers
-  $(tput smul)teleport$(tput rmul) - Command to backup databases
+  $(tput smul)backup$(tput rmul) - Command to backup databases
 
 Type: welcome for commands
 EOF
