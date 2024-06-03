@@ -1,3 +1,5 @@
+[![Discord](https://img.shields.io/badge/-Discord-7289DA?style=flat&logo=Discord&logoColor=white)](https://discord.gg/t6RgjvBfCT)
+
 # Teleporter Compose
 
 **Teleporter Compose** is a project that enables easy deployment of development environments using Docker Compose. This repository contains the necessary files to configure and launch multiple Docker containers.
