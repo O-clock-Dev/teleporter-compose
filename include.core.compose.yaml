@@ -58,9 +58,10 @@ services:
     volumes:
       - "${CODE_DIR}:/srv/code"
       - "${CONFIG_DIR}:/srv/config"
+      - "${BACKUP_DIR}:/backup"
       - "${CONFIG_DIR}/terminal/oh-my-bash/:/root/.oh-my-bash/custom/"
       - "${CONFIG_DIR}/terminal/.bashrc:/root/.bashrc"
-      - "${CONFIG_DIR}/terminal/.welcome:/root/.welcome"
+      - "${CONFIG_DIR}/terminal/bin:/root/.local/bin:ro"
       - "${CONFIG_DIR}/terminal/motd:/etc/motd"
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
