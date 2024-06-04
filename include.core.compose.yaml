@@ -6,7 +6,7 @@ services:
   homepage:
     container_name: teleporter-homepage
     hostname: teleporter-homepage
-    image: ghcr.io/gethomepage/homepage:v0.9.0
+    image: ghcr.io/gethomepage/homepage:v0.9.1
     command: ["sh", "-c", "/sbin/ip route add ${VPN_NETWORK} via ${VPN_LOCAL_IP} && node server.js"]
     restart: always
     environment:
