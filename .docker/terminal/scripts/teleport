@@ -1,13 +1,12 @@
 #!/bin/bash
 
-# On vérifie si un nom de conteneur a été donné
+# Usage if no argument
 if [ -z "$1" ]; then
-  echo "Usage: $0 <nom_conteneur>"
+  echo "Usage: $0 <container_name>"
   exit 1
 fi
 
-
-nom_conteneur="$1"
+container="$1"
 
 # Run docker exec -it on the specified container
-docker exec -it "$nom_conteneur" /bin/sh
+docker exec -it "$container" /bin/sh

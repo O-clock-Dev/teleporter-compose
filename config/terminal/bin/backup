@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Function to display the backup menu
+function display_menu {
+  cat << EOF
+$(tput bold)Backup$(tput sgr0)
+
+ $(tput bold)Databases:$(tput sgr0)
+  $(tput smul)mysql$(tput rmul) - Command to backup a MySQL database
+  $(tput smul)pgsql$(tput rmul) - Command to backup a PostgreSQL database
+  $(tput smul)mongo$(tput rmul) - Command to backup a MongoDB database
+
+After the backup, the data will be available in the /backup directory on both the host and the container.
+
+Type the name of the database to backup
+Example of usage: backup mysql
+EOF
+}
+
+# Function to perform the backup
+function perform_backup {
+  case $1 in
+    mysql)
+      docker exec teleporter-backup /scripts/backup-mysql.sh --save
+      echo "MySQL backup completed."
+      ;;
+    pgsql)
+      docker exec teleporter-backup /scripts/backup-pgsql.sh --save
+      echo "PostgreSQL backup completed."
+      ;;
+    mongo)
+      docker exec teleporter-backup /scripts/backup-mongodb.sh --save
+      echo "MongoDB backup completed."
+      ;;
+    *)
+      echo "Invalid option. Please choose either 'mysql', 'pgsql', or 'mongo'."
+      ;;
+  esac
+  echo "The backup is now available in the /backup directory on both the host and the container."
+}
+
+# Check if an argument was passed
+if [ -z "$1" ]
+then
+  # No argument was passed, display the menu
+  display_menu
+else
+  # An argument was passed, perform the backup
+  perform_backup $1
+fi

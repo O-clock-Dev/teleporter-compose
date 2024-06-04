@@ -1,0 +1,15 @@
+# motd sourced at ~/.bashrc
+
+# welcome
+cat << EOF
+$(tput bold)🚀 Teleporter Compose $(tput sgr0): type $(tput bold)welcome$(tput sgr0) for magic commands 🪄
+EOF
+
+# filesystem
+USE=$(df / | grep / | awk '{ print $5}' | sed 's/%//g')
+AVAILABLE=$(df -h / | grep / | awk '{ print $4}')
+if [ "$USE" -gt 85 ]; then
+  echo "⚠️ Warning: Root filesystem is $USE% full. Only $AVAILABLE left. ⚠️"
+else
+  echo "⚆ Root filesystem is $USE% full: $AVAILABLE left."
+fi
