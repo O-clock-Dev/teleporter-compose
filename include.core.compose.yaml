@@ -47,7 +47,7 @@ services:
   terminal:
     container_name: teleporter-terminal
     hostname: teleporter-terminal
-    image: oclock/teleporter-terminal:dd7d23c5eea0cc4d01c658a82405123cb86a2ef6
+    image: oclock/teleporter-terminal:bdc685e9f5b1a9ef3565b93c2a3ee2bdf95fe74e
     restart: always
     environment:
       TZ: ${TZ}
@@ -58,8 +58,11 @@ services:
     volumes:
       - "${CODE_DIR}:/srv/code"
       - "${CONFIG_DIR}:/srv/config"
+      - "${BACKUP_DIR}:/backup"
       - "${CONFIG_DIR}/terminal/oh-my-bash/:/root/.oh-my-bash/custom/"
       - "${CONFIG_DIR}/terminal/.bashrc:/root/.bashrc"
+      - "${CONFIG_DIR}/terminal/bin:/root/.local/bin:ro"
+      - "${CONFIG_DIR}/terminal/motd:/etc/motd"
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       oclock:

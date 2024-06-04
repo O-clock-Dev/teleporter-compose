@@ -155,10 +155,10 @@ services:
       - mariadb_data:/var/lib/mysql
       - ${CONFIG_DIR}/mariadb/explorateur.sql:/docker-entrypoint-initdb.d/explorateur.sql
     healthcheck:
-      interval: 10s
-      retries: 5
       test: ["CMD", "healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized"]
-      timeout: 30s
+      interval: 10s
+      timeout: 10s
+      retries: 3
     networks:
       oclock:
         ipv4_address: 10.200.0.11
@@ -176,6 +176,11 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
     - mongodb_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 3
     networks:
       oclock:
         ipv4_address: 10.200.0.15
@@ -190,6 +195,11 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
     shm_size: 128mb
     networks:
       oclock:
