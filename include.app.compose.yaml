@@ -34,7 +34,21 @@ services:
       - "5349:5349"
       - "5349:5349/udp"
       - "49160-49200:49160-49200/udp"
-    command: ["-v","--server-relay","-z","--min-port=49160","--max-port=49200","-r","turn.localhost","-u","zef:zef"]
+    command: |
+      -v
+      -n
+      --allow-loopback-peers
+      --realm=turn.localhost
+      --cli-password=qergserg
+      --fingerprint
+      --listening-ip=0.0.0.0
+      --external-ip=127.0.0.1/10.200.0.56
+      --listening-port=3478
+      --min-port=49160
+      --max-port=49200
+      --user=zef:zef
+      --lt-cred-mech
+      
     extra_hosts:
       - "turn.localhost:10.200.0.56"
     networks:
@@ -46,24 +60,24 @@ services:
   mavm:
     container_name: teleporter-vm
     hostname: teleporter-vm
-    image: m1k1o/neko:kde
+    image: m1k1o/neko:xfce
     restart: always
     ports:
       - "5555:5555"
-      - "6666:6666/tcp"
-      - "6666:6666/udp"
+#      - "6666:6666/tcp"
+#      - "6666:6666/udp"
       - "52000-52100:52000-52100/udp"
     environment:
-      #NEKO_NAT1TO1: 192.168.5.159
+      NEKO_NAT1TO1: 192.168.5.159
       #NEKO_NAT1TO1: 10.200.0.1
       #NEKO_UDPMUX: 6666
       #NEKO_TCPMUX: 6666
       NEKO_EPR: 52000-52100
       NEKO_BIND: 0.0.0.0:5555
       NEKO_ICESERVERS: '[{"urls": ["turn:turn.slippers.live:5349","stun:stun.cloudflare.com:3478" ], "username": "${TURN_USER}", "credential": "${TURN_PWD}"}]'
-      #NEKO_ICESERVERS: '[{"urls": ["turn:turn.localhost", "stun:turn.localhost" ], "username": "zef", "credential": "zef"}]'
+      #NEKO_ICESERVERS: '[{"urls": ["turn:turn.localhost:3478", "stun:turn.localhost:3478" ], "username": "zef", "credential": "zef"}]'
       #NEKO_ICESERVER: turn:turn.localhost:3478
-      NEKO_PROXY: true
+      #NEKO_PROXY: true
     extra_hosts:
       - "turn.localhost:10.200.0.56"
     networks:
