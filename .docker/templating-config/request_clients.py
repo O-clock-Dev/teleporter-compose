@@ -119,55 +119,11 @@ def create_services_config(clients):
         )
         exit(1)
 
-def prepare_clients_list_to_bookmarks(clients):
-    """Préparer la liste des clients VPN pour la page d'accueil"""
-    # on ne prends que les clefs des clients
-    clients_list_url = clients.keys()
-    # replace les tirets par des espaces et on met en majuscule
-    clients_list = [client.replace("-", " ").title() for client in clients_list_url]
-    # on construit la liste des clients avec les keys clients list et valeurs les clients list url
-    clients_list = list(zip(clients_list, clients_list_url))
-
-    logger.debug(f"Clients VPN : {clients_list}")
-    return clients_list
-
-
-def create_homepage_bookmarks_list(clients):
-    """Charger le modèle Jinja depuis le fichier bookmarks_template.j2 et générer la liste de bookmarks"""
-    clients_list = prepare_clients_list_to_bookmarks(clients)
-    try:
-        with open(bookmark_template_path) as file:
-            template = Template(file.read())
-            logger.info("Modèle Jinja bookmarks chargé avec succès.")
-    except FileNotFoundError:
-        logger.error("Le fichier bookmarks_template.j2 n'existe pas.")
-        exit(1)
-    except Exception as e:
-        logger.error(f"Erreur lors de la lecture du fichier de modèle : {e}")
-        exit(1)
-    # On rend le modèle Jinja avec les valeurs spécifiées
-    ctx = {"clients": clients_list, "promo": PROMO}
-    bookmarks_list = template.render(ctx)
-    logger.debug("Liste de bookmarks générée avec succès")
-    # Écrire la liste de bookmarks générée dans un fichier
-    try:
-        with open(bookmark_list_path, "w") as file:
-            file.write(bookmarks_list)
-        logger.info("Liste de bookmarks générée avec succès.")
-
-    except Exception as e:
-        logger.error(
-            f"Erreur lors de l'écriture du fichier de liste de bookmarks : {e}"
-        )
-        exit(1)
-
-
 if __name__ == "__main__":
     if clients := get_vpn_clients():
         create_haproxy_config(clients)
-        create_homepage_bookmarks_list(clients)
         create_services_config(clients)
         exit(0)
     else:
-        logger.error("Impossible de générer la configuration HAProxy.")
+        logger.error("Impossible de générer les configurations.")
         exit(1)

@@ -1,7 +1,6 @@
 # Config dir
 config/homepage/logs/*
 config/haproxy/haproxy.cfg
-config/homepage/bookmarks.yaml
 config/homepage/services.yaml
 config/vscode/
 # Node
