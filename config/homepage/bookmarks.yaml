@@ -3,12 +3,6 @@
 # https://gethomepage.dev/latest/configs/bookmarks
 
 - O'clock:
-    - Github {{ HOMEPAGE_VAR_COHORT }}:
-        - abbr: GH
-          href: https://github.com/o-clock-{{ HOMEPAGE_VAR_COHORT }}/
-    - Slack {{ HOMEPAGE_VAR_COHORT }}:
-        - abbr: GH
-          href: https://oclock-{{ HOMEPAGE_VAR_COHORT }}.slack.com/
     - Documentation:
         - abbr: DOC
           href: https://doc.oclock.io/
