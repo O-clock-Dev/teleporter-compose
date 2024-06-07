@@ -9,6 +9,8 @@ node_modules
 vpn.env*
 # Code
 code/
+# Backup
+backup/
 # Others
 .swp
 *.swp
