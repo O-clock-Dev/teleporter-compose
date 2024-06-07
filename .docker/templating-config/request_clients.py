@@ -16,7 +16,7 @@ logger = configure_logs()
 # Chemin absolu du fichier de configuration HAProxy
 template_haproxy_path = "config/haproxy/haproxy_template.j2"
 ha_proxy_config = "config/haproxy/haproxy.cfg"
-bokkmark_template_path = "config/homepage/bookmarks_template.j2"
+bookmark_template_path = "config/homepage/bookmarks_template.j2"
 bookmark_list_path = "config/homepage/bookmarks.yaml"
 
 
@@ -99,7 +99,7 @@ def create_homepage_bookmarks_list(clients):
     """Charger le modèle Jinja depuis le fichier bookmarks_template.j2 et générer la liste de bookmarks"""
     clients_list = prepare_clients_list_to_bookmarks(clients)
     try:
-        with open(bokkmark_template_path) as file:
+        with open(bookmark_template_path) as file:
             template = Template(file.read())
             logger.info("Modèle Jinja bookmarks chargé avec succès.")
     except FileNotFoundError:
