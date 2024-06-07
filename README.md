@@ -12,6 +12,13 @@
 > [!TIP]
 > For our educational purposes, we are using [Docker Desktop](https://www.docker.com/products/docker-desktop/), which is available on Linux, macOS (Intel & Apple Silicon chips), and Windows. An alternative could be [Podman Desktop](https://podman-desktop.io/), although it remains untested at the moment.
 
+## Documentation
+
+The project documentation is available in the `docs/` directory.
+
+- 🇬🇧 [English Documentation](docs/README.md)
+- 🇫🇷 [Documentation en Français](docs/README_fr.md)
+
 ## Features
 
 This project leverages Docker Compose to manage various applications and services, all of which are accessible via a **centralized homepage at localhost**. This homepage not only provides access to the different web services hosted by the Compose setup but also monitors and displays the status of launched and usable servers (e.g., PHP, MariaDB).
