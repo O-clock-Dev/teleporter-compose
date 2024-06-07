@@ -49,6 +49,8 @@ services:
     hostname: teleporter-terminal
     image: oclock/teleporter-terminal:bdc685e9f5b1a9ef3565b93c2a3ee2bdf95fe74e
     restart: always
+    ports:
+      - "3000-3003:3000-3003"
     environment:
       TZ: ${TZ}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
