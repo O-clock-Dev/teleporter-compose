@@ -1,0 +1,29 @@
+{
+  "name": "Node.js test-app",
+  // Reference the existing docker-compose.yml file
+  "dockerComposeFile": [
+    "../../../../compose.yaml"
+  ],
+  // Use the 'terminal' service defined in docker-compose.yml
+  "service": "terminal",
+  // Default working directory
+  "workspaceFolder": "/srv/code/node/test-app",
+  // Install additional tools and dependencies
+  "postCreateCommand": "npm install",
+  // Forward port 3000 used by the Node.js app
+  // "forwardPorts": [3000],
+  // Here we using auto-forwared port when app is launched by .vscode/launch.json
+  // Add Visual Studio Code extensions
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  // Mount additional configuration files
+  "mounts": [
+    "source=${localWorkspaceFolder}/.vscode,target=/workspace/.vscode,type=bind"
+  ]
+}
