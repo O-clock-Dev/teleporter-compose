@@ -18,6 +18,8 @@ template_haproxy_path = "config/haproxy/haproxy_template.j2"
 ha_proxy_config = "config/haproxy/haproxy.cfg"
 bookmark_template_path = "config/homepage/bookmarks_template.j2"
 bookmark_list_path = "config/homepage/bookmarks.yaml"
+services_template_path = "config/homepage/services_template.j2"
+services_file_path = "config/homepage/services.yaml"
 
 
 def get_vpn_clients():
@@ -81,6 +83,41 @@ def create_haproxy_config(clients):
         logger.error(f"Erreur lors du reload haproxy : {e}")
         exit(1)
 
+def create_services_config(clients):
+    """Generate homepage/services.yml from template"""
+
+    try:
+        with open(services_template_path) as file:
+            template = Template(file.read())
+            logger.info("Modèle Jinja de services chargé avec succès.")
+    except FileNotFoundError:
+        logger.error(f"Le fichier ${template_services_path} n'existe pas.")
+        exit(1)
+    except Exception as e:
+        logger.error(f"Erreur lors de la lecture du fichier de modèle : {e}")
+        exit(1)
+
+    # Convertir le dictionnaire en une liste de tuples (name, ip) et supprimer le client actuel
+    clients.pop(CLIENT_NAME, None)
+    clients_list = list(clients.items())
+
+    logger.debug(f"Clients pour inserer sur le template de service homepage : {clients_list}")
+
+    # Rendre le modèle Jinja avec les valeurs spécifiées
+    services_rendered = template.render(clients=clients_list)
+    logger.debug("Configuration de service Homepage générée avec succès")
+
+    # Écrire la configuration de service homepage générée dans un fichier
+    try:
+        with open(services_file_path, "w") as file:
+            file.write(services_rendered)
+        logger.info("Configuration de services homepage générée avec succès.")
+
+    except Exception as e:
+        logger.error(
+            f"Erreur lors de l'écriture du fichier de service homepage : {e}"
+        )
+        exit(1)
 
 def prepare_clients_list_to_bookmarks(clients):
     """Préparer la liste des clients VPN pour la page d'accueil"""
@@ -129,6 +166,7 @@ if __name__ == "__main__":
     if clients := get_vpn_clients():
         create_haproxy_config(clients)
         create_homepage_bookmarks_list(clients)
+        create_services_config(clients)
         exit(0)
     else:
         logger.error("Impossible de générer la configuration HAProxy.")
