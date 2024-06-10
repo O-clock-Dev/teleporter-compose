@@ -5,19 +5,16 @@ include:
     - path: include.core.compose.yaml
       env_file:
         - .env
-        - vpn.env
 
     # App: Contains basic applications providing services
     - path: include.app.compose.yaml
       env_file:
         - .env
-        - vpn.env
 
     # Edu: Contains services that can be customised by the teaching team
     - path: include.edu.compose.yaml
       env_file:
         - .env
-        - vpn.env
 
 volumes:
   mariadb_data:
