@@ -62,7 +62,8 @@ To use DevContainers with VSCode, you first need to install the "[Dev Containers
 You can easily attach VSCode to a Docker container already running on your machine. This allows you to develop within the isolated environment of the container.
 
 * To see how to do this in detail, watch this video:
-  https://github.com/O-clock-Dev/teleporter-compose/assets/126659374/71df8064-6cfa-414d-8e4d-ceac2b90fed3
+  [How-to Video: Attach to a Running Container](https://github.com/O-clock-Dev/teleporter-compose/assets/126659374/71df8064-6cfa-414d-8e4d-ceac2b90fed3)
+
 
 #### Using a DevContainer Defined in a Git Repository
 
