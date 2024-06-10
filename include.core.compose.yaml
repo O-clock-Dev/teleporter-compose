@@ -131,7 +131,7 @@ services:
   # Template Config
   templating-config:
     container_name: teleporter-templating-config
-    image: oclock/teleporter-templating-config:bc4294dd973754c2f48a2aadbfbdbd814c8493a9
+    image: oclock/teleporter-templating-config:fe3814940bd30a0298adafad1dfd686bb4489002
     environment:
       IP_PRIV: ${IP_PRIV}
       VPN_NAME: ${VPN_NAME:-myself}
