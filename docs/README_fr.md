@@ -13,6 +13,12 @@ Bienvenue dans la documentation de **Teleporte Compose**. Vous trouverez ici tou
 1. [Introduction](#introduction)
 2. [Installation](#installation)
 3. [Utilisation](#utilisation)
+   - [Utilisation des DevContainers avec VSCode](#utilisation-des-devcontainers-avec-vscode)
+     - [Attacher VSCode à un conteneur en cours d'exécution](#attacher-vscode-à-un-conteneur-en-cours-dexécution)
+       - [Vidéo pratique : Attacher à un conteneur en cours d'exécution](#vidéo-pratique--attacher-à-un-conteneur-en-cours-dexécution)
+     - [Utiliser un DevContainer défini dans un dépôt Git](#utiliser-un-devcontainer-défini-dans-un-dépôt-git)
+       - [Vidéo pratique : Utiliser une configuration DevContainer](#vidéo-pratique--utiliser-une-configuration-devcontainer)
+     - [Qu'est-ce que les DevContainers ?](#quest-ce-que-les-devcontainers-)
 4. [Contribuer](#contribuer)
 5. [Licence](#licence)
 
@@ -30,10 +36,9 @@ Pour installer ce projet, veuillez vous référer au [README](../README.md) raci
 
 Pour utiliser les DevContainers avec VSCode, vous devez d'abord installer l'extension "[Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)" ou le pack d'extensions "[Remote Development Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)". Ces extensions vous permettent de travailler avec des conteneurs, des machines virtuelles ou des environnements distants directement depuis VSCode.
 
-Voici deux cas d'utilisation courants des DevContainers avec VSCode :
-
-1. **Attacher VSCode à un conteneur en cours d'exécution**
-2. **Utiliser un DevContainer défini dans un dépôt Git**
+* Voici deux cas d'utilisation courants des DevContainers avec VSCode :
+  1. **Attacher VSCode à un conteneur en cours d'exécution**
+  2. **Utiliser un DevContainer défini dans un dépôt Git**
 
 > [!TIP] 
 > Les DevContainers combinés à VSCode offrent un moyen puissant de normaliser les environnements de développement au sein d'une équipe, tout en conservant les avantages du travail avec un IDE local complet.
@@ -41,14 +46,13 @@ Voici deux cas d'utilisation courants des DevContainers avec VSCode :
 
 #### Attacher VSCode à un conteneur en cours d'exécution
 
-Pour attacher un DevContainer à un conteneur en cours d'exécution, suivez ces étapes :
-
-1. Assurez-vous d'avoir installé l'extension "Dev Containers" ou le pack d'extensions "Remote Development Extension Pack" dans votre VS Code.
-2. Ouvrez la palette de commandes dans VS Code (Ctrl+Shift+P ou Cmd+Shift+P sur macOS).
-3. Tapez "Remote-Containers: Attach to Running Container" et sélectionnez-le dans la liste.
-4. VS Code affichera une liste des conteneurs en cours d'exécution. Choisissez le conteneur auquel vous souhaitez vous attacher.
-5. Après avoir sélectionné le conteneur, VS Code se rechargera et s'attachera au conteneur en cours d'exécution.
-6. Vous pouvez maintenant interagir avec le conteneur via l'interface de VS Code, modifier des fichiers, exécuter des commandes et déboguer votre application comme si elle s'exécutait localement.
+* Pour attacher un DevContainer à un conteneur en cours d'exécution, suivez ces étapes :
+  1. Assurez-vous d'avoir installé l'extension "Dev Containers" ou le pack d'extensions "Remote Development Extension Pack" dans votre VS Code.
+  2. Ouvrez la palette de commandes dans VS Code (Ctrl+Shift+P ou Cmd+Shift+P sur macOS).
+  3. Tapez "Remote-Containers: Attach to Running Container" et sélectionnez-le dans la liste.
+  4. VS Code affichera une liste des conteneurs en cours d'exécution. Choisissez le conteneur auquel vous souhaitez vous attacher.
+  5. Après avoir sélectionné le conteneur, VS Code se rechargera et s'attachera au conteneur en cours d'exécution.
+  6. Vous pouvez maintenant interagir avec le conteneur via l'interface de VS Code, modifier des fichiers, exécuter des commandes et déboguer votre application comme si elle s'exécutait localement.
 
 > [!TIP]
 > En attachant un DevContainer à un conteneur en cours d'exécution, vous pouvez tirer parti de l'environnement isolé et des dépendances spécifiques du conteneur tout en utilisant votre IDE préféré. Cette approche est particulièrement utile lorsque vous travaillez avec des conteneurs existants ou lorsque vous devez déboguer rapidement un problème dans un environnement conteneurisé.
@@ -57,9 +61,8 @@ Pour attacher un DevContainer à un conteneur en cours d'exécution, suivez ces 
 
 Vous pouvez facilement attacher VSCode à un conteneur Docker déjà en cours d'exécution sur votre machine. Cela vous permet de développer dans l'environnement isolé du conteneur.
 
-Pour voir comment procéder en détail, regardez cette vidéo :
-
-![Attacher VSCode à un conteneur en cours d'exécution](https://github.com/O-clock-Dev/teleporter-compose/assets/126659374/71df8064-6cfa-414d-8e4d-ceac2b90fed3)
+* Pour voir comment procéder en détail, regardez cette vidéo :
+  https://github.com/O-clock-Dev/teleporter-compose/assets/126659374/71df8064-6cfa-414d-8e4d-ceac2b90fed3
 
 #### Utiliser un DevContainer défini dans un dépôt Git
 
@@ -79,9 +82,8 @@ Si vous avez un répertoire de projet qui inclut un fichier `devcontainer.json`,
 
 De nombreux projets incluent une configuration DevContainer directement dans leur dépôt Git (comme dans l'exemple du dossier `code/node/test-app/`). Cela permet à tous les développeurs de travailler dans un environnement normalisé.
 
-Pour apprendre à utiliser une telle configuration, suivez le tutoriel dans cette vidéo :
-
-![Utiliser une préconfiguration devcontainer.json](https://github.com/O-clock-Dev/teleporter-compose/assets/126659374/3741a5b7-878c-4b90-888e-8dfd4b42342e)
+* Pour apprendre à utiliser une telle configuration, suivez le tutoriel dans cette vidéo :
+ https://github.com/O-clock-Dev/teleporter-compose/assets/126659374/3741a5b7-878c-4b90-888e-8dfd4b42342e
 
 #### Qu'est-ce que les DevContainers ?
 
