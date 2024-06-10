@@ -7,8 +7,8 @@ from logs_config import (
 )  # Assurez-vous que votre configuration de logs est correcte
 
 # Configuration des variables d'environnement par défaut
-PROMO = os.getenv("PROMO", "hati")
-CLIENT_NAME = os.getenv("VPN_NAME", "aurelien-bras")
+PROMO = os.getenv("PROMO", "")
+CLIENT_NAME = os.getenv("VPN_NAME", "myself")
 
 # Création du logger
 logger = configure_logs()
@@ -22,10 +22,12 @@ services_template_path = "config/homepage/services_template.j2"
 services_file_path = "config/homepage/services.yaml"
 
 
-def get_vpn_clients():
+def get_vpn_clients(promo):
     """
     Récupérer la liste des clients VPN depuis l'API
     """
+    if promo == "" or promo == "Sans promo":
+        return {}
     url = f"http://vpn.eddi.cloud/promo_list/{PROMO}"
     try:
         response = requests.get(url)
@@ -36,8 +38,7 @@ def get_vpn_clients():
         return dict_clients
     except Exception as e:
         logger.error(f"Erreur lors de la récupération des clients VPN : {e}")
-        return None
-
+        return {}
 
 def create_haproxy_config(clients):
     """Charger le modèle Jinja depuis le fichier haproxy_template.j2 et générer la configuration HAProxy"""
@@ -120,10 +121,12 @@ def create_services_config(clients):
         exit(1)
 
 if __name__ == "__main__":
-    if clients := get_vpn_clients():
+    try:
+        clients = get_vpn_clients(PROMO)
         create_haproxy_config(clients)
         create_services_config(clients)
         exit(0)
-    else:
-        logger.error("Impossible de générer les configurations.")
+        
+    except Exception as e:
+        logger.error(f"Unable to generate configurations: { e }")
         exit(1)

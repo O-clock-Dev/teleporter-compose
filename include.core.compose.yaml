@@ -134,8 +134,8 @@ services:
     image: oclock/teleporter-templating-config:bc4294dd973754c2f48a2aadbfbdbd814c8493a9
     environment:
       IP_PRIV: ${IP_PRIV}
-      VPN_NAME: ${VPN_NAME}
-      PROMO: ${PROMO}
+      VPN_NAME: ${VPN_NAME:-myself}
+      PROMO: ${PROMO:-Sans promo}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${CONFIG_DIR}/:/app/config/
