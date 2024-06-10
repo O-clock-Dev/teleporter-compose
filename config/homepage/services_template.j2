@@ -5,34 +5,29 @@
 
 - Utilitaires:
     - Connexion VPN:
-        description: Statut de la connexion au VPN O'clock
-        icon: si-openvpn
+        description: "Statut de la connexion au VPN"
+        icon: si-wireguard
         href: https://vpn.eddi.cloud
         ping: 10.0.0.1
-        statusStyle: basic
-    - Accès VPN:
-        description: pour générer ma configuration VPN
-        icon: si-openvpn
-        href: https://vpn.eddi.cloud
     - File Browser:
         href: ./file-browser
         container: teleporter-filebrowser
-        description: Explorateur de fichiers dans le navigateur
+        description: "Explorateur de fichiers dans le navigateur"
         icon: mdi-folder-search-outline
-    - Terminal:
+    - Terminal 🚀:
         href: ./terminal
-        description: Un terminal qui permet de manipuler le Téléporteur
+        description: "Le Terminal qui permet de manipuler le Téléporteur"
         container: teleporter-terminal
         icon: mdi-console
     - Visual Studio Code:
-        description: Editeur de code développé par Microsoft.
+        description: "Editeur de code développé par Microsoft"
         icon: si-visualstudiocode
         href: ./vscode
         ping: http://localhost/vscode
 - Bases de données:
-    - Base de données Mysql:
-        description: "Etat de la base de données MYSQL"
-        icon: si-mysql
+    - Base de données MariaDB:
+        description: "Etat de la base de données MariaDB"
+        icon: si-mariadb
         container: teleporter-mariadb
         statusStyle: basic
     - Base de données MongoDB:
@@ -46,59 +41,55 @@
         container: teleporter-postgres
         statusStyle: basic
     - Adminer:
-        description: Interface graphique pour base de données PHP
+        description: "Interface graphique pour base de données MySQL/MariaDB"
         icon: si-adminer
         href: ./adminer
         ping: http://localhost/adminer
     - PhpMyAdmin:
-        description: Interface graphique alternative pour base de données PHP
+        description: "Interface graphique pour base de données MySQL/MariaDB"
         icon: si-phpmyadmin
         href: ./phpmyadmin/
         ping: http://localhost/phpmyadmin/
     - Mongo Express:
-        description: Interface graphique pour base de données MongoDB
+        description: "Interface graphique pour base de données MongoDB"
         icon: mdi-database-search
         href: ./mongo-express/
         ping: http://localhost/mongo-express/
     - PgAdmin4:
-        description: Interface graphique pour base de données PostgresQL
+        description: "Interface graphique pour base de données PostgresQL"
         icon: si-postgresql
         href: ./pgadmin
         ping: http://localhost/pgadmin
 - Serveurs web:
     - Caddy:
-        description: Sert le code situé dans le dossier /code/www/public en utilisant Caddy
+        description: "Sert le code situé dans le dossier /code/www/public en utilisant Caddy"
         icon: si-caddy
         href: http://caddy.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
         siteMonitor: http://10.200.0.10
         #container: teleporter-caddyserver
     - PHP:
-        description: PHP-FPM 8.3
+        description: "PHP 8.3"
         icon: si-php
         statusStyle: basic
         container: teleporter-php
-    - Node3000:
-        description: Node port 3000 (doit être lancé dans le terminal)
+    - Node 3000:
+        description: "NodeJS port 3000"
         icon: si-nodedotjs
-        statusStyle: basic
         href: http://node3000.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
         siteMonitor: http://10.200.0.202:3000
-    - Node3001:
-        description: Node port 3001 (doit être lancé dans le terminal)
+    - Node 3001:
+        description: "NodeJS port 3001"
         icon: si-nodedotjs
-        statusStyle: basic
         href: http://node3001.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
         siteMonitor: http://10.200.0.202:3001
-    - Node3002:
-        description: Node port 3002 (doit être lancé dans le terminal)
+    - Node 3002:
+        description: "NodeJS port 3002"
         icon: si-nodedotjs
-        statusStyle: basic
         href: http://node3002.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
         siteMonitor: http://10.200.0.202:3002
-    - Node3003:
-        description: Node port 3003 (doit être lancé dans le terminal)
+    - Node 3003:
+        description: "NodeJS port 3003"
         icon: si-nodedotjs
-        statusStyle: basic
         href: http://node3003.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
         siteMonitor: http://10.200.0.202:3003
 {% endraw %}
@@ -107,7 +98,6 @@
     - Teleporter de {{ client_name  }}:
         description: Se connecter sur le téléporteur de {{ client_name }}
         icon: si-aiohttp
-        statusStyle: basic
         href: http://{{ client_name }}.localhost
         siteMonitor: http://{{ client_ip }}
 {% endfor %}
