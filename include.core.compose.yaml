@@ -78,14 +78,14 @@ services:
     image: oclock/teleporter-vpn:dd7d23c5eea0cc4d01c658a82405123cb86a2ef6
     restart: always
     environment:
-      KEY_PRIV: ${KEY_PRIV}
-      KEY_VPN_SERVER: ${KEY_VPN_SERVER}
-      IP_PRIV: ${IP_PRIV}
-      VPN_SERVER: ${VPN_SERVER}
-      VPN_LOCAL_PORT: ${VPN_LOCAL_PORT}
+      KEY_PRIV: ${KEY_PRIV:-}
+      KEY_VPN_SERVER: ${KEY_VPN_SERVER:-}
+      IP_PRIV: ${IP_PRIV:-}
+      VPN_SERVER: ${VPN_SERVER:-}
+      VPN_LOCAL_PORT: ${VPN_LOCAL_PORT:-}
       # Should be switched to VPN_SERVER_PORT when issue#6 is done on vpn-compose project
-      VPN_SERVER_PORT: ${VPN_LOCAL_PORT}
-      VPN_WILDCARD: ${VPN_WILDCARD}
+      VPN_SERVER_PORT: ${VPN_LOCAL_PORT:-}
+      VPN_WILDCARD: ${VPN_WILDCARD:-}
     ports:
       - "${VPN_LOCAL_PORT:-6666}:${VPN_LOCAL_PORT:-6666}/udp"
     volumes:
@@ -134,9 +134,9 @@ services:
     container_name: teleporter-templating-config
     image: oclock/teleporter-templating-config:fe3814940bd30a0298adafad1dfd686bb4489002
     environment:
-      IP_PRIV: ${IP_PRIV}
+      IP_PRIV: ${IP_PRIV:-}
       VPN_NAME: ${VPN_NAME}
-      PROMO: ${PROMO}
+      PROMO: ${PROMO:-}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${CONFIG_DIR}/:/app/config/
