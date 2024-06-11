@@ -10,10 +10,6 @@
         href: https://vpn.eddi.cloud
         ping: 10.0.0.1
         statusStyle: basic
-    - Accès VPN:
-        description: pour générer ma configuration VPN
-        icon: si-openvpn
-        href: https://vpn.eddi.cloud
     - File Browser:
         href: ./file-browser
         container: teleporter-filebrowser
@@ -102,7 +98,9 @@
         href: http://node3003.{{HOMEPAGE_VAR_VPN_NAME}}.localhost
         siteMonitor: http://10.200.0.202:3003
 {% endraw %}
+{% if clients %}
 - Ma promo:
+{% endif %}
 {% for client_name, client_ip in clients %}
     - Teleporter de {{ client_name  }}:
         description: Se connecter sur le téléporteur de {{ client_name }}
