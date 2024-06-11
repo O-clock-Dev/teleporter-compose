@@ -1,5 +1,6 @@
 # Teleporter Core Containers
 
+
 services:
 
   # Dashboard
@@ -22,10 +23,6 @@ services:
         ipv4_address: 10.200.0.203
     cap_add:
       - NET_ADMIN
-    env_file:
-      - path: ./vpn.env
-        required: false
-
 
   # Reverse Proxy
   reverse_proxy:
@@ -89,9 +86,6 @@ services:
       # Should be switched to VPN_SERVER_PORT when issue#6 is done on vpn-compose project
       VPN_SERVER_PORT: ${VPN_LOCAL_PORT}
       VPN_WILDCARD: ${VPN_WILDCARD}
-    env_file:
-      - path: ./vpn.env
-        required: false
     ports:
       - "${VPN_LOCAL_PORT:-6666}:${VPN_LOCAL_PORT:-6666}/udp"
     volumes:
@@ -141,11 +135,8 @@ services:
     image: oclock/teleporter-templating-config:fe3814940bd30a0298adafad1dfd686bb4489002
     environment:
       IP_PRIV: ${IP_PRIV}
-      VPN_NAME: ${VPN_NAME:-myself}
-      PROMO: ${PROMO:-Sans promo}
-    env_file:
-      - path: ./vpn.env
-        required: false
+      VPN_NAME: ${VPN_NAME}
+      PROMO: ${PROMO}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${CONFIG_DIR}/:/app/config/

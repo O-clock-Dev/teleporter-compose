@@ -7,6 +7,8 @@ config/vscode/
 node_modules
 # Private and secrets
 vpn.env*
+.env
+local.env
 # Code
 code/
 # Backup
