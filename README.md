@@ -241,26 +241,30 @@ This repository contains the main configuration and associated files for Docker 
 
 ### Environment Variables
 
-The existing `.env` file contains the following variables to help you customize your experience: `CODE_DIR`, `DATA_DIR`, `CONFIG_DIR`, `LANG`, `TZ`, `WEB_DIR`, `WEB_PUBLIC_DIR`.
+The existing `local.env` file contains the following variables to help you customize your experience: `CODE_DIR`, `DATA_DIR`, `CONFIG_DIR`, `LANG`, `TZ`, `WEB_DIR`, `WEB_PUBLIC_DIR`.
 
-### Usage of `.env` File
+### Usage of `local.env` File
 
-The `.env` file allows you to configure various aspects of the development and production environment. Here are some examples of what you can do with these variables:
+The `local.env` file allows you to configure various aspects of the development and production environment. Here are some examples of what you can do with these variables:
 
 - **AUTOHEAL_CONTAINER_LABEL** and **AUTOHEAL_START_PERIOD**: Configure auto-healing for Docker containers to monitor and automatically restart failing containers.
 - **CODE_DIR**: Define the working directory for local code used in the app (e.g., VSCode or Caddy).
 - **DATA_DIR**: Define the data folder that contains items like config files or database files that the user won't manipulate directly.
 - **LANG** and **TZ**: Set the language and timezone for the containers, which is essential for applications that depend on locale settings.
-- **VPN_LOCAL_IP**, **VPN_NETWORK**, **VPN_WILDCARD**, and **VPN_PRIV_IP**: Configure VPN settings to enable secure access to your local network via WireGuard. Requires `vpn.env` to fully function; check the VPN Configuration section.
+- **VPN_LOCAL_IP**, **VPN_NETWORK**, **VPN_WILDCARD**, and **VPN_PRIV_IP**: Configure VPN settings to enable secure access to your local network via WireGuard. Requires `.env` to fully function; check the VPN Configuration section.
 - **VSCODE_EXTENSIONS_LIST**: Specify a list of Visual Studio Code extensions to install automatically, enhancing the development experience.
 - **WEB_DIR** and **WEB_PUBLIC_DIR**: Define directories for web files, making it easier to deploy and manage web applications.
+
+### Usage of `default.env` File
+
+The file contains all settings. It's not recommanded to update this file, you should use local.env instead.
 
 ### VPN Configuration
 
 > [!NOTE]
 > This configuration is necessary to customize the names displayed on the Teleporter Compose homepage interface.
 
-To access the VPN functionality of the VPN container (WireGuard), you need to generate a `vpn.env` file yourself. Below is an example of what the `vpn.env` file might look like (do not include the actual values or change them):
+To access the VPN functionality of the VPN container (WireGuard), you need to generate a `.env` file yourself. Below is an example of what the `.env` file might look like (do not include the actual values or change them):
 
 ```bash
 FULL_NAME=John Doe
