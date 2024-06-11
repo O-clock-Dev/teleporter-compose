@@ -9,9 +9,9 @@
     memory: true
     disk: /
 - greeting:
-    text_size: xs
+    text_size: sm
     text: 🕹️ {{HOMEPAGE_VAR_USER_NAME}}
 - datetime:
-    text_size: x1
+    text_size: md
     format:
       timeStyle: short
