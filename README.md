@@ -241,7 +241,7 @@ This repository contains the main configuration and associated files for Docker 
 
 ### Environment Variables
 
-The existing `local.env` file contains the following variables to help you customize your experience: `CODE_DIR`, `DATA_DIR`, `CONFIG_DIR`, `LANG`, `TZ`, `WEB_DIR`, `WEB_PUBLIC_DIR`.
+The existing `local.env` file contains the following variables to help you customize your experience: `CODE_DIR`, `CONFIG_DIR`, `BACKUP_DIR`, `LANG`, `TZ`, `WEB_DIR`, `WEB_PUBLIC_DIR`.
 
 ### Usage of `local.env` File
 
@@ -249,7 +249,8 @@ The `local.env` file allows you to configure various aspects of the development 
 
 - **AUTOHEAL_CONTAINER_LABEL** and **AUTOHEAL_START_PERIOD**: Configure auto-healing for Docker containers to monitor and automatically restart failing containers.
 - **CODE_DIR**: Define the working directory for local code used in the app (e.g., VSCode or Caddy).
-- **DATA_DIR**: Define the data folder that contains items like config files or database files that the user won't manipulate directly.
+- **CONFIG_DIR**: Define the data folder that contains items like config files.
+- **BACKUP_DIR**: Where automatic BDD backups goes.
 - **LANG** and **TZ**: Set the language and timezone for the containers, which is essential for applications that depend on locale settings.
 - **VPN_LOCAL_IP**, **VPN_NETWORK**, **VPN_WILDCARD**, and **VPN_PRIV_IP**: Configure VPN settings to enable secure access to your local network via WireGuard. Requires `.env` to fully function; check the VPN Configuration section.
 - **VSCODE_EXTENSIONS_LIST**: Specify a list of Visual Studio Code extensions to install automatically, enhancing the development experience.
