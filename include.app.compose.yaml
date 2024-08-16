@@ -2,26 +2,27 @@
 
 services:
 
-  # VSCode
-  vscode-server:
-    container_name: teleporter-vscode
-    hostname: teleporter-vscode
-    image: linuxserver/code-server:4.21.2
-    restart: always
-    environment:
-      PUID: 0
-      PGID: 0
-      TZ: ${TZ}
-      LANG: ${LANG}
-      DOCKER_MODS: linuxserver/mods:code-server-extension-arguments
-      VSCODE_EXTENSION_IDS: ${VSCODE_EXTENSIONS_LIST}
-      DEFAULT_WORKSPACE: /code
-    volumes:
-      - ${CONFIG_DIR}/vscode:/config
-      - ${CODE_DIR}:/code
-    networks:
-      oclock:
-        ipv4_address: 10.200.0.14
+#  # VSCode
+# We prefer to disable it https://github.com/O-clock-Dev/teleporter-compose/issues/136
+#  vscode-server:
+#    container_name: teleporter-vscode
+#    hostname: teleporter-vscode
+#    image: linuxserver/code-server:4.21.2
+#    restart: always
+#    environment:
+#      PUID: 0
+#      PGID: 0
+#      TZ: ${TZ}
+#      LANG: ${LANG}
+#      DOCKER_MODS: linuxserver/mods:code-server-extension-arguments
+#      VSCODE_EXTENSION_IDS: ${VSCODE_EXTENSIONS_LIST}
+#      DEFAULT_WORKSPACE: /code
+#    volumes:
+#      - ${CONFIG_DIR}/vscode:/config
+#      - ${CODE_DIR}:/code
+#    networks:
+#      oclock:
+#        ipv4_address: 10.200.0.14
 
   # WebServer
   caddyserver:
